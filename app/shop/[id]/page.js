@@ -77,7 +77,7 @@ const ShopSingleDynamicV1 = () => {
     const { cart } = useSelector((state) => state.shop) || {}
     return (
         <>
-            <Layout headerStyle={3} footerStyle={1} breadcrumbTitle="Shop Details">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Shop Details">
                 <section className="product-area pt-80 pb-50">
                     <div className="container">
                         <div className="row">
