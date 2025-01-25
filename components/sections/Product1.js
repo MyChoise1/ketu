@@ -1,4 +1,5 @@
 'use client'
+import FilterShopBox from "../shop/FilterShopBox"
 import FilterShopBox2 from "../shop/FilterShopBox2"
 
 export default function Product1() {
@@ -17,7 +18,7 @@ export default function Product1() {
                     <div className="tab-content" id="nav-tabContent">
                         <div>
                             <div className="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-1 row-cols-1">
-                                <FilterShopBox2 itemStart={0} itemEnd={4} />
+                                <FilterShopBox2 itemStart={0} itemEnd={10} />
                             </div>
                         </div>
                     </div>

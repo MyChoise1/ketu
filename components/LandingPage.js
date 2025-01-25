@@ -1,38 +1,47 @@
-'use client'
+"use client";
 import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import Product1 from "@/components/sections/Product1";
 import Slider3 from "@/components/sections/Slider3";
-import Slider1 from "@/components/sections/Slider1";
 
-import React from 'react'
+import React from "react";
+
+import Banner4 from "./sections/Banner4";
+import Preloader from "./elements/Preloader";
 
 const LandingPage = () => {
-    const [isMobile, setIsMobile] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(true);
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 750);
-        };
+  useEffect(() => {
+    setIsMounted(true);
 
-        // Initial check
-        handleResize();
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 750);
+    };
 
-        // Add event listener for resize
-        window.addEventListener("resize", handleResize);
-        
-        // Cleanup event listener on component unmount
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+    // Initial check
+    handleResize();
 
-    return (
-        <>
-            <Layout headerStyle={1} footerStyle={1}>
-                {isMobile ? <Slider3 /> : <Slider3 />}
-                <Product1 />
-            </Layout>
-        </>
-    );
-}
+    // Add event listener for resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listener on component unmount
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (!isMounted) {
+    return <Preloader />;
+  }
+
+  return (
+    <>
+      <Layout headerStyle={1} footerStyle={1}>
+        {isMobile ? <Banner4 /> : <Slider3 />}
+        <Product1 />
+      </Layout>
+    </>
+  );
+};
 
 export default LandingPage;

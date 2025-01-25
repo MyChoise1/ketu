@@ -4,7 +4,7 @@ export default function Faq() {
 
     return (
         <>
-            <Layout headerStyle={3} footerStyle={1} breadcrumbTitle="Faq">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Faq">
 
             </Layout>
         </>

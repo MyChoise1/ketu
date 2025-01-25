@@ -1,6 +1,8 @@
 'use client'
 import Layout from "@/components/layout/Layout"
-import products from "@/data/products"
+import useFetchProducts from "@/components/useFetchProducts"
+import { addWishlist } from "@/features/wishlistSlice"
+// import products from "@/data/products"
 import { addCart, addQty } from "@/features/shopSlice"
 import Link from "next/link"
 import { useParams } from "next/navigation"
@@ -44,37 +46,49 @@ const swiperOptions = {
 }
 
 const ShopSingleDynamicV1 = () => {
-    const abc = useParams()
-    const [product, setProduct] = useState({})
-    const id = abc.id
-    useEffect(() => {
-        if (!id) <h1>Loading...</h1>
-        else setProduct(products.find((item) => item.id == id))
-        return () => { }
-    }, [id])
+    const { id } = useParams();  // Get the 'id' from the URL params
+    const { products, loading, error } = useFetchProducts();  // Fetch products using your custom hook
 
     const [activeIndex2, setActiveIndex2] = useState(4);
+    const [activeIndex, setActiveIndex] = useState(1);
+
+    const dispatch = useDispatch()
+
+    // Find the specific product by ID from the fetched products
+    const product = products?.find((item) => item.id === id);
 
     const handleOnClick2 = (index) => {
         setActiveIndex2(index);
     };
 
-    const [activeIndex, setActiveIndex] = useState(1)
     const handleOnClick = (index) => {
-        setActiveIndex(index)
-    }
-
-    const dispatch = useDispatch()
+        setActiveIndex(index);
+    };
 
     const addToCart = (id) => {
         const item = products?.find((item) => item.id === id)
         dispatch(addCart({ product: item }))
     }
-    const qtyHandler = (id, qty) => {
-        dispatch(addQty({ id, qty }))
+
+    const addToWishlist = (id) => {
+        const item = products?.find((item) => item.id === id)
+        dispatch(addWishlist({ product: item }))
     }
 
+    const qtyHandler = (id, qty) => {
+        dispatch(addQty({ id, qty }));
+    };
+
     const { cart } = useSelector((state) => state.shop) || {}
+    // Loading state
+    if (loading) return <p>Loading products...</p>;
+
+    // Error state
+    if (error) return <p>Error: {error}</p>;
+
+    // If product doesn't exist or is still loading, show a fallback
+    if (!product) return <p>Product not found or loading...</p>;
+
     return (
         <>
             <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Shop Details">
@@ -86,18 +100,18 @@ const ShopSingleDynamicV1 = () => {
                                     <div className="d-flex align-items-start">
                                         <div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                             <button className={activeIndex2 === 4 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick2(4)}>
-                                                <img src={`/assets/img/product/${product.imgf}`} alt="Front View" />
+                                                <img src={`${product.image}`} alt="Front View" />
                                             </button>
                                             <button className={activeIndex2 === 5 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick2(5)}>
-                                                <img src={`/assets/img/product/${product.imgb}`} alt="Back View" />
+                                                <img src={`${product.image}`} alt="Back View" />
                                             </button>
                                         </div>
                                         <div className="tab-content" id="v-pills-tabContent">
                                             <div className={activeIndex2 === 4 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                                <img src={`/assets/img/product/${product.imgf}`} alt="Front View" />
+                                                <img src={`${product.image}`} alt="Front View" style={{ maxHeight: '600px', width: 'auto' }} />
                                             </div>
                                             <div className={activeIndex2 === 5 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                                <img src={`/assets/img/product/${product.imgb}`} alt="Back View" />
+                                                <img src={`${product.image}`} alt="Back View" style={{ maxHeight: '600px', width: 'auto' }} />
                                             </div>
                                         </div>
                                     </div>
@@ -106,21 +120,21 @@ const ShopSingleDynamicV1 = () => {
                             <div className="col-lg-5 col-md-7">
                                 <div className="tpproduct-details__content">
                                     <div className="tpproduct-details__tag-area d-flex align-items-center mb-5">
-                                        <span className="tpproduct-details__tag">Dress</span>
+                                        <span className="tpproduct-details__tag">Dryer</span>
                                         <div className="tpproduct-details__rating">
                                             <Link href="#"><i className="fas fa-star" /></Link>
                                             <Link href="#"><i className="fas fa-star" /></Link>
                                             <Link href="#"><i className="fas fa-star" /></Link>
                                         </div>
-                                        <a className="tpproduct-details__reviewers">10 Reviews</a>
+                                        <a className="tpproduct-details__reviewers">5 Reviews</a>
                                     </div>
                                     <div className="tpproduct-details__title-area d-flex align-items-center flex-wrap mb-5">
-                                        <h3 className="tpproduct-details__title">{product?.title}</h3>
+                                        <h3 className="tpproduct-details__title">{product?.name}</h3>
                                         <span className="tpproduct-details__stock">In Stock</span>
                                     </div>
                                     <div className="tpproduct-details__price mb-30">
-                                        <del>$9.35</del>
-                                        <span>$ {product?.price?.max}</span>
+                                        <del>₹{product?.mrp}</del>
+                                        <span>₹{product?.sell_price}</span>
                                     </div>
                                     <div className="tpproduct-details__pera">
                                         <p>Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a <br />completely modern design and you feel comfortable to put on this hijab. <br />Buy it at the best price.</p>
@@ -144,58 +158,17 @@ const ShopSingleDynamicV1 = () => {
                                             <button onClick={() => addToCart(product.id)}><i className="fal fa-shopping-cart" /> Add To Cart</button>
                                         </div>
                                         <div className="tpproduct-details__wishlist ml-20">
-                                            <button><i className="fal fa-heart" /></button>
+                                            <button onClick={() => addToWishlist(product.id)}><i className="fal fa-heart" /></button>
                                         </div>
                                     </div>
-                                    <div className="tpproductdot mb-30">
-                                        <Link className="tpproductdot__variationitem" href="#">
-                                            <div className="tpproductdot__termshape">
-                                                <span className="tpproductdot__termshape-bg" />
-                                                <span className="tpproductdot__termshape-border" />
-                                            </div>
-                                        </Link>
-                                        <Link className="tpproductdot__variationitem" href="#">
-                                            <div className="tpproductdot__termshape">
-                                                <span className="tpproductdot__termshape-bg red-product-bg" />
-                                                <span className="tpproductdot__termshape-border red-product-border" />
-                                            </div>
-                                        </Link>
-                                        <Link className="tpproductdot__variationitem" href="#">
-                                            <div className="tpproductdot__termshape">
-                                                <span className="tpproductdot__termshape-bg orange-product-bg" />
-                                                <span className="tpproductdot__termshape-border orange-product-border" />
-                                            </div>
-                                        </Link>
-                                        <Link className="tpproductdot__variationitem" href="#">
-                                            <div className="tpproductdot__termshape">
-                                                <span className="tpproductdot__termshape-bg purple-product-bg" />
-                                                <span className="tpproductdot__termshape-border purple-product-border" />
-                                            </div>
-                                        </Link>
-                                    </div>
-                                    <div className="tpproduct-details__information tpproduct-details__code">
-                                        <p>SKU:</p><span>BO1D0MX8SJ</span>
-                                    </div>
-                                    <div className="tpproduct-details__information tpproduct-details__categories">
-                                        <p>Categories:</p>
-                                        <span><Link href="#">T-Shirts,</Link></span>
-                                        <span><Link href="#">Tops,</Link></span>
-                                        <span><Link href="#">Womens</Link></span>
-                                    </div>
-                                    <div className="tpproduct-details__information tpproduct-details__tags">
-                                        <p>Tags:</p>
-                                        <span><Link href="#">fashion,</Link></span>
-                                        <span><Link href="#">t-shirts,</Link></span>
-                                        <span><Link href="#">women</Link></span>
-                                    </div>
-                                    <div className="tpproduct-details__information tpproduct-details__social">
-                                        <p>Share:</p>
-                                        <Link href="#"><i className="fab fa-facebook-f" /></Link>
-                                        <Link href="#"><i className="fab fa-twitter" /></Link>
-                                        <Link href="#"><i className="fab fa-behance" /></Link>
-                                        <Link href="#"><i className="fab fa-youtube" /></Link>
-                                        <Link href="#"><i className="fab fa-linkedin" /></Link>
-                                    </div>
+                                    {/* <div className="tpproduct-details__information tpproduct-details__social">
+                                            <p>Share:</p>
+                                            <Link href="#"><i className="fab fa-facebook-f" /></Link>
+                                            <Link href="#"><i className="fab fa-twitter" /></Link>
+                                            <Link href="#"><i className="fab fa-behance" /></Link>
+                                            <Link href="#"><i className="fab fa-youtube" /></Link>
+                                            <Link href="#"><i className="fab fa-linkedin" /></Link>
+                                        </div> */}
                                 </div>
                             </div>
                             <div className="col-lg-2 col-md-5">
@@ -238,7 +211,7 @@ const ShopSingleDynamicV1 = () => {
                                                 <button className={activeIndex == 1 ? "nav-links active" : "nav-links"}>Description</button>
                                             </li>
                                             <li className="nav-item" onClick={() => handleOnClick(2)}>
-                                                <button className={activeIndex == 2 ? "nav-links active" : "nav-links"}>Additional information</button>
+                                                <button className={activeIndex == 2 ? "nav-links active" : "nav-links"}>Product Images</button>
                                             </li>
                                             <li className="nav-item" onClick={() => handleOnClick(3)}>
                                                 <button className={activeIndex == 3 ? "nav-links active" : "nav-links"}>Reviews (2)</button>
@@ -258,48 +231,8 @@ const ShopSingleDynamicV1 = () => {
                                                 various product lines such as "accident, health and medical insurance premiums" and "income from secured consumer loans.</p>
                                         </div>
                                         <div className={activeIndex == 2 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                            <div className="product__details-info table-responsive">
-                                                <table className="table table-striped">
-                                                    <tbody>
-                                                        <tr>
-                                                            <td className="add-info">Weight</td>
-                                                            <td className="add-info-list"> 2 lbs</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td className="add-info">Dimensions</td>
-                                                            <td className="add-info-list"> 12 × 16 × 19 in</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td className="add-info">Product</td>
-                                                            <td className="add-info-list"> Purchase this product on rag-bone.com</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td className="add-info">Color</td>
-                                                            <td className="add-info-list"> Gray, Black</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td className="add-info">Size</td>
-                                                            <td className="add-info-list"> S, M, L, XL</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td className="add-info">Model</td>
-                                                            <td className="add-info-list"> Model </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td className="add-info">Shipping</td>
-                                                            <td className="add-info-list"> Standard shipping: $5,95L</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td className="add-info">Care Info</td>
-                                                            <td className="add-info-list"> Machine Wash up to 40ºC/86ºF Gentle Cycle</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td className="add-info">Brand</td>
-                                                            <td className="add-info-list">  Kazen</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                            {/* Images div */}
+                                            <div className="d-flex justify-content-center height-200px h-50"> NO IMAGE </div>
                                         </div>
                                         <div className={activeIndex == 3 ? "tab-pane fade show active" : "tab-pane fade"}>
                                             <div className="product-details-review">
@@ -456,111 +389,48 @@ const ShopSingleDynamicV1 = () => {
                         </div>
                         <div className="swiper-container related-product-active">
                             <Swiper {...swiperOptions}>
-                                <SwiperSlide>
-                                    <div className="tpproduct pb-15 mb-30">
-                                        <div className="tpproduct__thumb p-relative">
-                                            <Link href="/shop/1">
-                                                <img src="/assets/img/product/product-1.jpg" alt="product-thumb" height={350} />
-                                                <img className="product-thumb-secondary" src="/assets/img/product/product-2.jpg" alt="" height={350} />
-                                            </Link>
-                                            <div className="tpproduct__thumb-action">
-                                                <Link className="comphare" href="#"><i className="fal fa-exchange" /></Link>
-                                                <Link className="quckview" href="#"><i className="fal fa-eye" /></Link>
-                                                <Link className="wishlist" href="/wishlist"><i className="fal fa-heart" /></Link>
-                                            </div>
-                                        </div>
-                                        <div className="tpproduct__content">
-                                            <h3 className="tpproduct__title"><Link href="/shop-details">Single Pipe Ceil Mount Stand</Link></h3>
-                                            <div className="tpproduct__priceinfo p-relative">
-                                                <div className="tpproduct__priceinfo-list">
-                                                    <span>$31.00</span>
+                                {products?.map((product) => (
+                                    <SwiperSlide key={product.id}>
+                                        <div className="tpproduct pb-15 mb-30">
+                                            <div className="tpproduct__thumb p-relative">
+                                                <Link href={`/shop/${product.id}`}>
+                                                    <img
+                                                        src={product.image} // Display the main product image
+                                                        alt={product.name}
+                                                        height={350}
+                                                    />
+                                                    {/* Assuming there's a secondary image */}
+                                                    <img
+                                                        className="product-thumb-secondary"
+                                                        src={product.secondary_image} // Use a secondary image if available
+                                                        alt=""
+                                                        height={350}
+                                                    />
+                                                </Link>
+                                                <div className="tpproduct__thumb-action">
+                                                    <Link className="comphare" href="#"><i className="fal fa-exchange" /></Link>
+                                                    <Link className="quckview" href="#"><i className="fal fa-eye" /></Link>
+                                                    <Link className="wishlist" href="/wishlist"><i className="fal fa-heart" /></Link>
                                                 </div>
-                                                <div className="tpproduct__cart">
-                                                    <Link href="/cart"><i className="fal fa-shopping-cart" />Add To Cart</Link>
-                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="tpproduct pb-15 mb-30">
-                                        <div className="tpproduct__thumb p-relative">
-                                            <Link href="/shop/2">
-                                                <img src="/assets/img/product/product-3.jpg" alt="product-thumb" height={350} />
-                                                <img className="product-thumb-secondary" src="/assets/img/product/product-4.jpg" alt="" height={350} />
-                                            </Link>
-                                            <div className="tpproduct__thumb-action">
-                                                <Link className="comphare" href="#"><i className="fal fa-shopping-basket" /></Link>
-                                                <Link className="quckview" href="#"><i className="fal fa-eye" /></Link>
-                                                <Link className="wishlist" href="/wishlist"><i className="fal fa-heart" /></Link>
-                                            </div>
-                                        </div>
-                                        <div className="tpproduct__content">
-                                            <h3 className="tpproduct__title"><Link href="/shop-details-2">Box Ceil Mount Stand</Link></h3>
-                                            <div className="tpproduct__priceinfo p-relative">
-                                                <div className="tpproduct__priceinfo-list">
-                                                    <span>$31.00</span>
-                                                </div>
-                                                <div className="tpproduct__cart">
-                                                    <Link href="/cart"><i className="fal fa-shopping-cart" />Add To Cart</Link>
+                                            <div className="tpproduct__content">
+                                                <h3 className="tpproduct__title">
+                                                    <Link href={`/shop-details/${product.id}`}>{product.name}</Link>
+                                                </h3>
+                                                <div className="tpproduct__priceinfo p-relative">
+                                                    <div className="tpproduct__priceinfo-list">
+                                                        <span>{`$${product.price}`}</span> {/* Assuming 'price' is part of product data */}
+                                                    </div>
+                                                    <div className="tpproduct__cart">
+                                                        <Link href="/cart">
+                                                            <i className="fal fa-shopping-cart" />Add To Cart
+                                                        </Link>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="tpproduct pb-15 mb-30">
-                                        <div className="tpproduct__thumb p-relative">
-                                            <Link href="/shop/3">
-                                                <img src="/assets/img/product/product-5.jpg" alt="product-thumb" height={350} />
-                                                <img className="product-thumb-secondary" src="/assets/img/product/product-6.jpg" alt="" height={350} />
-                                            </Link>
-                                            <div className="tpproduct__thumb-action">
-                                                <Link className="comphare" href="#"><i className="fal fa-exchange" /></Link>
-                                                <Link className="quckview" href="#"><i className="fal fa-eye" /></Link>
-                                                <Link className="wishlist" href="/wishlist"><i className="fal fa-heart" /></Link>
-                                            </div>
-                                        </div>
-                                        <div className="tpproduct__content">
-                                            <h3 className="tpproduct__title"><Link href="/shop-details">Rounded Clip Hanger</Link></h3>
-                                            <div className="tpproduct__priceinfo p-relative">
-                                                <div className="tpproduct__priceinfo-list">
-                                                    <span>$31.00</span>
-                                                </div>
-                                                <div className="tpproduct__cart">
-                                                    <Link href="/cart"><i className="fal fa-shopping-cart" />Add To Cart</Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
-                                <SwiperSlide>
-                                    <div className="tpproduct pb-15 mb-30">
-                                        <div className="tpproduct__thumb p-relative">
-                                            {/* <span className="tpproduct__thumb-topsall">On Sale</span> */}
-                                            <Link href="/shop/4">
-                                                <img src="/assets/img/product/product-7.jpg" alt="product-thumb" height={350} />
-                                                <img className="product-thumb-secondary" src="/assets/img/product/product-8.jpg" alt="" height={350} />
-                                            </Link>
-                                            <div className="tpproduct__thumb-action">
-                                                <Link className="comphare" href="#"><i className="fal fa-exchange" /></Link>
-                                                <Link className="quckview" href="#"><i className="fal fa-eye" /></Link>
-                                                <Link className="wishlist" href="/wishlist"><i className="fal fa-heart" /></Link>
-                                            </div>
-                                        </div>
-                                        <div className="tpproduct__content">
-                                            <h3 className="tpproduct__title"><Link href="/shop-details-2">Square Clip Hanger</Link></h3>
-                                            <div className="tpproduct__priceinfo p-relative">
-                                                <div className="tpproduct__priceinfo-list">
-                                                    <span>$31.00</span>
-                                                </div>
-                                                <div className="tpproduct__cart">
-                                                    <Link href="/cart"><i className="fal fa-shopping-cart" />Add To Cart</Link>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </SwiperSlide>
+                                    </SwiperSlide>
+                                ))}
                             </Swiper>
                         </div>
                     </div>

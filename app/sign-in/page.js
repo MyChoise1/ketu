@@ -5,7 +5,7 @@ export default function SignIn() {
 
     return (
         <>
-            <Layout headerStyle={3} footerStyle={1} breadcrumbTitle="Sign In">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Sign In">
                 <section className="track-area pt-80 pb-40">
                     <div className="container">
                         <div className="row justify-content-center">

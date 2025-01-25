@@ -8,10 +8,10 @@ export default function Footer1() {
                     <div className="container">
                         <div className="main-footer pb-15">
                             <div className="row">
-                                <div className="col-lg-3 col-md-4 col-sm-6">
+                                <div className="ms-3 col-lg-4 col-md-4 col-sm-6">
                                     <div className="footer-widget footer-col-1 mb-40">
                                         <div className="footer-logo mb-30">
-                                            <Link href="/"><img src="/assets/img/logo/logo.png" alt="logo" /></Link>
+                                            <Link href="/"><img src="/assets/img/logo/logo2.png" alt="logo2" height={80} /></Link>
                                         </div>
                                         <div className="footer-content">
                                             <p>Elegant pink origami design three <br /> dimensional view and decoration co-exist.
@@ -20,56 +20,30 @@ export default function Footer1() {
                                     </div>
                                 </div>
                                 <div className="col-lg-2 col-md-4 col-sm-6">
+                                </div>
+                                {/* <div className="col-lg-2 col-md-4 col-sm-6">
+                                </div> */}
+                                <div className="col-lg-2 col-md-4 col-sm-6 ms-3">
                                     <div className="footer-widget footer-col-2 ml-30 mb-40">
                                         <h4 className="footer-widget__title mb-30">Information</h4>
                                         <div className="footer-widget__links">
-                                            <ul>
+                                            <ul className="row">
                                                 <li><Link href="#">Custom Service</Link></li>
                                                 <li><Link href="#">FAQs</Link></li>
-                                                <li><Link href="/track">Ordering Tracking</Link></li>
                                                 <li><Link href="/contact">Contacts</Link></li>
-                                                <li><Link href="#">Events</Link></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-2 col-md-4 col-sm-6">
-                                    <div className="footer-widget footer-col-3 mb-40">
-                                        <h4 className="footer-widget__title mb-30">My Account</h4>
-                                        <div className="footer-widget__links">
-                                            <ul>
-                                                <li><Link href="#">Delivery Information</Link></li>
-                                                <li><Link href="#">Privacy Policy</Link></li>
-                                                <li><Link href="#">Discount</Link></li>
-                                                <li><Link href="#">Custom Service</Link></li>
-                                                <li><Link href="#">Terms  Condition</Link></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-2 col-md-4 col-sm-6">
+                                <div className="col-lg-2 col-md-4 col-sm-6 ms-3">
                                     <div className="footer-widget footer-col-4 mb-40">
                                         <h4 className="footer-widget__title mb-30">Social Network</h4>
                                         <div className="footer-widget__links">
                                             <ul>
                                                 <li><Link href="#"><i className="fab fa-facebook-f" />Facebook</Link></li>
-                                                <li><Link href="#"><i className="fab fa-dribbble" />Dribbble</Link></li>
                                                 <li><Link href="#"><i className="fab fa-twitter" />Twitter</Link></li>
-                                                <li><Link href="#"><i className="fab fa-behance" />Behance</Link></li>
-                                                <li><Link href="#"><i className="fab fa-youtube" />Youtube</Link></li>
+                                                <li><Link href="#"><i className="fab fa-instagram" />Instagram</Link></li>
                                             </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-lg-3 col-md-4">
-                                    <div className="footer-widget footer-col-5 mb-40">
-                                        <h4 className="footer-widget__title mb-30">Get Newsletter</h4>
-                                        <p>Get on the list and get 10% off your first order!</p>
-                                        <div className="footer-widget__newsletter">
-                                            <form action="#">
-                                                <input type="email" placeholder="Enter email address" />
-                                                <button className="footer-widget__fw-news-btn tpsecondary-btn">Subscribe Now<i className="fal fa-long-arrow-right" /></button>
-                                            </form>
                                         </div>
                                     </div>
                                 </div>

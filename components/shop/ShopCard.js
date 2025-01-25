@@ -7,8 +7,8 @@ const ShopCard = ({ item, addToCart, addToWishlist }) => {
                     <div className="tpproduct__thumb">
                         <div className="tpproduct__thumbitem p-relative">
                             <Link href={`/shop/${item.id}`}>
-                                <img src={`/assets/img/product/${item.imgf}`} alt="product-thumb" height={400} />
-                                <img className="thumbitem-secondary" src={`/assets/img/product/${item.imgb}`} alt="product-thumb" height={400} />
+                                <img src={item.image} alt="product-thumb" height={400} />
+                                <img className="thumbitem-secondary" src={item.image} alt="product-thumb" height={400} />
                             </Link>
                             <div className="tpproduct__thumb-bg">
                                 <div className="tpproductactionbg">
@@ -20,10 +20,10 @@ const ShopCard = ({ item, addToCart, addToWishlist }) => {
                         </div>
                     </div>
                     <div className="tpproduct__content-area">
-                        <h3 className="tpproduct__title mb-5"><Link href={`/shop/${item.id}`}>{item.title}</Link></h3>
+                        <h3 className="tpproduct__title mb-5"><Link href={`/shop/${item.id}`}>{item.name}</Link></h3>
                         <div className="tpproduct__priceinfo d-flex align-items-center justify-content-between">
                             <div className="tpproduct__ammount">
-                                <span>${item.price.max}.00</span>
+                                <span>₹ {item.sell_price}.00</span>
                             </div>
                             <div className="tpproduct__rating">
                                 <ul>

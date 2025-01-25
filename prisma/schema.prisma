@@ -1,0 +1,132 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum AddressType {
+  HOME
+  OFFICE
+  OTHER
+
+  @@map("address_type")
+}
+
+model User {
+  id       String @id @default(cuid())
+  name     String
+  email    String @unique
+  password String
+
+  Address Address[]
+  Review  Review[]
+
+  @@map("users")
+}
+
+model Products {
+  id   String @id @default(cuid())
+  name String
+  slug String @unique
+
+  mrp        Float
+  sell_price Float
+  image      String
+
+  sku String
+
+  stock Int
+
+  description String
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  Review Review[]
+
+  @@index([slug])
+  @@map("products")
+}
+
+// model Cart {
+//   id String @id @default(cuid())
+
+//   userId String @unique
+//   user   User   @relation(fields: [userId], references: [id])
+
+//   total Float
+
+//   CartItem CartItem[]
+
+//   @@map("cart")
+// }
+
+// model CartItem {
+//   id Int @id @default(autoincrement())
+
+//   cartId String
+//   cart   Cart   @relation(fields: [cartId], references: [id])
+
+//   productId String
+//   product   Products @relation(fields: [productId], references: [id])
+
+//   quantity Int
+
+//   total Float
+
+//   @@map("cart_items")
+// }
+
+// model WishList {
+//   id String @id @default(cuid())
+
+//   userId String @unique
+//   user   User   @relation(fields: [userId], references: [id])
+
+//   productId String
+//   product   Products @relation(fields: [productId], references: [id])
+
+//   total Float
+
+//   @@map("wish_list")
+// }
+
+model Address {
+  id        Int         @id @default(autoincrement())
+  userId    String
+  user      User        @relation(fields: [userId], references: [id])
+  address   String
+  city      String
+  state     String
+  country   String
+  zip       String
+  type      AddressType @default(HOME)
+  createdAt DateTime    @default(now()) @map("created_at")
+  updatedAt DateTime    @updatedAt @map("updated_at")
+
+  @@map("address")
+}
+
+model Review {
+  id        Int      @id @default(autoincrement())
+  productId String   @map("product_id")
+  product   Products @relation(fields: [productId], references: [id])
+
+  userId String @map("user_id")
+  user   User   @relation(fields: [userId], references: [id])
+
+  rating    Int
+  review    String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("reviews")
+}

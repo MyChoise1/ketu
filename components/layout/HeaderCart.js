@@ -2,21 +2,20 @@
 import { addQty, deleteCart } from "@/features/shopSlice"
 import Link from "next/link"
 import { useDispatch, useSelector } from "react-redux"
+import { Scrollbars } from 'react-custom-scrollbars-2'
 
 export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
     const { cart } = useSelector((state) => state.shop) || {}
 
     const dispatch = useDispatch()
 
-    // delete cart item
-    const deleteCartHandler = (id) => {
+    const handleDeleteCart = (id) => {
         dispatch(deleteCart(id))
     }
 
-    // qty handler
     let total = 0;
     cart?.forEach((item) => {
-        const price = item.qty * item.price?.max;
+        const price = item.qty * item.sell_price;
         total = total + price;
     });
     return (
@@ -27,35 +26,54 @@ export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
                     <h4 className="tpcart__title">Your Cart</h4>
                     <div className="tpcart__product">
                         <div className="tpcart__product-list">
-                            <ul>
-                                {cart?.map((item,i) => (
-                                    <li key={i}>
-                                        <div className="tpcart__item">
-                                            <div className="tpcart__img">
-                                                <img src={`/assets/img/product/${item.imgf}`} alt="" />
-                                                <div className="tpcart__del" onClick={() => deleteCartHandler(item?.id)}>
-                                                    <Link href="#"><i className="far fa-times-circle" /></Link>
+                            <Scrollbars style={{ width: 400, height: 470 }} autoHide>
+                                <ul className="list-unstyled">
+                                    {cart && cart.length > 0 ? (
+                                        cart.map((item, i) => (
+                                            <li key={i} className="mb-3">
+                                                <div className="d-flex align-items-center">
+                                                    <div className="tpcart__img me-3">
+                                                        <img
+                                                            src={item.image}
+                                                            alt={item.name}
+                                                            className="rounded"
+                                                            style={{ width: 70, height: 70 }}
+                                                        />
+                                                        <div
+                                                            className="tpcart__del text-danger"
+                                                            onClick={() => handleDeleteCart(item?.id)}
+                                                            style={{ cursor: 'pointer' }}
+                                                        >
+                                                            <i className="far fa-times-circle" />
+                                                        </div>
+                                                    </div>
+                                                    <div className="tpcart__content">
+                                                        <span className="tpcart__content-title d-block fw-bold mb-1">
+                                                            <Link href={`/shop/${item.id}`}>{item.name}</Link>
+                                                        </span>
+                                                        <div className="tpcart__cart-price">
+                                                            <span className="quantity text-muted">{item?.qty} x </span>
+                                                            <span className="new-price fw-bold text-dark">$ {item.sell_price.toFixed(2)}
+                                                            </span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div className="tpcart__content">
-                                                <span className="tpcart__content-title"><Link href="/shop-details">{item.title}</Link>
-                                                </span>
-                                                <div className="tpcart__cart-price">
-                                                    <span className="quantity">{item?.qty} x </span>
-                                                    <span className="new-price">$ {item?.price.max}</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
+                                            </li>
+                                        ))
+                                    ) : (
+                                        <li className="text-center py-4">
+                                            <p className="text-muted">Your cart is currently empty.</p>
+                                        </li>
+                                    )}
+                                </ul>
+                            </Scrollbars>
                         </div>
-                        <div className="tpcart__checkout">
-                            <div className="tpcart__total-price d-flex justify-content-between align-items-center">
-                                <span> Subtotal:</span>
-                                <span className="heilight-price"> ${total.toFixed(2)}</span>
+                        <div className="tpcart__checkout position-sticky bottom-0 bg-white mx-4">
+                            <div className="bg-white tpcart__total-price d-flex justify-content-between align-items-center">
+                                <span>Subtotal:</span>
+                                <span className="heilight-price">₹{total.toFixed(2)}</span>
                             </div>
-                            <div className="tpcart__checkout-btn">
+                            <div className="tpcart__checkout-btn mb-3">
                                 <Link className="tpcart-btn mb-10" href="/cart">View Cart</Link>
                                 <Link className="tpcheck-btn" href="/checkout">Checkout</Link>
                             </div>
@@ -66,4 +84,4 @@ export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
             <div className={`cartbody-overlay ${isCartSidebar ? "opened" : ""}`} onClick={handleCartSidebar} />
         </>
     )
-}
+};

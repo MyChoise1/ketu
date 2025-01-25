@@ -1,11 +1,10 @@
-
 import WishlistItems from "@/components/elements/WishlistItems"
 import Layout from "@/components/layout/Layout"
 export default function Wishlist() {
 
     return (
         <>
-            <Layout headerStyle={3} footerStyle={1} breadcrumbTitle="Wishlist">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Wishlist">
                 <div className="cart-area pt-80 pb-80 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
                     <div className="container">
                         <div className="row">

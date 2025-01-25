@@ -34,7 +34,7 @@ export default function Checkout() {
     }
     return (
         <>
-            <Layout headerStyle={3} footerStyle={1} breadcrumbTitle="Chaeckout">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Chaeckout">
                 <div>
                     <section className="coupon-area pt-80 pb-30 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
                         <div className="container">

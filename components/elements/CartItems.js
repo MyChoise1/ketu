@@ -24,18 +24,18 @@ const CartItems = () => {
                 <tr className="cart-item" key={item.id}>
                     <td className="product-thumbnail">
                         <Link href={`/shop/${item.id}`}>
-                            <img 
-                            src={`/assets/img/product/${item.imgf}`} alt="cart added product" />
+                            <img
+                                src={`${item.image}`} alt="cart added product" />
                         </Link>
                     </td>
 
                     <td className="product-name">
                         <Link href={`/shop/${item.id}`}>
-                            {item.title}
+                            {item.name}
                         </Link>
                     </td>
 
-                    <td className="product-price">${item.price.max}</td>
+                    <td className="product-price">₹{item.sell_price}</td>
 
                     <td className="product-quantity">
                         <div className="item-quantity">
@@ -52,9 +52,9 @@ const CartItems = () => {
                         </div>
                     </td>
 
-                    <td className="product-subtotal"> 
+                    <td className="product-subtotal">
                         <span className="amount">
-                            ${(item?.qty * item?.price.max).toFixed(2)}
+                            ₹{(item?.qty * item?.sell_price).toFixed(2)}
                         </span>
                     </td>
 

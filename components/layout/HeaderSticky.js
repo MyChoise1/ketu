@@ -10,7 +10,7 @@ export default function HeaderSticky({ scroll, isCartSidebar, handleCartSidebar 
                     <div className="row align-items-center">
                         <div className="col-xl-2 col-lg-3">
                             <div className="logo">
-                                <Link href="/"><img src="/assets/img/logo/logo.png" alt="logo" /></Link>
+                                <Link href="/"><img src="/assets/img/logo/logo1.png" alt="logo1" height={50} /></Link>
                             </div>
                         </div>
                         <div className="col-xl-6 col-lg-6">
@@ -35,8 +35,8 @@ export default function HeaderSticky({ scroll, isCartSidebar, handleCartSidebar 
                             </div>
                         </div>
                         <div className="col-xl-4 col-lg-9">
-                        <div className="header-meta-info d-flex align-items-center justify-content-end">
-                        <div className="header-meta__social  d-flex align-items-center">
+                            <div className="header-meta-info d-flex align-items-center justify-content-end">
+                                <div className="header-meta__social  d-flex align-items-center">
                                     <button className="header-cart p-relative tp-cart-toggle" onClick={handleCartSidebar}>
                                         <i className="fal fa-shopping-cart" />
                                         <CartShow />

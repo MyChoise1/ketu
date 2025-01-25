@@ -7,12 +7,12 @@ export default function Cart() {
     const { cart } = useSelector((state) => state.shop) || {}
     let total = 0
     cart?.forEach((item) => {
-        const price = item.qty * item.price?.max
+        const price = item.qty * item.sell_price
         total = total + price
     })
     return (
         <>
-            <Layout headerStyle={3} footerStyle={1} breadcrumbTitle="Cart">
+            <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Cart">
                 <section className="cart-area pt-80 pb-80 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
                     <div className="container">
                         <div className="row">
@@ -54,8 +54,8 @@ export default function Cart() {
                                             <div className="cart-page-total">
                                                 <h2>Cart totals</h2>
                                                 <ul className="mb-20">
-                                                    <li>Subtotal <span>${total.toFixed(2)}</span></li>
-                                                    <li>Total <span>${total.toFixed(2)}</span></li>
+                                                    <li>Subtotal <span>₹{total.toFixed(2)}</span></li>
+                                                    <li>Total <span>₹{total.toFixed(2)}</span></li>
                                                 </ul>
                                                 <Link href="/checkout" className="tp-btn tp-color-btn banner-animation">Proceed to Checkout</Link>
                                             </div>

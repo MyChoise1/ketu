@@ -12,7 +12,7 @@ export default function Shop() {
             <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Shop">
                 <div className="product-filter-area pt-65 pb-80">
                     <div className="container">
-                        <FilterShopBox itemStart={10} itemEnd={28} />
+                        <FilterShopBox itemStart={0} itemEnd={10} />
                     </div>
                 </div>
             </Layout>
