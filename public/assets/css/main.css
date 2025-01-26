@@ -66,7 +66,7 @@
     --tp-grey-8: #f6f6f6;
     --tp-grey-9: #999999;
     --tp-text-body: #040404;
-    --tp-text-primary: #d51243;
+    --tp-text-primary: #e85100;
     --tp-text-secondary: #777777;
     --tp-text-tertiary: #adadad;
     --tp-text-4: #a0a0a0;
@@ -8117,6 +8117,46 @@ only screen and (min-width: 576px) and (max-width: 767px) {
 .comments-avatar {
     flex: 0 0 auto;
 }
+
+.product__details-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.product-images {
+    margin-bottom: 20px;
+}
+
+.main-image {
+    width: 100%;
+    max-width: 500px; /* Adjust the size of the main image */
+    height: auto;
+    border-radius: 8px;
+}
+
+.product-thumbnails {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.thumbnail-image {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: border 0.3s ease;
+}
+
+.thumbnail-image:hover {
+    border-color: #007bff; /* Highlight thumbnail on hover */
+}
+
 
 .table .add-info {
     font-size: 18px;
