@@ -20,7 +20,7 @@ export default function Footer1() {
                                 </div>
                                 {/* <div className="col-lg-2 col-md-4 col-sm-6">
                                 </div> */}
-                                <div className="col-lg-2 col-md-4 col-sm-6 ms-3">
+                                <div className="col-lg-2 col-md-4 col-sm-6">
                                     <div className="footer-widget footer-col-2 ml-30 mb-40">
                                         <h4 className="footer-widget__title mb-30">Information</h4>
                                         <div className="footer-widget__links">
@@ -32,7 +32,7 @@ export default function Footer1() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-2 col-md-4 col-sm-6 ms-3">
+                                <div className="col-lg-2 col-md-4 col-sm-6">
                                     <div className="footer-widget footer-col-4 mb-40">
                                         <h4 className="footer-widget__title mb-30">Social Network</h4>
                                         <div className="footer-widget__links">
