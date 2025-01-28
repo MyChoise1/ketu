@@ -40,7 +40,8 @@ model Products {
 
   mrp        Float
   sell_price Float
-  image      String
+
+  images Json
 
   sku String
 

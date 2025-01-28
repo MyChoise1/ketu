@@ -8,9 +8,9 @@ export default function Footer1() {
                     <div className="container">
                         <div className="main-footer pb-15">
                             <div className="row">
-                                <div className="ms-3 col-lg-4 col-md-4 col-sm-6">
+                                <div className="col-lg-4 col-md-4 col-sm-6">
                                     <div className="footer-widget footer-col-1 mb-40">
-                                        <div className="footer-logo mb-30">
+                                        <div className="footer-logo mb-30 d-flex justify-content-center">
                                             <Link href="/"><img src="/assets/img/logo/logo2.png" alt="logo2" height={80} /></Link>
                                         </div>
                                         
@@ -37,8 +37,8 @@ export default function Footer1() {
                                         <h4 className="footer-widget__title mb-30">Social Network</h4>
                                         <div className="footer-widget__links">
                                             <ul>
-                                                <li><Link href="#"><i className="fab fa-facebook-f" />Facebook</Link></li>
-                                                <li><Link href="#"><i className="fab fa-twitter" />Twitter</Link></li>
+                                                <li><Link href="#"><i className="fab fa-youtube" />YouTube</Link></li>
+                                                <li><Link href="#"><i className="fab fa-facebook" />Facebook</Link></li>
                                                 <li><Link href="#"><i className="fab fa-instagram" />Instagram</Link></li>
                                             </ul>
                                         </div>

@@ -100,18 +100,18 @@ const ShopSingleDynamicV1 = () => {
                                     <div className="d-flex align-items-start">
                                         <div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                             <button className={activeIndex2 === 4 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick2(4)}>
-                                                <img src={`${product.image}`} alt="Front View" />
+                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" />
                                             </button>
                                             <button className={activeIndex2 === 5 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick2(5)}>
-                                                <img src={`${product.image}`} alt="Back View" />
+                                                <img src={`${product.images.thumbnail_one}`} alt="Back View" />
                                             </button>
                                         </div>
                                         <div className="tab-content" id="v-pills-tabContent">
                                             <div className={activeIndex2 === 4 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                                <img src={`${product.image}`} alt="Front View" style={{ maxHeight: '600px', width: 'auto' }} />
+                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" style={{ maxHeight: '600px', width: 'auto' }} />
                                             </div>
                                             <div className={activeIndex2 === 5 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                                <img src={`${product.image}`} alt="Back View" style={{ maxHeight: '600px', width: 'auto' }} />
+                                                <img src={`${product.images.thumbnail_one}`} alt="Back View" style={{ maxHeight: '600px', width: 'auto' }} />
                                             </div>
                                         </div>
                                     </div>
@@ -139,28 +139,33 @@ const ShopSingleDynamicV1 = () => {
                                     <div className="tpproduct-details__pera">
                                         <p>Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a <br />completely modern design and you feel comfortable to put on this hijab. <br />Buy it at the best price.</p>
                                     </div>
-                                    <div className="tpproduct-details__count d-flex align-items-center flex-wrap mb-25">
-                                        <div className="product-quantity">
-                                            <div className="item-quantity">
-                                                <input
-                                                    type="number"
-                                                    className="qty"
-                                                    name="qty"
-                                                    defaultValue={1}
-                                                    min={1}
-                                                    onChange={(e) =>
-                                                        qtyHandler(product?.id, e.target.value)
-                                                    }
-                                                />
+                                    <div className="tpproduct-details__actions">
+                                        <div className="tpproduct-details__quantity">
+                                            <div className="product-quantity">
+                                                <div className="item-quantity">
+                                                    <button className="qty-btn" onClick={() => qtyHandler(product?.id, Math.max(1, product?.qty - 1))}>-</button>
+                                                    <input
+                                                        type="number"
+                                                        className="qty"
+                                                        name="qty"
+                                                        defaultValue={1}
+                                                        min={1}
+                                                        onChange={(e) => qtyHandler(product?.id, e.target.value)}
+                                                    />
+                                                    <button className="qty-btn" onClick={() => qtyHandler(product?.id, product?.qty + 1)}>+</button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="tpproduct-details__cart ml-20">
-                                            <button onClick={() => addToCart(product.id)}><i className="fal fa-shopping-cart" /> Add To Cart</button>
-                                        </div>
-                                        <div className="tpproduct-details__wishlist ml-20">
-                                            <button onClick={() => addToWishlist(product.id)}><i className="fal fa-heart" /></button>
-                                        </div>
+
+                                        <button className="tpproduct-details__cart-btn" onClick={() => addToCart(product.id)}>
+                                            Add to cart
+                                        </button>
+
+                                        <button className="tpproduct-details__buy-btn">
+                                            Buy it now
+                                        </button>
                                     </div>
+
                                     {/* <div className="tpproduct-details__information tpproduct-details__social">
                                             <p>Share:</p>
                                             <Link href="#"><i className="fab fa-facebook-f" /></Link>
@@ -224,11 +229,6 @@ const ShopSingleDynamicV1 = () => {
                                                 merchandise, and in manufacturing, products are bought as raw materials and then sold as finished goods. A service is also regarded to as a type of product. Commodities are usually raw materials such as metals
                                                 and agricultural products, but a commodity can also be anything widely available in the open market. In project management, products are the formal definition of the project deliverables that make up contribute
                                                 to delivering the objectives of the project.</p>
-                                            <p>A product can be classified as tangible or intangible. A tangible product is a physical object that can be perceived by touch such as a building, vehicle, gadget, or clothing. An intangible product is a product that
-                                                can only be perceived indirectly such as an insurance policy. Services can be broadly classified under intangible products which can be durable or non durable. A product line is "a group of products that are
-                                                closely related, either because they function in a similar manner, are sold to the same customer groups, are marketed through the same types of outlets, or fall within given price ranges."Many businesses offer a
-                                                range of product lines which may be unique to a single organisation or may be common across the business's industry. In 2002 the US Census compiled revenue figures for the finance and insurance industry by
-                                                various product lines such as "accident, health and medical insurance premiums" and "income from secured consumer loans.</p>
                                         </div>
                                         <div className={activeIndex == 2 ? "tab-pane fade show active" : "tab-pane fade"}>
                                             {/* Images div */}
@@ -372,67 +372,26 @@ const ShopSingleDynamicV1 = () => {
                         </div>
                     </div>
                 </div>
-                <div className="related-product-area pt-65 pb-50 related-product-border">
-                    <div className="container">
-                        <div className="row align-items-center">
-                            <div className="col-sm-6">
-                                <div className="tpsection mb-40">
-                                    <h4 className="tpsection__title">Related Products</h4>
+                <div className="container py-4">
+                    <div className="tpsection mb-40">
+                        <h4 className="tpsection__title">Related Products</h4>
+                    </div>
+                    <div className="row g-4 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-2">
+                        {products?.map((product) => (
+                            <div key={product.id} className="col-md-6 p-2">
+                                <div className="card product-card">
+                                    <div className="position-relative">
+                                        <img src={product.images.thumbnail_one} alt={product.name} className="card-img-top product-image" />
+                                        {/* <span className="sale-badge">Sale</span> */}
+                                    </div>
+                                    <div className="card-body text-center ">
+                                        <h5 className="card-title">{product.name}</h5>
+                                        <p className="text-muted text-decoration-line-through m-0">Rs.{product.mrp}</p>
+                                        <p className="fw-semibol fs-5 text-dark">Rs.{product.sell_price}</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div className="col-sm-6">
-                                <div className="tprelated__arrow d-flex align-items-center justify-content-end mb-40">
-                                    <div className="tprelated__prv"><i className="far fa-long-arrow-left" /></div>
-                                    <div className="tprelated__nxt"><i className="far fa-long-arrow-right" /></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="swiper-container related-product-active">
-                            <Swiper {...swiperOptions}>
-                                {products?.map((product) => (
-                                    <SwiperSlide key={product.id}>
-                                        <div className="tpproduct pb-15 mb-30">
-                                            <div className="tpproduct__thumb p-relative">
-                                                <Link href={`/shop/${product.id}`}>
-                                                    <img
-                                                        src={product.image} // Display the main product image
-                                                        alt={product.name}
-                                                        height={350}
-                                                    />
-                                                    {/* Assuming there's a secondary image */}
-                                                    <img
-                                                        className="product-thumb-secondary"
-                                                        src={product.secondary_image} // Use a secondary image if available
-                                                        alt=""
-                                                        height={350}
-                                                    />
-                                                </Link>
-                                                <div className="tpproduct__thumb-action">
-                                                    <Link className="comphare" href="#"><i className="fal fa-exchange" /></Link>
-                                                    <Link className="quckview" href="#"><i className="fal fa-eye" /></Link>
-                                                    <Link className="wishlist" href="/wishlist"><i className="fal fa-heart" /></Link>
-                                                </div>
-                                            </div>
-                                            <div className="tpproduct__content">
-                                                <h3 className="tpproduct__title">
-                                                    <Link href={`/shop-details/${product.id}`}>{product.name}</Link>
-                                                </h3>
-                                                <div className="tpproduct__priceinfo p-relative">
-                                                    <div className="tpproduct__priceinfo-list">
-                                                        <span>{`$${product.price}`}</span> {/* Assuming 'price' is part of product data */}
-                                                    </div>
-                                                    <div className="tpproduct__cart">
-                                                        <Link href="/cart">
-                                                            <i className="fal fa-shopping-cart" />Add To Cart
-                                                        </Link>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </SwiperSlide>
-                                ))}
-                            </Swiper>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </Layout>

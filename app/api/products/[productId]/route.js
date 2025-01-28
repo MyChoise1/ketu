@@ -27,14 +27,25 @@ export async function PUT(req, { params }) {
   const { productId } = params;
 
   try {
-    const { name, mrp, sell_price, image, sku, stock, description } =
-      await req.json();
+    const {
+      name,
+      mrp,
+      sell_price,
+      thumbnail_one,
+      thumbnail_two,
+      other_images,
+      sku,
+      stock,
+      description,
+    } = await req.json();
 
     if (
       !name ||
       !mrp ||
       !sell_price ||
-      !image ||
+      !thumbnail_one ||
+      !thumbnail_two ||
+      !other_images ||
       !sku ||
       !stock ||
       !description
@@ -48,7 +59,11 @@ export async function PUT(req, { params }) {
         slug: generateSlug(name),
         mrp: parseFloat(mrp),
         sell_price: parseFloat(sell_price),
-        image,
+        images: {
+          thumbnail_one,
+          thumbnail_two,
+          other: other_images,
+        },
         sku,
         stock: parseInt(stock),
         description,
