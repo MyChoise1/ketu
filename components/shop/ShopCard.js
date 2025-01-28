@@ -19,7 +19,7 @@ const ShopCard = ({ item, addToCart, addToWishlist }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="tpproduct__content-area ps-1 pe-1 d-flex flex-column">
+                    <div className="tpproduct__content-area ps-2 pe-1 d-flex flex-column">
                         <h3 className="tpproduct__title mb-5" style={{height: "32px"}} ><Link href={`/shop/${item.id}`}>{item.name}</Link></h3>
                         <div className="tpproduct__priceinfo d-flex align-items-center justify-content-between">
                             <div className="tpproduct__ammount">
