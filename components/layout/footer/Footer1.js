@@ -13,10 +13,7 @@ export default function Footer1() {
                                         <div className="footer-logo mb-30">
                                             <Link href="/"><img src="/assets/img/logo/logo2.png" alt="logo2" height={80} /></Link>
                                         </div>
-                                        <div className="footer-content">
-                                            <p>Elegant pink origami design three <br /> dimensional view and decoration co-exist.
-                                                <br /> Great for adding a decorative touch to <br /> any room’s decor.</p>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 <div className="col-lg-2 col-md-4 col-sm-6">
@@ -52,11 +49,10 @@ export default function Footer1() {
                     </div>
                     <div className="footer-copyright footer-bg">
                         <div className="container">
-                            <div className="row">
+                            <div className="d-flex justify-content-center">
                                 <div className="col-xl-6 col-lg-7 col-md-5 col-sm-12">
                                     <div className="footer-copyright__content">
-                                        <span>Copyright {new Date().getFullYear()} <Link href="/">©Ketu</Link>. All rights reserved. Developed by
-                                            <Link href="https://themeforest.net/user/alithemes/portfolio"> WhizFortune</Link>.</span>
+                                        <span>Copyright {new Date().getFullYear()} <Link href="/">©Ketu</Link></span>
                                     </div>
                                 </div>
                             </div>

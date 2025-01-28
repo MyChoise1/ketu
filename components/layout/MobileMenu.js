@@ -26,21 +26,17 @@ export default function MobileMenu() {
                     <Link href="#" className="meanmenu-reveal">
                         <span><span><span /></span></span>
                     </Link>
-                    <nav className="mean-nav">
+                    <nav className="mean-nav mb-4 mt-2">
                         <ul>
                             <li>
-                                <Link href="/">Home</Link>
+                                <Link href="/" className='mb-2'>Home</Link>
                             </li>
                             <li>
-                                <Link href="/shop">Shop</Link>
+                                <Link href="/shop" className='mb-2'>Shop</Link>
                             </li>
-                            <li>
-                                <Link href="/about">Pages</Link>
+                            <li className="mean-last mb-2">
+                                <Link href="/contact">Contact</Link>
                             </li>
-                            <li>
-                                <Link href="/blog">Blog</Link>
-                            </li>
-                            <li className="mean-last"><Link href="/contact">Contact</Link></li>
                         </ul>
                     </nav></div></div>
 

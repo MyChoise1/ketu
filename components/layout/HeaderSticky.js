@@ -23,12 +23,6 @@ export default function HeaderSticky({ scroll, isCartSidebar, handleCartSidebar 
                                         <li>
                                             <Link href="/shop">Shop</Link>
                                         </li>
-                                        <li>
-                                            <Link href="/about">Pages</Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/blog">Blog</Link>
-                                        </li>
                                         <li><Link href="/contact">Contact</Link></li>
                                     </ul>
                                 </nav>

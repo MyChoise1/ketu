@@ -11,17 +11,6 @@ export default function Sidebar({ isMobileMenu, handleMobileMenu }) {
                         <div className="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabIndex={0}>
                             <MobileMenu />
                         </div>
-                        <div className="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabIndex={0}>
-                            <div className="tpsidebar-categories">
-                                <ul>
-                                    <li><Link href="/shop">Furniture</Link></li>
-                                    <li><Link href="/shop">Wooden</Link></li>
-                                    <li><Link href="/shop">Lifestyle</Link></li>
-                                    <li><Link href="/shop-2">Shopping</Link></li>
-                                    <li><Link href="/track">Track Product</Link></li>
-                                </ul>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div className="tpsideinfo__account-link">
