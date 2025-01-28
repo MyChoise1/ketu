@@ -11,7 +11,7 @@ export default function Footer1() {
                                 <div className="col-lg-4 col-md-4 col-sm-6">
                                     <div className="footer-widget footer-col-1 mb-40">
                                         <div className="footer-logo mb-30 d-flex justify-content-center">
-                                            <Link href="/"><img src="/assets/img/logo/logo2.png" alt="logo2" height={80} /></Link>
+                                            <Link href="/"><img src="/assets/img/logo/logo-footer.png" alt="logo2" height={80} /></Link>
                                         </div>
                                         
                                     </div>

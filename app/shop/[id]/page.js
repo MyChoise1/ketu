@@ -10,6 +10,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Autoplay, Navigation, Pagination } from "swiper/modules"
 import { Swiper, SwiperSlide } from "swiper/react"
+import Preloader from "@/components/elements/Preloader"
 
 
 const swiperOptions = {
@@ -81,7 +82,7 @@ const ShopSingleDynamicV1 = () => {
 
     const { cart } = useSelector((state) => state.shop) || {}
     // Loading state
-    if (loading) return <p>Loading products...</p>;
+    if (loading) return <Preloader />
 
     // Error state
     if (error) return <p>Error: {error}</p>;

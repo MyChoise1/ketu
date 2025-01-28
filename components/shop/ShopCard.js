@@ -3,7 +3,7 @@ const ShopCard = ({ item, addToCart, addToWishlist }) => {
     return (
         <>
             <div className="col">
-                <div className="tpproduct tpproductitem mb-15 p-relative">
+                <div className="tpproduct tpproductitem mb-10 p-relative">
                     <div className="tpproduct__thumb">
                         <div className="tpproduct__thumbitem p-relative">
                             <Link href={`/shop/${item.id}`}>
@@ -19,8 +19,8 @@ const ShopCard = ({ item, addToCart, addToWishlist }) => {
                             </div>
                         </div>
                     </div>
-                    <div className="tpproduct__content-area">
-                        <h3 className="tpproduct__title mb-5"><Link href={`/shop/${item.id}`}>{item.name}</Link></h3>
+                    <div className="tpproduct__content-area ps-1 pe-1 d-flex flex-column">
+                        <h3 className="tpproduct__title mb-5" style={{height: "32px"}} ><Link href={`/shop/${item.id}`}>{item.name}</Link></h3>
                         <div className="tpproduct__priceinfo d-flex align-items-center justify-content-between">
                             <div className="tpproduct__ammount">
                                 <span>₹ {item.sell_price}.00</span>
