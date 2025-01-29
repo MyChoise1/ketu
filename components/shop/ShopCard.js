@@ -7,8 +7,8 @@ const ShopCard = ({ item, addToCart, addToWishlist }) => {
                     <div className="tpproduct__thumb">
                         <div className="tpproduct__thumbitem p-relative">
                             <Link href={`/shop/${item.id}`}>
-                                <img src={item.images.thumbnail_one} alt="product-thumb" className="thumbitem-primary" />
-                                <img className="thumbitem-secondary" src={item.images.thumbnail_one} alt="product-thumb" />
+                                <img src={item.images.thumbnail_one} alt="product-thumb" className="thumbitem-primary" style={{objectFit:"cover"}} />
+                                <img className="thumbitem-secondary" src={item.images.thumbnail_one} alt="product-thumb" style={{objectFit:"cover"}} />
                             </Link>
                             <div className="tpproduct__thumb-bg">
                                 <div className="tpproductactionbg">
@@ -39,6 +39,10 @@ const ShopCard = ({ item, addToCart, addToWishlist }) => {
                                     </li>
                                 </ul>
                             </div>
+                        </div>
+                        <div>
+                            {/* add a button byu now with width full  */}
+                            <button className="btn buy_btn">Buy Now</button>
                         </div>
                     </div>
                 </div>

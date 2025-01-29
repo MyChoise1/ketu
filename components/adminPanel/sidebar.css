@@ -1,0 +1,47 @@
+.sidebar {
+    background: #2c3e50;
+    color: white;
+    padding: 20px;
+    grid-row: 1 / -1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .admin-label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #f39c12;
+    display: none;
+  }
+  
+  .nav-menu {
+    list-style: none;
+  }
+  
+  .nav-item {
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .nav-item:hover {
+    background: #34495e;
+  }
+  
+  /* Mobile Styling */
+  @media (max-width: 480px) {
+    .admin-label {
+      display: inline;
+      margin-left: 10px;
+    }
+  }
+  

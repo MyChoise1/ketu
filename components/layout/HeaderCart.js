@@ -34,7 +34,7 @@ export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
                                                 <div className="d-flex align-items-center">
                                                     <div className="tpcart__img me-3">
                                                         <img
-                                                            src={item.image}
+                                                            src={item.images.thumbnail_one}
                                                             alt={item.name}
                                                             className="rounded"
                                                             style={{ width: 70, height: 70 }}
@@ -53,7 +53,7 @@ export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
                                                         </span>
                                                         <div className="tpcart__cart-price">
                                                             <span className="quantity text-muted">{item?.qty} x </span>
-                                                            <span className="new-price fw-bold text-dark">$ {item.sell_price.toFixed(2)}
+                                                            <span className="new-price fw-bold text-dark">₹ {item.sell_price}
                                                             </span>
                                                         </div>
                                                     </div>

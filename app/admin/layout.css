@@ -1,0 +1,18 @@
+.admin-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .admin-main {
+    flex-grow: 1;
+    padding: 20px;
+    background: #f4f4f4;
+  }
+  
+  /* Responsive: Move Sidebar to Top in Mobile */
+  @media (max-width: 768px) {
+    .admin-container {
+      flex-direction: column;
+    }
+  }
+  

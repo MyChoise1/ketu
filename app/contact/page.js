@@ -16,7 +16,7 @@ export default function Contact() {
                                             <h4 className="tpshop__title mb-25">Get In Touch</h4>
                                             <div className="tpshop__info">
                                                 <ul>
-                                                    <li><i className="fal fa-map-marker-alt" /> <Link href="#">24/26 Strait Bargate, Boston, PE21,  United Kingdom</Link></li>
+                                                    <li><i className="fal fa-map-marker-alt" /> <Link href="#">75 eishwar nagar near basavruddh maharaj matth,  airport road majrewadi Solapur 413 005</Link></li>
                                                     <li>
                                                         <i className="fal fa-phone" />
                                                         <Link href="/tel:0123456789">+098 (905) 786 897 8</Link>
@@ -24,15 +24,15 @@ export default function Contact() {
                                                     </li>
                                                     <li>
                                                         <i className="fal fa-clock" />
-                                                        <span>Store Hours:</span>
-                                                        <span>10 am - 10 pm EST, 7 days a week</span>
+                                                        <span>Customer care:</span>
+                                                        <span>ketu.marketing@gmail.com</span>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div className="tpcontact__support">
                                             <Link href="/tel:0123456">Get Support On Call <i className="fal fa-headphones" /></Link>
-                                            <Link target="_blank" href="https://www.google.com/maps/@36.963672,-119.2249843,7.17z">Get Direction <i className="fal fa-map-marker-alt" /></Link>
+                                            <Link target="_blank" href="https://maps.app.goo.gl/ERH8vVJg62shVLS2A">Get Direction <i className="fal fa-map-marker-alt" /></Link>
                                         </div>
                                     </div>
                                 </div>
@@ -85,8 +85,8 @@ export default function Contact() {
                     <div className="map-area">
                         <div className="tpshop__location-map">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31415.63226768479!2d73.872595!3d18.474692!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c10f12345678%3A0x87654321abcdef!2sPune%2C%20Maharashtra%2C%20India!5e0!3m2!1sen!2sin!4v1701234567890!5m2!1sen!2sin"
-                                width={600}
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.1234567890!2d75.928779!3d17.630718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c10f12345678%3A0x87654321abcdef!2s75%20Eishwar%20Nagar%2C%20near%20Basavruddh%20Maharaj%20Matth%2C%20Airport%20Road%2C%20Majrewadi%2C%20Solapur%2C%20Maharashtra%20413005!5e0!3m2!1sen!2sin!4v1701234567890"
+                                width={600} 
                                 height={450}
                                 style={{ border: 0 }}
                                 allowFullScreen

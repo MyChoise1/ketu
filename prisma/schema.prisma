@@ -21,9 +21,15 @@ enum AddressType {
   @@map("address_type")
 }
 
+enum UserType {
+  ADMIN
+  USER
+
+  @@map("user_type")
+}
+
 model User {
   id       String @id @default(cuid())
-  name     String
   email    String @unique
   password String
 
@@ -31,6 +37,8 @@ model User {
   Review  Review[]
 
   @@map("users")
+
+  type UserType @default(USER)
 }
 
 model Products {

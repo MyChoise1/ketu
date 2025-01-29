@@ -2,7 +2,9 @@
 async function hashPassword(password) {
   const encoder = new TextEncoder();
   const passwordBytes = encoder.encode(password);
-  const hashBuffer = await crypto.subtle.digest("SHA-256", passwordBytes);
+  const base64Password = btoa(String.fromCharCode(...passwordBytes));
+  const base64PasswordBytes = encoder.encode(base64Password);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", base64PasswordBytes);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   const hashHex = hashArray
     .map((byte) => byte.toString(16).padStart(2, "0"))
@@ -15,3 +17,5 @@ async function comparePassword(password, hashedPassword) {
   const hashedInput = await hashPassword(password);
   return hashedInput === hashedPassword;
 }
+
+export { hashPassword, comparePassword };

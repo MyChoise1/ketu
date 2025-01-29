@@ -16,3 +16,16 @@ export function generateSlug(name) {
 
   return name;
 }
+
+export function matchRoute(pathname, routeList) {
+  return routeList.some((route) => {
+    if (route.startsWith("^")) {
+      // If route is a regex pattern (starts with "^"), convert to RegExp
+      const regex = new RegExp(route);
+      return regex.test(pathname);
+    } else {
+      // Exact string match
+      return route === pathname;
+    }
+  });
+}

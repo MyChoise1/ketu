@@ -17,7 +17,7 @@ export default function Sidebar({ isMobileMenu, handleMobileMenu }) {
                     <Link href="/sign-in"><i className="fal fa-user" /> Login / Register</Link>
                 </div>
                 <div className="tpsideinfo__wishlist-link">
-                    <Link href="/wishlist" target="_parent"><i className="fal fa-heart" /> Wishlist</Link>
+                    <Link href="/cart" target="_parent"><i className="fal fa-shopping-cart" /> Cart</Link>
                 </div>
             </div>
             <div className={`body-overlay ${isMobileMenu ? "opened" : ""}`} onClick={handleMobileMenu} />
