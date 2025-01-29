@@ -1,8 +1,10 @@
 import prismadb from "@/libs/prismadb";
 import { getIronSession } from "iron-session";
+import { sessionOptions } from "@/libs/session";
+import { cookies } from "next/headers";
 
-export async function GET(req, res) {
-  const session = await getIronSession(req, res, sessionOptions);
+export async function GET() {
+  const session = await getIronSession(cookies(), sessionOptions);
 
   if (!session) {
     return new NextResponse("Session not found", { status: 401 });
