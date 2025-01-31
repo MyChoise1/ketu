@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import "./ProductList.css"; // External CSS file
 import useFetchProducts from "@/components/useFetchProducts"; // Assuming this hook fetches products
@@ -25,16 +25,22 @@ const ProductList = () => {
           <p className="add_btn">New Product</p>
         </Link>
       </div>
-      <div className="container">
-        <div className="row">
+      <div className="tp-container">
+        <div className="tp-row">
           {products.map((product) => (
             <Link href={`/admin/products/${product.id}`}>
-              <div key={product.id} className="col">
+              <div key={product.id} className="tp-col">
                 <div className="product-card">
-                  <img className="product-image" src={product.images.thumbnail_one} alt={product.name} />
+                  <img
+                    className="product-image"
+                    src={product.images.thumbnail_one}
+                    alt={product.name}
+                  />
                   <div className="product-info">
                     <h3 className="product-title">{product.name}</h3>
-                    <p className="product-price">${product.sell_price.toFixed(2)}</p>
+                    <p className="product-price">
+                      ${product.sell_price.toFixed(2)}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -44,7 +50,6 @@ const ProductList = () => {
         </div>
       </div>
     </>
-
   );
 };
 

@@ -4,7 +4,7 @@ import { hashPassword } from "@/libs/crypto";
 
 export async function POST(req) {
   try {
-    const { email, password, type } = await req.json();
+    const { email, password, type = "USER" } = await req.json();
 
     if (!email || !password || !type) {
       return new NextResponse("Missing required fields", { status: 400 });

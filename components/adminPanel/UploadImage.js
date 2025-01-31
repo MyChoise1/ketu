@@ -3,25 +3,27 @@ import React, { useState } from "react";
 import "./ImageUploader.css"; // External CSS file
 
 const ImageUploader = ({ multimage }) => {
-  const [images, setImages] = useState([]); // Stores image URLs
+  const [fileImages, setFileImages] = useState([]); // Stores image URLs
   const [previews, setPreviews] = useState([]); // Stores preview URLs
 
   const handleImageChange = (e) => {
     const files = e.target.files;
     if (files && files.length > 0) {
-      const newImages = Array.from(files);
-      const newPreviews = newImages.map((file) => URL.createObjectURL(file));
+      const newFileImages = Array.from(files);
+      const newPreviews = newFileImages.map((file) =>
+        URL.createObjectURL(file)
+      );
 
       if (multimage) {
         // If multiple images are allowed, append to the existing images
-        setImages((prevImages) => [
-          ...prevImages,
-          ...newImages.map((file) => URL.createObjectURL(file)),
+        setFileImages((prevFileImages) => [
+          ...prevFileImages,
+          ...newFileImages.map((file) => URL.createObjectURL(file)),
         ]);
         setPreviews((prevPreviews) => [...prevPreviews, ...newPreviews]);
       } else {
         // If only a single image is allowed, replace the existing image
-        setImages([URL.createObjectURL(newImages[0])]);
+        setFileImages([URL.createObjectURL(newFileImages[0])]);
         setPreviews([newPreviews[0]]);
       }
     }
@@ -30,15 +32,15 @@ const ImageUploader = ({ multimage }) => {
   const handleCancel = (index) => {
     if (multimage) {
       // Remove the specific image and preview
-      setImages((prevImages) => prevImages.filter((_, i) => i !== index));
+      setFileImages((prevImages) => prevImages.filter((_, i) => i !== index));
       setPreviews((prevPreviews) => prevPreviews.filter((_, i) => i !== index));
     } else {
       // Clear the single image and preview
-      setImages([]);
+      setFileImages([]);
       setPreviews([]);
     }
   };
-  console.log(images)
+  console.log(fileImages);
 
   return (
     <div className="image-uploader">

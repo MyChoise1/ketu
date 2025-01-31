@@ -4,10 +4,9 @@ import Sidebar from "@/components/adminPanel/Sidebar";
 
 const Dashboard = () => {
   return (
-    <div className="container">
+    <div className="tp-container">
       {/* <Sidebar /> */}
       {/* Sidebar Component */}
-
 
       {/* Main Content */}
       <main className="main-content">
@@ -56,9 +55,7 @@ const Dashboard = () => {
                 <th>Status</th>
               </tr>
             </thead>
-            <tbody>
-              {/* Data rows will go here */}
-            </tbody>
+            <tbody>{/* Data rows will go here */}</tbody>
           </table>
         </div>
       </main>

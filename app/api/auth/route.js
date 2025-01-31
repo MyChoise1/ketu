@@ -1,6 +1,7 @@
 import { defaultSession, sessionOptions } from "@/libs/session";
 import { getIronSession } from "iron-session";
 import { NextResponse } from "next/server";
+import { cookies } from "next/headers";
 
 export async function GET(req, res) {
   const ONE_WEEK_IN_MS = 1000 * 60 * 60 * 24 * 7;
@@ -18,9 +19,14 @@ export async function GET(req, res) {
 }
 
 export async function DELETE() {
-  const session = await getIronSession(cookies(), sessionOptions);
+  try {
+    const session = await getIronSession(cookies(), sessionOptions);
 
-  session.destroy();
+    session.destroy();
 
-  return Response.json(defaultSession);
+    return Response.json(defaultSession);
+  } catch (error) {
+    console.error("Error:", error);
+    return new NextResponse(error.message, { status: 500 });
+  }
 }
