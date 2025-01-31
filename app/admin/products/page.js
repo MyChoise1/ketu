@@ -1,11 +1,51 @@
-import Product1 from "@/components/sections/Product1";
+"use client"
+import React from "react";
+import "./ProductList.css"; // External CSS file
+import useFetchProducts from "@/components/useFetchProducts"; // Assuming this hook fetches products
+import Preloader from "@/components/elements/Preloader";
+import Link from "next/link";
+import ImageUploader from "@/components/adminPanel/UploadImage";
 
-const Products = () => {
-    return (
-      <>
-      <Product1 />
-      </>
-    );
-  };
-  
-  export default Products;
+const ProductList = () => {
+  const { products, loading, error } = useFetchProducts();
+
+  if (loading) {
+    return <Preloader />;
+  }
+
+  if (error) {
+    return <div className="error-message">Error: {error.message}</div>;
+  }
+
+  return (
+    <>
+      <div className="product-top">
+        <h2 className="title">Edit Product : </h2>
+        <Link href="/admin/products/createProduct">
+          <p className="add_btn">New Product</p>
+        </Link>
+      </div>
+      <div className="container">
+        <div className="row">
+          {products.map((product) => (
+            <Link href={`/admin/products/${product.id}`}>
+              <div key={product.id} className="col">
+                <div className="product-card">
+                  <img className="product-image" src={product.images.thumbnail_one} alt={product.name} />
+                  <div className="product-info">
+                    <h3 className="product-title">{product.name}</h3>
+                    <p className="product-price">${product.sell_price.toFixed(2)}</p>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          ))}
+          {/* <ImageUploader multimage /> */}
+        </div>
+      </div>
+    </>
+
+  );
+};
+
+export default ProductList;

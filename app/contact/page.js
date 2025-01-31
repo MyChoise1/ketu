@@ -16,12 +16,9 @@ export default function Contact() {
                                             <h4 className="tpshop__title mb-25">Get In Touch</h4>
                                             <div className="tpshop__info">
                                                 <ul>
-                                                    <li><i className="fal fa-map-marker-alt" /> <Link href="#">75 eishwar nagar near basavruddh maharaj matth,  airport road majrewadi Solapur 413 005</Link></li>
-                                                    <li>
-                                                        <i className="fal fa-phone" />
-                                                        <Link href="/tel:0123456789">+098 (905) 786 897 8</Link>
-                                                        <Link href="/tel:0123456789">6 - 146 - 389 - 5748</Link>
-                                                    </li>
+                                                    <li><i className="fal fa-map-marker-alt" />
+                                                        <Link href="https://maps.app.goo.gl/ERH8vVJg62shVLS2A">75 eishwar nagar near basavruddh maharaj matth, airport road Majrewadi, Solapur, Maharashtra 413 005</Link>
+                                                    </li>                                                       
                                                     <li>
                                                         <i className="fal fa-clock" />
                                                         <span>Customer care:</span>
@@ -86,7 +83,7 @@ export default function Contact() {
                         <div className="tpshop__location-map">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.1234567890!2d75.928779!3d17.630718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c10f12345678%3A0x87654321abcdef!2s75%20Eishwar%20Nagar%2C%20near%20Basavruddh%20Maharaj%20Matth%2C%20Airport%20Road%2C%20Majrewadi%2C%20Solapur%2C%20Maharashtra%20413005!5e0!3m2!1sen!2sin!4v1701234567890"
-                                width={600} 
+                                width={600}
                                 height={450}
                                 style={{ border: 0 }}
                                 allowFullScreen

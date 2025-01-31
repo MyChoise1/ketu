@@ -9,7 +9,7 @@ const Sidebar = () => {
         <span>Dashboard</span>
         <span className="admin-label">Admin</span>
       </div>
-      <nav>
+      <nav className="">
         <ul className="nav-menu">
           <li className="nav-item">
             <Link href="/admin/dashboard">Dashboard</Link>

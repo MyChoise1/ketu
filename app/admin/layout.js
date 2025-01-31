@@ -5,12 +5,10 @@ import "./layout.css"; // Separate CSS for layout styling
 const Layout = ({ children }) => {
   return (
     <div className="admin-container">
-      {/* Sidebar Component */}
       <Sidebar />
-
-      {/* Main Content */}
+      
       <main className="admin-main">
-        {children} {/* This will render Dashboard or other components */}
+        {children} 
       </main>
     </div>
   );

@@ -1,9 +1,6 @@
-import Sidebar from "@/components/adminPanel/Sidebar";
+import { redirect } from "next/navigation";
 
 export default function Admin() {
-  return (
-    <>
-        <Sidebar />    
-    </>
-  )
+  return redirect("/admin/dashboard");      
+
 }

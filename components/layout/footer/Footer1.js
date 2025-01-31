@@ -25,6 +25,7 @@ export default function Footer1() {
                                         <h4 className="footer-widget__title mb-30">Information</h4>
                                         <div className="footer-widget__links">
                                             <ul className="row">
+                                                <li><span>GST-No:</span>27MWUPS1500D1Z7</li>
                                                 <li><Link href="#">Custom Service</Link></li>
                                                 <li><Link href="#">FAQs</Link></li>
                                                 <li><Link href="/contact">Contacts</Link></li>

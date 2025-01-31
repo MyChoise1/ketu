@@ -23,6 +23,7 @@
   }
   
   .nav-menu {
+    /* display: flex; */
     list-style: none;
   }
   
@@ -35,6 +36,12 @@
   
   .nav-item:hover {
     background: #34495e;
+  }
+
+  @media (max-width: 768px) {
+    .nav-menu{
+      display: flex;
+    }
   }
   
   /* Mobile Styling */

@@ -50,7 +50,7 @@ export default function SignIn() {
                                         </div>
                                         <div>
                                             {/* add a login for admin */}
-                                            <p className="mt-3">Login Here <span className="btn text-blue">Admin</span></p>
+                                           <p className="mt-3">Login Here <Link href="/sign-in/admin-signin"><span className="btn text-blue">Admin</span></Link></p>
                                         </div>
                                     </div>
                                 </div>

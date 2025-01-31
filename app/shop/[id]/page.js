@@ -385,10 +385,31 @@ const ShopSingleDynamicV1 = () => {
                                         <img src={product.images.thumbnail_one} alt={product.name} className="card-img-top product-image" />
                                         {/* <span className="sale-badge">Sale</span> */}
                                     </div>
-                                    <div className="card-body text-center ">
-                                        <h5 className="card-title">{product.name}</h5>
-                                        <p className="text-muted text-decoration-line-through m-0">Rs.{product.mrp}</p>
-                                        <p className="fw-semibol fs-5 text-dark">Rs.{product.sell_price}</p>
+                                    <div className="tpproduct__content-area ps-2 pe-1 d-flex flex-column">
+                                        <h3 className="tpproduct__title mb-5"><Link href={`/shop/${product.id}`}>{product.name}</Link></h3>
+                                        <div className="tpproduct__priceinfo d-flex align-items-center justify-content-between">
+                                            <div className="tpproduct__ammount">
+                                                <span>₹ {product.sell_price}.00</span>
+                                            </div>
+                                            <div className="tpproduct__rating">
+                                                <ul>
+                                                    <li>
+                                                        <Link href="#"><i className="fas fa-star" /></Link>
+                                                        <Link href="#"><i className="fas fa-star" /></Link>
+                                                        <Link href="#"><i className="fas fa-star" /></Link>
+                                                        <Link href="#"><i className="fas fa-star" /></Link>
+                                                        <Link href="#"><i className="far fa-star" /></Link>
+                                                    </li>
+                                                    <li>
+                                                        <span>(81)</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            {/* add a button byu now with width full  */}
+                                            <button className="btn buy_btn">Buy Now</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

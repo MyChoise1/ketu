@@ -1,9 +1,11 @@
 import React from "react";
 import "./dashboard.css";
+import Sidebar from "@/components/adminPanel/Sidebar";
 
 const Dashboard = () => {
   return (
     <div className="container">
+      {/* <Sidebar /> */}
       {/* Sidebar Component */}
 
 
