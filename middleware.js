@@ -5,9 +5,9 @@ import { sessionOptions } from "./libs/session";
 import { matchRoute } from "./libs/utils";
 
 const routes = {
-  auth: ["/login", "/register"],
-  protected: ["/checkout"], 
-  // "^/admin(?:/.*)?$"
+  auth: ["/sign-in", "/register"],
+  protected: ["/checkout", "^/admin(?:/.*)?$"],
+  //
 };
 
 // This function can be marked async if using await inside
@@ -20,6 +20,23 @@ export async function middleware(request) {
 
   // If the user is authenticated and tries to access an auth route
   if (session.auth && routes.auth.includes(request.nextUrl.pathname)) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
+
+  // If the user is authenticated and is admin, redirect to admin dashboard
+  if (
+    session.auth &&
+    session.auth.type === "ADMIN" &&
+    !request.nextUrl.pathname.startsWith("/admin")
+  ) {
+    return NextResponse.redirect(new URL("/admin", request.url));
+  }
+
+  if (
+    session.auth &&
+    session.auth.type === "USER" &&
+    request.nextUrl.pathname.startsWith("/admin")
+  ) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
@@ -36,5 +53,5 @@ export const config = {
      * - favicon.ico, sitemap.xml, robots.txt (metadata files)
      */
     "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
-    ],
+  ],
 };

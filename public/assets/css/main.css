@@ -4270,7 +4270,6 @@ a.add-to-cart {
   margin-top: 5px;
 }
 
-
 .tpproductitem {
   z-index: 9;
   background-color: #fff;
@@ -6799,13 +6798,13 @@ a.add-to-cart {
   font-size: 16px;
 }
 
-.tptrack__id form,
-.tptrack__email form {
+.tptrack__id,
+.tptrack__email {
   position: relative;
 }
 
-.tptrack__id form input,
-.tptrack__email form input {
+.tptrack__id input,
+.tptrack__email input {
   width: 100%;
   height: 60px;
   border: none;
@@ -6814,8 +6813,8 @@ a.add-to-cart {
   border-radius: 6px;
 }
 
-.tptrack__id form input::placeholder,
-.tptrack__email form input::placeholder {
+.tptrack__id input::placeholder,
+.tptrack__email input::placeholder {
   font-size: 14px;
   color: var(--tp-grey-9);
 }
@@ -9759,6 +9758,10 @@ p.checkout-coupon input[type="text"]:focus {
   font-size: 14px;
   font-weight: 400;
   color: #999999;
+}
+
+.gst_no {
+  margin-top: 20px;
 }
 
 .main-footer {
