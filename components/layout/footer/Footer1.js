@@ -38,6 +38,12 @@ export default function Footer1() {
                           <Link href="/contact">Contact</Link>
                         </li>
                         <li>
+                          <Link href="/policies/shipping-policy">Shipping</Link>
+                        </li>
+                        <li>
+                          <Link href="/policies/refund-policy">Refund & cancellation</Link>
+                        </li>
+                        <li>
                           <Link href="/policies/terms-of-service">Terms of Service</Link>
                         </li>
                         <li>

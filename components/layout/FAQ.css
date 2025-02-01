@@ -59,7 +59,7 @@
 }
 
 .faq-answer.open {
-  max-height: 100px; /* Adjust this value based on your content */
+  max-height: fit-content; /* Adjust this value based on your content */
   padding: 10px;
   color: rgb(63, 55, 55);
 }

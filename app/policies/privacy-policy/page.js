@@ -11,7 +11,7 @@ const PrivacyPolicy = () => {
 
         <section className="policy-section">
           <p>
-            This Privacy Policy describes how Rhino Decor India (the "Site," "we," "us," or "our") collects, uses, and discloses your personal information when you visit, use our services, or make a purchase from or otherwise communicate with us (collectively, the "Services"). For purposes of this Privacy Policy, "you" and "your" refer to you as a user of the Services, whether you are a customer, website visitor, or another individual whose information we collect under this Privacy Policy.
+            This Privacy Policy describes how ketu engineers (the "Site," "we," "us," or "our") collects, uses, and discloses your personal information when you visit, use our services, or make a purchase from or otherwise communicate with us (collectively, the "Services"). For purposes of this Privacy Policy, "you" and "your" refer to you as a user of the Services, whether you are a customer, website visitor, or another individual whose information we collect under this Privacy Policy.
           </p>
           <p>
             By accessing or using any of the Services, you consent to the collection, use, and disclosure of your information as outlined in this Privacy Policy. If you do not agree, please refrain from using or accessing our Services.

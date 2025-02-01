@@ -9665,6 +9665,8 @@ p.checkout-coupon input[type="text"]:focus {
   font-weight: 600;
 }
 
+.footer-widget__links{}
+
 .footer-widget__links ul li {
   list-style: none;
   margin-bottom: 12px;

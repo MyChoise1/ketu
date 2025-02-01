@@ -1,0 +1,53 @@
+/* RefundCancellationPolicy.css */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f3f3;
+    color: #4b4848;
+  }
+  
+  .refund-cancellation-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .policy-section {
+    margin-bottom: 30px;
+  }
+  
+  .policy-section h2 {
+    font-size: 1.5em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .policy-section p {
+    margin-bottom: 15px;
+    color: #4b4848;
+  }
+  
+  .policy-section address {
+    font-style: normal;
+    margin-bottom: 15px;
+  }
+  
+  .policy-section a {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  .policy-section a:hover {
+    text-decoration: underline;
+  }
