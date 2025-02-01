@@ -5,6 +5,7 @@
   grid-row: 1 / -1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .logo {
@@ -16,13 +17,18 @@
 }
 
 .admin-label {
-  font-size: 1rem;
+  display: none;
+}
+
+.admin-label-end {
   font-weight: bold;
-  color: #f39c12;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 21px;
+  color: #b6afaf
 }
 
 .nav-menu {
-  /* display: flex; */
   list-style: none;
 }
 
@@ -41,14 +47,19 @@
   .nav-menu {
     display: flex;
   }
-
-  
 }
 
 /* Mobile Styling */
 @media (max-width: 480px) {
+  .admin-label-end {
+    display: none;
+  }
+
   .admin-label {
-    display: inline;
-    margin-left: 10px;
+    display: flex;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 21px;
+    color: #b6afaf
   }
 }

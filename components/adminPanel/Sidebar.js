@@ -10,43 +10,57 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <div className="logo">
-        <span>Dashboard</span>
+      <div>
+        <div className="logo">
+          <span>Dashboard</span>
+          <span
+            onClick={() =>
+              signOut(() => {
+                router.refresh();
+              })
+            }
+            className="admin-label"
+          >
+            Logout
+          </span>
+        </div>
+        <nav className="">
+          <ul className="nav-menu">
+            <Link href="/admin/dashboard">
+              <li className="nav-item">
+                Dashboard
+              </li>
+            </Link>
+            <Link href="/admin/products">
+              <li className="nav-item">
+                Products
+              </li>
+            </Link>
+            <Link href="/admin/users">
+              <li className="nav-item">
+                Users
+              </li>
+            </Link>
+            <Link href="/admin/dashboard">
+              <li className="nav-item">
+                Settings
+              </li>
+            </Link>
+          </ul>
+        </nav>
+      </div>
+      <div>
         <span
           onClick={() =>
             signOut(() => {
               router.refresh();
             })
           }
-        // className="admin-label"
+          className="admin-label-end"
         >
-          Logout
+          Logout 
         </span>
       </div>
-      <nav className="">
-        <ul className="nav-menu">
-          <Link href="/admin/dashboard">
-            <li className="nav-item">
-              Dashboard
-            </li>
-          </Link>
-          <Link href="/admin/products">
-            <li className="nav-item">
-              Products
-            </li>
-          </Link>
-          <Link href="/admin/users">
-            <li className="nav-item">
-              Users
-            </li>
-          </Link>
-          <Link href="/admin/dashboard">
-            <li className="nav-item">
-              Settings
-            </li>
-          </Link>
-        </ul>
-      </nav>
     </aside>
   );
 };

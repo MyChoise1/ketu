@@ -20,9 +20,12 @@ const DeleteButton = ({ productId }) => {
   };
 
   return (
+  <>
     <p onClick={handleDelete} style={{ backgroundColor: 'red', width: '100%', color: 'white', marginTop: '10px', padding: '12px 10px', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
       Delete
     </p>
+    <i class="fa-regular fa-trash-can"></i>
+  </>
   );
 };
 
