@@ -12,10 +12,6 @@ const Dashboard = () => {
       <main className="main-content">
         <header className="header">
           <h1 className="header-title">Overview</h1>
-          <div className="user-profile">
-            <span>John Doe</span>
-            <div className="avatar">👤</div>
-          </div>
         </header>
 
         {/* Cards Section */}

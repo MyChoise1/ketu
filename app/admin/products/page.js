@@ -19,13 +19,14 @@ const ProductList = () => {
 
   return (
     <>
-      <div className="product-top">
-        <h2 className="title">Edit Product : </h2>
-        <Link href="/admin/products/createProduct">
-          <p className="add_btn">New Product</p>
-        </Link>
-      </div>
+
       <div className="tp-container">
+        <div className="product-top">
+          <h2 className="title">Edit Product : </h2>
+          <Link href="/admin/products/createProduct">
+            <p className="add_btn">New Product</p>
+          </Link>
+        </div>
         <div className="tp-row">
           {products.map((product) => (
             <Link href={`/admin/products/${product.id}`}>

@@ -1,7 +1,6 @@
-"use client";
-import React, { useState } from "react";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-import "./FAQ.css"; // External CSS file
+'use client'
+import React, { useState } from 'react';
+import './FAQ.css'; // Import external CSS
 
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
@@ -12,43 +11,32 @@ const FAQ = () => {
 
   const faqData = [
     {
-      question: "How do I place an order?",
-      answer:
-        "You can place an order by browsing our products, adding them to your cart, and proceeding to checkout.",
+      question: 'Do you have a physical store?',
+      answer: 'Yes, you can visit our physical store at 75 eishwar nagar near basavruddh maharaj matth, Solapur, Maharashtra 413 005.',
     },
     {
-      question: "What payment methods do you accept?",
-      answer:
-        "We accept credit/debit cards, PayPal, and other popular payment methods.",
+      question: 'Do you ship across India?',
+      answer: 'Our products ship all over india with free shipping on pre-paid orders!',
     },
     {
-      question: "How can I track my order?",
-      answer:
-        "Once your order is shipped, you will receive a tracking number via email to track your order.",
-    },
-    {
-      question: "What is your return policy?",
-      answer:
-        "We offer a 30-day return policy. If you're not satisfied with your purchase, you can return it within 30 days for a full refund.",
+      question: 'How can I contact you?',
+      answer: 'In case of any queries related to your order or suggestions, feel free to reach out via email at ketu.center@gmail.com or DM us on Instagram.',
     },
   ];
 
   return (
     <div className="faq-container">
-      <h2 className="FAQ-title">Frequently Asked Questions</h2>
+      <h2 className='faq_title'>FAQ</h2>
+      <div className='faq-answer'></div>
       {faqData.map((faq, index) => (
         <div key={index} className="faq-item">
-          <button
-            className="faq-question btn btn-link"
-            onClick={() => toggleFAQ(index)}
-          >
+          <div className="faq-question" onClick={() => toggleFAQ(index)}>
             {faq.question}
-          </button>
-          {activeIndex === index && (
-            <div className="faq-answer">
-              <p>{faq.answer}</p>
-            </div>
-          )}
+            <span className={`faq-icon ${activeIndex === index ? 'open' : ''}`}>▼</span>
+          </div>
+          <div className={`faq-answer ${activeIndex === index ? 'open' : ''}`}>
+            {faq.answer}
+          </div>
         </div>
       ))}
     </div>

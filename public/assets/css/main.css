@@ -9762,6 +9762,7 @@ p.checkout-coupon input[type="text"]:focus {
 
 .gst_no {
   margin-top: 20px;
+  font-weight: 600;
 }
 
 .main-footer {

@@ -10,7 +10,7 @@ export default function Footer1() {
               <div className="row">
                 <div className="col-lg-4 col-md-4 col-sm-6">
                   <div className="footer-widget footer-col-1 mb-40">
-                    <div className="footer-logo mb-30 d-flex justify-content-center flex-column">
+                    <div className="footer-logo mb-30 d-flex align-items-center flex-column">
                       <Link href="/">
                         <img
                           src="/assets/img/logo/logo-footer.png"
@@ -18,7 +18,7 @@ export default function Footer1() {
                           height={80}
                         />
                       </Link>
-                      <p className="gst_no">GST-No: 27MWUPS1500D1Z7</p>
+                      <span className="gst_no">GST-No: 27MWUPS1500D1Z7</span>
                     </div>
                   </div>
                 </div>
@@ -32,13 +32,16 @@ export default function Footer1() {
                       <ul className="row">
                         {/* <li><span>GST-No:</span>27MWUPS1500D1Z7</li> */}
                         <li>
-                          <Link href="#">Custom Service</Link>
+                          <Link href="/shop">Products</Link>
                         </li>
                         <li>
-                          <Link href="#">FAQs</Link>
+                          <Link href="/contact">Contact</Link>
                         </li>
                         <li>
-                          <Link href="/contact">Contacts</Link>
+                          <Link href="/policies/terms-of-service">Terms of Service</Link>
+                        </li>
+                        <li>
+                          <Link href="/policies/privacy-policy">Privacy Policy</Link>
                         </li>
                       </ul>
                     </div>

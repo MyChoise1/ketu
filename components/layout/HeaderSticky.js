@@ -36,10 +36,6 @@ export default function HeaderSticky({ scroll, isCartSidebar, handleCartSidebar 
                                         <CartShow />
                                     </button>
                                     <Link href="/sign-in"><i className="fal fa-user" /></Link>
-                                    <Link href="/wishlist" className="header-cart p-relative tp-cart-toggle">
-                                        <i className="fal fa-heart" />
-                                        <WishListShow />
-                                    </Link>
                                 </div>
                                 {/* <div className="header-meta__search-5 ml-25">
                                     <div className="header-search-bar-5">

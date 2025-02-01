@@ -27,7 +27,6 @@ export default function Slider3() {
                                             <div className="tpsliderthree__img p-relative text-end pt-55">
                                                 <img src="/assets/img/slider/bg-image1.png" alt="" />
                                                 <div className="tpslidertwo__img-shape">
-                                                    <img src="/assets/img/slider/fasion-tag-02.png" alt="tag" />
                                                 </div>
                                             </div>
                                         </div>

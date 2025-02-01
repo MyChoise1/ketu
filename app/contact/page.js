@@ -17,18 +17,22 @@ export default function Contact() {
                                             <div className="tpshop__info">
                                                 <ul>
                                                     <li><i className="fal fa-map-marker-alt" />
-                                                        <Link href="https://maps.app.goo.gl/ERH8vVJg62shVLS2A">75 eishwar nagar near basavruddh maharaj matth, airport road Majrewadi, Solapur, Maharashtra 413 005</Link>
-                                                    </li>                                                       
+                                                        <Link href="https://maps.app.goo.gl/ERH8vVJg62shVLS2A" target="_blank">75 eishwar nagar near basavruddh maharaj matth, airport road Majrewadi, Solapur, Maharashtra 413 005</Link>
+                                                    </li>  
+                                                    <li>
+                                                    <i class="fal fa-regular fa-book"></i>
+                                                    <span className="gst_no">GST-No: 27MWUPS1500D1Z7</span>
+                                                    </li>                                                     
                                                     <li>
                                                         <i className="fal fa-clock" />
                                                         <span>Customer care:</span>
-                                                        <span>ketu.marketing@gmail.com</span>
+                                                        <span>ketu.center@gmail.com</span>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div className="tpcontact__support">
-                                            <Link href="/tel:0123456">Get Support On Call <i className="fal fa-headphones" /></Link>
+                                            <Link href="#">Get Support via Email <i class="fal fa-regular fa-envelope"></i></Link>
                                             <Link target="_blank" href="https://maps.app.goo.gl/ERH8vVJg62shVLS2A">Get Direction <i className="fal fa-map-marker-alt" /></Link>
                                         </div>
                                     </div>
