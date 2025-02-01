@@ -19,3 +19,9 @@
     color: #2c3e50;
     margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+  .user-container {
+    width: 100%;
+  }  
+}

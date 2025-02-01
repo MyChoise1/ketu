@@ -68,9 +68,14 @@
     height: 260px;
     object-fit: cover;
   }
+  
   .product-card {
     min-height: 350px;
     height: auto;
+  }
+
+  .tp-container {
+    width: 100%;
   }
 }
 
