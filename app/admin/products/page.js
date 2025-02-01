@@ -4,7 +4,7 @@ import "./ProductList.css"; // External CSS file
 import useFetchProducts from "@/components/useFetchProducts"; // Assuming this hook fetches products
 import Preloader from "@/components/elements/Preloader";
 import Link from "next/link";
-import ImageUploader from "@/components/adminPanel/UploadImage";
+import ImageUploader from "@/components/adminPanel/ImageUploader";
 
 const ProductList = () => {
   const { products, loading, error } = useFetchProducts();

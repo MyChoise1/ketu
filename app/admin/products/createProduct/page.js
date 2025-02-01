@@ -1,9 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import "./CreateProductForm.css"; // External CSS file
-import ImageUploader from "@/components/adminPanel/UploadImage";
+import ImageUploaderModal from "@/components/adminPanel/ImageUploader";
 
 const CreateProductForm = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
         mrp: "",
@@ -73,22 +74,28 @@ const CreateProductForm = () => {
 
                     <div className="form-group">
                         <label htmlFor="thumbnail_one">Thumbnail Image 1 URL:</label>
-                        <input defaultValue={[]} type="url" id="thumbnail_one" name="thumbnail_one" value={formData.thumbnail_one} onChange={handleChange} required />
-                        <ImageUploader />
+                        <input defaultValue={[]} type="url" id="thumbnail_one" name="thumbnail_one" value={formData.thumbnail_one} onChange={handleChange} />
+                        {/* <button onClick={() => setIsModalOpen(true)}>Open Image Uploader</button>
+                        {isModalOpen && (
+                            <ImageUploaderModal
+                                // multimage={true} // Allow multiple images
+                                onClose={() => setIsModalOpen(false)}
+                            />
+                        )} */}
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="thumbnail_two">Thumbnail Image 2 URL:</label>
-                        <input defaultValue={[]} type="url" id="thumbnail_two" name="thumbnail_two" value={formData.thumbnail_two} onChange={handleChange} required />
-                        <ImageUploader />
+                        <input defaultValue={[]} type="url" id="thumbnail_two" name="thumbnail_two" value={formData.thumbnail_two} onChange={handleChange} />
+                        {/* <ImageUploader /> */}
                     </div>
 
                     <div className="form-group">
                         <label htmlFor="other_images">
                             Other Images URLs:
                         </label>
-                        <input defaultValue={[]} type="text" id="other_images" name="other_images" value={formData.other_images} onChange={handleChange} required />
-                        <ImageUploader multimage={true} />
+                        <input defaultValue={[]} type="text" id="other_images" name="other_images" value={formData.other_images} onChange={handleChange} />
+                        {/* <ImageUploader multimage={true} /> */}
                     </div>
 
                     <div className="form-group">

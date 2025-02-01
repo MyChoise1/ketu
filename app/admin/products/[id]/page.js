@@ -2,15 +2,17 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import useFetchProducts from "@/components/useFetchProducts";
-import ImageUploader from "@/components/adminPanel/UploadImage"; // Import the ImageUploader component
 import "./ProductDetail.css"; // External CSS file
 import Preloader from "@/components/elements/Preloader";
 import Link from "next/link";
+import ImageUploaderModal from "@/components/adminPanel/imageuploadergptv";
+import DeleteButton from "@/components/adminPanel/Deletebtn";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const { products, loading, error } = useFetchProducts();
   const [product, setProduct] = useState(null);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     mrp: "",
@@ -122,21 +124,24 @@ const ProductDetail = () => {
           <label>Thumbnail One:</label>
           <button>Upload Image</button>
           <label>Thumbnail Two:</label>
-          <ImageUploader
-            name="thumbnail_two"
-            onImageUpload={(images) =>
-              handleImageUpload("thumbnail_two", images[0])
-            }
-          />
+          {/* <div>
+            <button onClick={() => setIsModalOpen(true)}>Open Image Uploader</button>
+            {isModalOpen && (
+              <ImageUploaderModal
+                // multimage={true} // Allow multiple images
+                onClose={() => setIsModalOpen(false)}
+              />
+            )}
+          </div> */}
 
           <label>Other Images:</label>
-          <ImageUploader
+          {/* <ImageUploader
             name="other_images"
             multimage={true}
             onImageUpload={(images) =>
               handleImageUpload("other_images", images)
             }
-          />
+          /> */}
 
           <label>SKU:</label>
           <input
@@ -166,6 +171,7 @@ const ProductDetail = () => {
 
           <button type="submit">Save Changes</button>
         </form>
+        <DeleteButton productId={product.id}/>
       </div>
     </>
   );

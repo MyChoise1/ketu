@@ -3,13 +3,14 @@ import './RefundCancellationPolicy.css'; // External CSS for styling
 
 const RefundCancellationPolicy = () => {
   return (
+    <Layout headerStyle={1} footerStyle={1}>
     <div className="refund-cancellation-container">
       <h1>Refund and Cancellation Policy</h1>
 
       <section className="policy-section">
         <h2>Cancellation Policy</h2>
         <p>
-          Orders cannot be cancelled once placed. For more information, contact us at <a href="mailto:rhinodecorindia@gmail.com">rhinodecorindia@gmail.com</a>.
+          Orders cannot be cancelled once placed. For more information, contact us at <a href="https://mail.google.com/mail/?view=cm&to=ketu.center@gmail.com" target='_blank'>ketu.center@gmail.com</a>.
         </p>
       </section>
 
@@ -22,7 +23,7 @@ const RefundCancellationPolicy = () => {
           To be eligible for a return, your item must be in the same condition that you received it. Please do not use the product for any purpose during the return process.
         </p>
         <p>
-          To start a return, you can contact us at <a href="mailto:rhinodecorindia@gmail.com">rhinodecorindia@gmail.com</a>. Please note that returns will need to be sent to the following address:
+          To start a return, you can contact us at <a href="https://mail.google.com/mail/?view=cm&to=ketu.center@gmail.com" target='_blank'>ketu.center@gmail.com</a>. Please note that returns will need to be sent to the following address:
         </p>
         <address>
           Plot No. 66, Industrial Area, Phase 1, Panchkula, Haryana, 134109.
@@ -62,6 +63,7 @@ const RefundCancellationPolicy = () => {
         </p>
       </section>
     </div>
+    </Layout>
   );
 };
 

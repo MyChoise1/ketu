@@ -35,9 +35,9 @@ const Sidebar = () => {
               Products
             </li>
           </Link>
-          <Link href="/admin/dashboard">
+          <Link href="/admin/users">
             <li className="nav-item">
-              Reports
+              Users
             </li>
           </Link>
           <Link href="/admin/dashboard">

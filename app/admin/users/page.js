@@ -1,10 +1,15 @@
+import './Users.css'
 const Users = () => {
-    return (
-      <div className="p-4">
-        <h1>Users</h1>
-        <p>Manage users here.</p>
+  return (
+    <div className="user-container">
+      <div className='header'>
+        <h2 className='user_header'>Users</h2>
       </div>
-    );
-  };
-  
-  export default Users;
+      <div className='user_display'>
+        <h3>No User</h3>
+      </div>
+    </div>
+  );
+};
+
+export default Users;
