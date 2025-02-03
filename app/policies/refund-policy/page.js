@@ -33,7 +33,7 @@ const RefundCancellationPolicy = () => {
           If your return is accepted, we’ll send you instructions on how and where to send your package. Items sent back to us without first requesting a return will not be accepted.
         </p>
         <p>
-          You can always contact us for any return questions at <a href="mailto:rhinodecorindia@gmail.com">rhinodecorindia@gmail.com</a>.
+          You can always contact us for any return questions at <a href="https://mail.google.com/mail/?view=cm&to=ketu.center@gmail.com" target='_blank'>ketu.center@gmail.com</a>.
         </p>
       </section>
 
@@ -60,7 +60,7 @@ const RefundCancellationPolicy = () => {
           We will notify you once we’ve received and inspected your return, and let you know if the refund was approved or not. If approved, you’ll be automatically refunded on your original payment method within 30 business days. Please remember it can take some time for your bank or credit card company to process and post the refund too.
         </p>
         <p>
-          If more than 30 business days have passed since we’ve approved your return, please contact us at <a href="mailto:rhinodecorindia@gmail.com">rhinodecorindia@gmail.com</a>.
+          If more than 30 business days have passed since we’ve approved your return, please contact us at <a href="https://mail.google.com/mail/?view=cm&to=ketu.center@gmail.com" target='_blank'>ketu.center@gmail.com</a>.
         </p>
       </section>
     </div>

@@ -110,7 +110,7 @@ const CreateProductForm = () => {
 
                     <div className="form-group">
                         <label htmlFor="description">Description:</label>
-                        <textarea id="description" name="description" value={formData.description} onChange={handleChange} required />
+                        <textarea id="description" name="description" value={formData.description} onChange={handleChange} required  style={{minHeight: "150px"}}/>
                     </div>
 
                     <button type="submit" className="submit-button">
