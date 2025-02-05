@@ -1342,6 +1342,11 @@ input[type="color"] {
   font-size: 20px;
 }
 
+.logout_btn {
+  margin-left: 10px;
+  padding: 5px 0 5px 10px;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .header-meta__social a {
     margin-left: 15px;
@@ -2049,6 +2054,10 @@ input[type="color"] {
   line-height: 1;
   margin-top: 10px;
   font-size: 22px;
+}
+
+.header_logo {
+  margin-left: -30px;
 }
 
 .menu-area-4 {
@@ -4008,6 +4017,10 @@ a.add-to-cart {
   .thumbitem-secondary {
     height: 250px;
   }
+
+  .tpproduct__priceinfo {
+    flex-direction: column;
+  }
 }
 @media (max-width: 360px) {
   .thumbitem-primary {
@@ -4039,9 +4052,7 @@ a.add-to-cart {
   color: var(--tp-text-primary);
 }
 
-.tpproduct__priceinfo {
-  /* position this item at the end */
-}
+
 
 .tpproduct__priceinfo-list {
   position: absolute;
@@ -4275,6 +4286,7 @@ a.add-to-cart {
   background-color: #fff;
   padding-bottom: 10px;
   border-radius: 10px;
+  text-align: center;
   /* box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; */
 }
 @media (max-width: 500px) {
@@ -5252,6 +5264,8 @@ a.add-to-cart {
 }
 
 .tpbanneritem__text {
+  /* color: white; */
+  /* font-size: 12px; */
   position: absolute;
   top: 50px;
   left: 50px;
@@ -5266,14 +5280,17 @@ a.add-to-cart {
 
 @media (max-width: 767px) {
   .tpbanneritem__text {
-    top: 15px;
+    bottom: 15px;
     left: 15px;
   }
 }
 
 .tpbanneritem__text-title {
-  font-size: 20px;
+  color: black;
+  font-size: 15px;
   font-weight: 600;
+  line-height: 17px;
+  margin-top: -25px;
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1399px),
@@ -5288,7 +5305,7 @@ a.add-to-cart {
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .tpbanneritem__text-title {
     margin-bottom: 0px;
-    font-size: 16px;
+    font-size: 12px;
   }
 }
 
@@ -5410,6 +5427,8 @@ a.add-to-cart {
 
 @media (max-width: 767px) {
   .tp-banner-item-small {
+    font-size: 20px;
+    bottom: 12px;
     left: 15px;
   }
 }
@@ -7762,7 +7781,7 @@ a.add-to-cart {
 }
 
 .tpproduct-details__cart-btn {
-  width: 100%;
+  width: 90%;
   padding: 12px;
   background: #fff;
   border: 2px solid #ccc;
@@ -7773,7 +7792,7 @@ a.add-to-cart {
 }
 
 .tpproduct-details__buy-btn {
-  width: 100%;
+  width: 90%;
   padding: 12px;
   background: var(--tp-text-primary); /* Dark Pink */
   color: white;
@@ -7790,6 +7809,14 @@ a.add-to-cart {
 @media (max-width: 767px) {
   .tpproduct-details__nab {
     padding-right: 0;
+  }
+
+  .tpproduct-details__cart-btn {
+    width: 100%;
+  }
+
+  .tpproduct-details__buy-btn {
+    width: 100%;
   }
 }
 
@@ -8188,8 +8215,9 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 
 @media (max-width: 767px) {
   .tpproduct-details__nav .nav-tabs .nav-links {
-    font-size: 17px;
-    margin: 0 12px;
+    font-size: 14px;
+    margin: 0 6px;
+    text-decoration: underline;
   }
 }
 

@@ -1,16 +1,19 @@
 'use client'
 import CartShow from "@/components/elements/CartShow"
-import WishListShow from "@/components/elements/WishListShow"
 import Link from "next/link"
-import { useState } from "react"
 import HeaderMobSticky from "../HeaderMobSticky"
 import HeaderSticky from "../HeaderSticky"
 import HeaderTabSticky from "../HeaderTabSticky"
+import { signOut, useUserData } from "@/libs/helpers"
+import exit from '@/public/assets/img/svg/exit.svg'
+import Preloader from "@/components/elements/Preloader"
+import noUser from '@/public/assets/img/svg/no-user.svg'
 
 
 export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isCartSidebar, handleCartSidebar }) {
-    const [isToggled, setToggled] = useState(false)
-    const handleToggle = () => setToggled(!isToggled)
+    const { loading, user, error } = useUserData()
+
+    if (loading) return <Preloader />;
     return (
         <>
             <header>
@@ -45,8 +48,17 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isCart
                                                 <i className="fal fa-shopping-cart" />
                                                 <CartShow />
                                             </button>
-                                            <Link href="/sign-up"><i className="fal fa-user" /></Link>  
+                                            {user ?
+                                                <Link href=""><i className="fal fa-user" /></Link>
+                                                : <Link href="/sign-up"><img src={noUser.src} /></Link>
+                                            }
                                         </div>
+                                        {user &&
+                                            <button className="logout_btn" type="button" onClick={() => {
+                                                if (confirm("Are you sure you want to log out?")) {
+                                                    signOut();
+                                                }
+                                            }}><img src={exit.src} /></button>}
                                     </div>
                                 </div>
                             </div>

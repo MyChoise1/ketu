@@ -1,5 +1,5 @@
 'use client';
-import ImageUploaderModal from '@/components/adminPanel/imageuploadergptv';
+import ImageUploaderModal from '@/components/adminPanel/ImageUploader';
 import { useState } from 'react';
  
 export default function AvatarUploadPage() {

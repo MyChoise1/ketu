@@ -8,7 +8,6 @@ import React from "react";
 
 import Banner4 from "./sections/Banner4";
 import Preloader from "./elements/Preloader";
-import Faq from "@/components/layout/FAQ";
 
 const LandingPage = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -40,7 +39,6 @@ const LandingPage = () => {
       <Layout headerStyle={1} footerStyle={1}>
         {isMobile ? <Banner4 /> : <Slider3 />}
         <Product1 />
-        <Faq />
       </Layout>
     </>
   );

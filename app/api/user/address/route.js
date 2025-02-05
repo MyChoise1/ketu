@@ -7,13 +7,13 @@ import { NextResponse } from "next/server";
 export async function GET() {
   const session = await getIronSession(cookies(), sessionOptions);
 
-  if (!session) {
+  if (!session.auth) {
     return new NextResponse("Session not found", { status: 401 });
   }
   try {
     const addresses = await prismadb.address.findMany({
       where: {
-        user_id: session.userId,
+        userId: session.auth.userId,
       },
     });
 
@@ -26,7 +26,7 @@ export async function GET() {
 
 export async function POST(req) {
   const session = await getIronSession(cookies(), sessionOptions);
-  if (!session) {
+  if (!session.auth) {
     return new NextResponse("Session not found", { status: 401 });
   }
 
@@ -39,7 +39,7 @@ export async function POST(req) {
 
     await prismadb.address.create({
       data: {
-        user_id: session.userId,
+        userId: session.auth.userId,
         address,
         city,
         state,

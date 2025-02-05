@@ -1,6 +1,6 @@
 export async function PUT(req, { params }) {
   const session = await getIronSession(cookies(), sessionOptions);
-  if (!session) {
+  if (!session.auth) {
     return new NextResponse("Session not found", { status: 401 });
   }
 
@@ -14,7 +14,7 @@ export async function PUT(req, { params }) {
     await prismadb.address.update({
       where: { id: params.addressId },
       data: {
-        user_id: session.userId,
+        userId: session.auth.userId,
         address,
         city,
         state,
@@ -33,7 +33,7 @@ export async function PUT(req, { params }) {
 
 export async function DELETE(_, { params }) {
   const session = await getIronSession(cookies(), sessionOptions);
-  if (!session) {
+  if (!session.auth) {
     return new NextResponse("Session not found", { status: 401 });
   }
 

@@ -39,21 +39,6 @@ const Dashboard = () => {
             <h3>Revenue Chart</h3>
           </div>
         </div>
-
-        {/* Data Table */}
-        <div className="data-table">
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>{/* Data rows will go here */}</tbody>
-          </table>
-        </div>
       </main>
     </div>
   );

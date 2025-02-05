@@ -1,8 +1,14 @@
 import Link from "next/link"
 import CartShow from "../elements/CartShow"
-import WishListShow from "../elements/WishListShow"
+import { signOut, useUserData } from "@/libs/helpers"
+import exit from '@/public/assets/img/svg/exit.svg'
+import Preloader from "@/components/elements/Preloader"
+import noUser from '@/public/assets/img/svg/no-user.svg'
 
 export default function HeaderSticky({ scroll, isCartSidebar, handleCartSidebar }) {
+    const { loading, user, error } = useUserData()
+
+    if (loading) return <Preloader />;
     return (
         <>
             <div id="header-sticky" className={`logo-area tp-sticky-one mainmenu-5 ${scroll ? "header-sticky" : ""}`}>
@@ -13,7 +19,7 @@ export default function HeaderSticky({ scroll, isCartSidebar, handleCartSidebar 
                                 <Link href="/"><img src="/assets/img/logo/logo1.png" alt="logo1" height={50} /></Link>
                             </div>
                         </div>
-                        <div className="col-xl-6 col-lg-6">
+                        <div className="col-xl-6 col-lg-6" style={{ paddingLeft: "200px" }}>
                             <div className="main-menu">
                                 <nav>
                                     <ul>
@@ -35,23 +41,22 @@ export default function HeaderSticky({ scroll, isCartSidebar, handleCartSidebar 
                                         <i className="fal fa-shopping-cart" />
                                         <CartShow />
                                     </button>
-                                    <Link href="/sign-in"><i className="fal fa-user" /></Link>
+                                    {user ?
+                                        <Link href=""><i className="fal fa-user" /></Link>
+                                        : <Link href="/sign-up"><img src={noUser.src} /></Link>
+                                    }
                                 </div>
-                                {/* <div className="header-meta__search-5 ml-25">
-                                    <div className="header-search-bar-5">
-                                        <form action="#">
-                                            <div className="search-info-5 p-relative">
-                                                <button className="header-search-icon-5"><i className="fal fa-search" /></button>
-                                                <input type="text" placeholder="Search products..." />
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div> */}
+                                {user &&
+                                    <button className="logout_btn" type="button" onClick={() => {
+                                        if (confirm("Are you sure you want to log out?")) {
+                                            signOut();
+                                        }
+                                    }}><img src={exit.src} /></button>}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         </>
     )
 }

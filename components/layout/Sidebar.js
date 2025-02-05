@@ -1,7 +1,13 @@
 import Link from "next/link"
 import MobileMenu from "./MobileMenu"
+import { signOut, useUserData } from "@/libs/helpers"
+import exit from '@/public/assets/img/svg/exit-light.svg'
+import Preloader from "@/components/elements/Preloader"
 
 export default function Sidebar({ isMobileMenu, handleMobileMenu }) {
+    const { loading, user, error } = useUserData()
+
+    if (loading) return <Preloader />;
     return (
         <>
             <div className={`tpsideinfo ${isMobileMenu ? "tp-sidebar-opened" : ""}`}>
@@ -14,10 +20,14 @@ export default function Sidebar({ isMobileMenu, handleMobileMenu }) {
                     </div>
                 </div>
                 <div className="tpsideinfo__account-link">
-                    <Link href="/sign-in"><i className="fal fa-user" /> Login / Register</Link>
+                    {user ?
+                        <Link href='' onClick={() => { signOut() }}><img src={exit.src} className="me-2" />Log Out</Link>
+                        : <Link href="/sign-in"><i className="fal fa-user" />Login / Register</Link>
+                    }
                 </div>
+
                 <div className="tpsideinfo__wishlist-link">
-                    <Link href="/cart" target="_parent"><i className="fal fa-shopping-cart" /> Cart</Link>
+                    <Link href="/cart" target="_parent"><i className="fal fa-shopping-cart" />Cart</Link>
                 </div>
             </div>
             <div className={`body-overlay ${isMobileMenu ? "opened" : ""}`} onClick={handleMobileMenu} />

@@ -1,7 +1,14 @@
 import Link from "next/link"
 import CartShow from "../elements/CartShow"
+import { signOut, useUserData } from "@/libs/helpers"
+import exit from '@/public/assets/img/svg/exit.svg'
+import Preloader from "@/components/elements/Preloader"
+import noUser from '@/public/assets/img/svg/no-user.svg'
 
 export default function HeaderMobSticky({ scroll, isMobileMenu, handleMobileMenu, isCartSidebar, handleCartSidebar }) {
+        const { loading, user, error } = useUserData()
+    
+        if (loading) return <Preloader />;
     return (
         <>
             <div id="header-mob-sticky" className={`tp-md-lg-header d-md-none pt-10 pb-10 ${scroll ? "header-sticky" : ""}`}>
@@ -13,7 +20,7 @@ export default function HeaderMobSticky({ scroll, isMobileMenu, handleMobileMenu
                             </div>
                         </div>
                         <div className="col-6">
-                            <div className="logo text-center">
+                            <div className="header_logo text-center">
                                 <Link href="/"><img src="/assets/img/logo/logo1.png" alt="logo2" height={50} /></Link>
                             </div>
                         </div>
@@ -24,9 +31,15 @@ export default function HeaderMobSticky({ scroll, isMobileMenu, handleMobileMenu
                                         <button className="header-cart p-relative tp-cart-toggle" onClick={handleCartSidebar}>
                                             <i className="fal fa-shopping-cart" />
                                             <CartShow />
-                                        </button>
-                                        <Link href="/sign-in"><i className="fal fa-user" /></Link>
-                                    </div>
+                                            </button>
+                                    {!user && <Link href="/sign-up"><img src={noUser.src} /></Link> }
+                                </div>
+                                {user &&
+                                    <button className="logout_btn" type="button" onClick={() => {
+                                        if (confirm("Are you sure you want to log out?")) {
+                                            signOut();
+                                        }
+                                    }}><img src={exit.src} /></button>}
                                 </div>
                             </div>
                         </div>

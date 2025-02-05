@@ -1,9 +1,8 @@
 /* FAQ.css */
 .faq-container {
   max-width: 600px;
-  margin: 0 auto;
   padding: 20px;
-  margin-bottom: 60px;
+  margin: 60px auto;
 }
 
 .faq_title{

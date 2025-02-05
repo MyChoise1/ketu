@@ -4,6 +4,7 @@ import { addQty, deleteWishlist } from "@/features/wishlistSlice"
 import Link from "next/link"
 import { useDispatch, useSelector } from "react-redux"
 import useFetchProducts from "../useFetchProducts"
+import Preloader from "./Preloader"
 
 const WishlistItems = () => {
     const { wishlist = [] } = useSelector((state) => state.wishlist) || {};
@@ -25,7 +26,7 @@ const WishlistItems = () => {
         dispatch(addQty({ id, qty }));
     }
 
-    if (loading) return <p>Loading products...</p>;
+    if (loading) return <Preloader />;
     if (error) return <p>Error: {error.message || error}</p>;
 
     return (

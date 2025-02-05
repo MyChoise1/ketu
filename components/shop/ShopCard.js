@@ -8,7 +8,7 @@ const ShopCard = ({ item, addToCart }) => {
                         <div className="tpproduct__thumbitem p-relative">
                             <Link href={`/shop/${item.id}`}>
                                 <img src={item.images.thumbnail_one} alt="product-thumb" className="thumbitem-primary" style={{objectFit:"cover"}} />
-                                <img className="thumbitem-secondary" src={item.images.thumbnail_one} alt="product-thumb" style={{objectFit:"cover"}} />
+                                <img className="thumbitem-secondary" src={item.images.thumbnail_two} alt="product-thumb" style={{objectFit:"cover"}} />
                             </Link>
                             <div className="tpproduct__thumb-bg">
                                 <div className="tpproductactionbg">

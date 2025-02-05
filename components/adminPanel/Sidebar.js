@@ -15,9 +15,7 @@ const Sidebar = () => {
           <span>Dashboard</span>
           <span
             onClick={() =>
-              signOut(() => {
-                router.refresh();
-              })
+              signOut()
             }
             className="admin-label"
           >
@@ -43,7 +41,7 @@ const Sidebar = () => {
             </Link>
             <Link href="/admin/dashboard">
               <li className="nav-item">
-                Settings
+                Orders
               </li>
             </Link>
           </ul>
@@ -52,9 +50,7 @@ const Sidebar = () => {
       <div>
         <span
           onClick={() =>
-            signOut(() => {
-              router.refresh();
-            })
+            signOut()
           }
           className="admin-label-end"
         >

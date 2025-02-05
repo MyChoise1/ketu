@@ -122,8 +122,12 @@ const ProductDetail = () => {
           />
 
           <label>Thumbnail One:</label>
-          <button>Upload Image</button>
+          <input defaultValue={[]} type="url" id="thumbnail_one" name="thumbnail_one" value={formData.thumbnail_one} onChange={handleChange} />
+          {/* <button>Upload Image</button> */}
+
+
           <label>Thumbnail Two:</label>
+          <input defaultValue={[]} type="url" id="thumbnail_two" name="thumbnail_two" value={formData.thumbnail_two} onChange={handleChange} />
           {/* <div>
             <button onClick={() => setIsModalOpen(true)}>Open Image Uploader</button>
             {isModalOpen && (

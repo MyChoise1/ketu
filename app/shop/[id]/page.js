@@ -71,11 +71,6 @@ const ShopSingleDynamicV1 = () => {
         dispatch(addCart({ product: item }))
     }
 
-    const addToWishlist = (id) => {
-        const item = products?.find((item) => item.id === id)
-        dispatch(addWishlist({ product: item }))
-    }
-
     const qtyHandler = (id, qty) => {
         dispatch(addQty({ id, qty }));
     };
@@ -104,20 +99,47 @@ const ShopSingleDynamicV1 = () => {
                                                 <img src={`${product.images.thumbnail_one}`} alt="Front View" />
                                             </button>
                                             <button className={activeIndex2 === 5 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick2(5)}>
-                                                <img src={`${product.images.thumbnail_one}`} alt="Back View" />
+                                                <img src={`${product.images.thumbnail_two}`} alt="Back View" />
+                                            </button>
+                                            <button className={activeIndex2 === 6 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick2(4)}>
+                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" />
                                             </button>
                                         </div>
                                         <div className="tab-content" id="v-pills-tabContent">
                                             <div className={activeIndex2 === 4 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" style={{ maxHeight: '600px', width: 'auto' }} />
+                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" style={{ Height: '600px', width: 'auto' }} />
                                             </div>
                                             <div className={activeIndex2 === 5 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                                <img src={`${product.images.thumbnail_one}`} alt="Back View" style={{ maxHeight: '600px', width: 'auto' }} />
+                                                <img src={`${product.images.thumbnail_two}`} alt="Back View" style={{ Height: '600px', width: 'auto' }} />
+                                            </div>
+                                            <div className={activeIndex2 === 6 ? "tab-pane fade show active" : "tab-pane fade"}>
+                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" style={{ Height: '600px', width: 'auto' }} />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            {/* <div id="carouselExampleFade" className="carousel slide carousel-fade">
+                                <div className="carousel-inner">
+                                    <div className="carousel-item active">
+                                        <img src={`${product.images.thumbnail_one}`} className="d-block w-100" alt="product" />
+                                    </div>
+                                    <div className="carousel-item">
+                                        <img src={`${product.images.thumbnail_two}`} className="d-block w-100" alt="product" />
+                                    </div>
+                                    <div className="carousel-item">
+                                        <img src={`${product.images.thumbnail_one}`} className="d-block w-100" alt="product" />
+                                    </div>
+                                </div>
+                                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span className="visually-hidden">Previous</span>
+                                </button>
+                                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span className="visually-hidden">Next</span>
+                                </button>
+                            </div> */}
                             <div className="col-lg-5 col-md-7">
                                 <div className="tpproduct-details__content">
                                     <div className="tpproduct-details__tag-area d-flex align-items-center mb-5">
@@ -144,20 +166,19 @@ const ShopSingleDynamicV1 = () => {
                                         <div className="tpproduct-details__quantity">
                                             <div className="product-quantity">
                                                 <div className="item-quantity">
-                                                    <button className="qty-btn" onClick={() => qtyHandler(product?.id, Math.max(1, product?.qty - 1))}>-</button>
                                                     <input
                                                         type="number"
                                                         className="qty"
                                                         name="qty"
                                                         defaultValue={1}
                                                         min={1}
+                                                        max={10}
                                                         onChange={(e) => qtyHandler(product?.id, e.target.value)}
+                                                        style={{ width: "100%" }}
                                                     />
-                                                    <button className="qty-btn" onClick={() => qtyHandler(product?.id, product?.qty + 1)}>+</button>
                                                 </div>
                                             </div>
                                         </div>
-
                                         <button className="tpproduct-details__cart-btn" onClick={() => addToCart(product.id)}>
                                             Add to cart
                                         </button>
@@ -242,8 +263,8 @@ const ShopSingleDynamicV1 = () => {
                                                     <ul>
                                                         <li>
                                                             <div className="comments-box d-flex">
-                                                                <div className="comments-avatar mr-25">
-                                                                    <img src="/assets/img/shop/reviewer-01.png" alt="" />
+                                                                <div className="comments-avatar mr-10">
+                                                                    <img src="/assets/img/icon/user.png" alt="" height={30} />
                                                                 </div>
                                                                 <div className="comments-text">
                                                                     <div className="comments-top d-sm-flex align-items-start justify-content-between mb-5">
@@ -269,8 +290,8 @@ const ShopSingleDynamicV1 = () => {
                                                         </li>
                                                         <li>
                                                             <div className="comments-box d-flex">
-                                                                <div className="comments-avatar mr-25">
-                                                                    <img src="/assets/img/shop/reviewer-02.png" alt="" />
+                                                                <div className="comments-avatar mr-10">
+                                                                    <img src="/assets/img/icon/user.png" alt="" height={30} />
                                                                 </div>
                                                                 <div className="comments-text">
                                                                     <div className="comments-top d-sm-flex align-items-start justify-content-between mb-5">
@@ -296,8 +317,8 @@ const ShopSingleDynamicV1 = () => {
                                                         </li>
                                                         <li>
                                                             <div className="comments-box d-flex">
-                                                                <div className="comments-avatar mr-25">
-                                                                    <img src="/assets/img/shop/reviewer-03.png" alt="" />
+                                                                <div className="comments-avatar mr-10">
+                                                                    <img src="/assets/img/icon/user.png" alt="" height={30} />
                                                                 </div>
                                                                 <div className="comments-text">
                                                                     <div className="comments-top d-sm-flex align-items-start justify-content-between mb-5">
@@ -385,7 +406,7 @@ const ShopSingleDynamicV1 = () => {
                                         <img src={product.images.thumbnail_one} alt={product.name} className="card-img-top product-image" />
                                         {/* <span className="sale-badge">Sale</span> */}
                                     </div>
-                                    <div className="tpproduct__content-area ps-2 pe-1 d-flex flex-column">
+                                    <div className="tpproduct__content-area ps-1 pe-1 mb-4 d-flex flex-column">
                                         <h3 className="tpproduct__title mb-5"><Link href={`/shop/${product.id}`}>{product.name}</Link></h3>
                                         <div className="tpproduct__priceinfo d-flex align-items-center justify-content-between">
                                             <div className="tpproduct__ammount">
