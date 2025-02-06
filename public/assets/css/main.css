@@ -1347,6 +1347,14 @@ input[type="color"] {
   padding: 5px 0 5px 10px;
 }
 
+.login_btn {
+  background-color: var(--tp-text-primary);
+  padding: 8px 15px;
+  margin: auto;
+  border-radius: 10px;
+  color: white;
+}
+
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .header-meta__social a {
     margin-left: 15px;
@@ -1358,6 +1366,11 @@ input[type="color"] {
     margin-left: 15px;
     font-size: 17px;
   }
+
+  .logout_btn {
+    display: none;
+  }
+
 }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -2470,6 +2483,12 @@ a.add-to-cart {
   font-size: 14px;
   font-weight: 400;
   color: var(--tp-text-body);
+}
+
+@media (max-width: 767px) {
+  .tpcart__content-title {
+    max-width: 150px;
+  }
 }
 
 .tpcart__content-title a:hover {

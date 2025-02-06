@@ -2,13 +2,16 @@
 import React, { useState } from "react";
 import "./CreateProductForm.css"; // External CSS file
 import ImageUploaderModal from "@/components/adminPanel/ImageUploader";
+import { useRouter } from "next/navigation";
 
 const CreateProductForm = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isModalOpen2, setIsModalOpen2] = useState(false);
     const [isModalOpen3, setIsModalOpen3] = useState(false);
     const [isModalOpen4, setIsModalOpen4] = useState(false);
-    
+
+    const router = useRouter()
+
     const [formData, setFormData] = useState({
         name: "",
         mrp: "",
@@ -52,7 +55,8 @@ const CreateProductForm = () => {
             }
 
             const result = await response.json();
-            alert(`Product Created Successfully! Product ID: ${result.product_id}`);
+            confirm(`Product Created Successfully! Product ID: ${result.product_id}`);
+            router.push('/admin/products')
         } catch (error) {
             console.error("Error:", error);
             alert("An error occurred while creating the product.");
@@ -86,7 +90,10 @@ const CreateProductForm = () => {
                         {isModalOpen && (
                             <ImageUploaderModal
                                 onUploadedEnd={(bloburl) => {
-                                    setFormData(() => ({thumbnail_one: bloburl }));
+                                    setFormData((prev) => ({
+                                        ...prev,
+                                        thumbnail_one: bloburl,
+                                    }));
                                     setIsModalOpen(false);
                                 }}
                                 onClose={() => setIsModalOpen(false)}
@@ -101,7 +108,10 @@ const CreateProductForm = () => {
                         {isModalOpen2 && (
                             <ImageUploaderModal
                                 onUploadedEnd={(bloburl) => {
-                                    setFormData(() => ({thumbnail_two: bloburl }));
+                                    setFormData((prev) => ({
+                                        ...prev,
+                                        thumbnail_two: bloburl,
+                                    }));
                                     setIsModalOpen2(false);
                                 }}
                                 onClose={() => setIsModalOpen2(false)}
@@ -116,7 +126,10 @@ const CreateProductForm = () => {
                         {isModalOpen3 && (
                             <ImageUploaderModal
                                 onUploadedEnd={(bloburl) => {
-                                    setFormData(() => ({ thumbnail_three: bloburl }));
+                                    setFormData((prev) => ({
+                                        ...prev,
+                                        thumbnail_three: bloburl,
+                                    }));
                                     setIsModalOpen3(false);
                                 }}
                                 onClose={() => setIsModalOpen3(false)}
@@ -126,13 +139,16 @@ const CreateProductForm = () => {
 
                     <div className="form-group">
                         <label htmlFor="other_images">Other Images URLs:</label>
-                        <input type="text" id="other_images" name="other_images" value={formData.other_images.join(", ")} disabled />
+                        <input type="text" id="other_images" name="other_images" value={formData.other_images} disabled />
                         <button type="button" onClick={() => setIsModalOpen4(true)}>Upload Images</button>
                         {isModalOpen4 && (
                             <ImageUploaderModal
                                 multimage={true}
                                 onUploadedEnd={(bloburls) => {
-                                    setFormData((prev) => ({ ...prev, other_images: [...prev.other_images, ...bloburls] }));
+                                    setFormData((prev) => ({
+                                        ...prev,
+                                        other_images: [...prev.other_images, ...bloburls],
+                                    }));
                                     setIsModalOpen4(false);
                                 }}
                                 onClose={() => setIsModalOpen4(false)}

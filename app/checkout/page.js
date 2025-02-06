@@ -11,10 +11,11 @@ export default function Checkout() {
     const { products, error } = useFetchProducts();
     const searchParams = useSearchParams();
     const pdtId = searchParams.get("produtid");
+    const Selector = useSelector((state) => state.shop.cart) || [];
 
     const cart = pdtId 
         ? products.filter((item) => item.id === pdtId) 
-        : useSelector((state) => state.shop.cart) || [];
+        : Selector
 
     const [shipping, setShipping] = useState(50.00);
 

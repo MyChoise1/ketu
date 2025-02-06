@@ -182,10 +182,11 @@ const ShopSingleDynamicV1 = () => {
                                         <button className="tpproduct-details__cart-btn" onClick={() => addToCart(product.id)}>
                                             Add to cart
                                         </button>
-
-                                        <button className="tpproduct-details__buy-btn">
-                                            Buy it now
-                                        </button>
+                                        <Link href={`/checkout?produtid=${product.id}`}>
+                                            <button className="tpproduct-details__buy-btn">
+                                                Buy it now
+                                            </button>
+                                        </Link>
                                     </div>
 
                                     {/* <div className="tpproduct-details__information tpproduct-details__social">

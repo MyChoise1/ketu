@@ -20,7 +20,7 @@
   display: none;
 }
 
-.admin-label-end {
+.logout {
   font-weight: bold;
   padding: 20px;
   cursor: pointer;
@@ -47,11 +47,8 @@
   .nav-menu {
     display: flex;
   }
-}
-
-/* Mobile Styling */
-@media (max-width: 480px) {
-  .admin-label-end {
+  
+  .logout {
     display: none;
   }
 
@@ -61,5 +58,5 @@
     cursor: pointer;
     font-size: 21px;
     color: #b6afaf
-  }
+  } 
 }

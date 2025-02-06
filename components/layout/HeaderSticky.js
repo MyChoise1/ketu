@@ -3,7 +3,6 @@ import CartShow from "../elements/CartShow"
 import { signOut, useUserData } from "@/libs/helpers"
 import exit from '@/public/assets/img/svg/exit.svg'
 import Preloader from "@/components/elements/Preloader"
-import noUser from '@/public/assets/img/svg/no-user.svg'
 
 export default function HeaderSticky({ scroll, isCartSidebar, handleCartSidebar }) {
     const { loading, user, error } = useUserData()
@@ -43,7 +42,7 @@ export default function HeaderSticky({ scroll, isCartSidebar, handleCartSidebar 
                                     </button>
                                     {user ?
                                         <Link href=""><i className="fal fa-user" /></Link>
-                                        : <Link href="/sign-up"><img src={noUser.src} /></Link>
+                                        : <Link href="/sign-in"><p className="login_btn">Login</p></Link>
                                     }
                                 </div>
                                 {user &&

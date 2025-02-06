@@ -1,17 +1,19 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useParams } from "next/navigation";
+import { redirect, useParams } from "next/navigation";
 import useFetchProducts from "@/components/useFetchProducts";
 import "./ProductDetail.css"; // External CSS file
 import Preloader from "@/components/elements/Preloader";
 import Link from "next/link";
 import ImageUploaderModal from "@/components/adminPanel/ImageUploader";
 import DeleteButton from "@/components/adminPanel/Deletebtn";
+import { useRouter } from "next/navigation";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const { products, loading, error } = useFetchProducts();
   const [product, setProduct] = useState(null);
+  const router = useRouter()
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
@@ -34,8 +36,9 @@ const ProductDetail = () => {
 
   useEffect(() => {
     if (products.length > 0) {
-      const foundProduct = products.find((p) => p.id === id);
+      const foundProduct = products.find((p) => p.id.toString() === id);
       if (foundProduct) {
+        console.log("Found Product", foundProduct);
         setProduct(foundProduct);
         setFormData({
           name: foundProduct.name,
@@ -75,12 +78,12 @@ const ProductDetail = () => {
 
       const result = await response.json();
       if (response.ok) {
-        setUpdateStatus("Product Updated Successfully");
+        confirm('Changes saved successfully');
+        router.push('/admin/products');
       } else {
-        setUpdateStatus(result.message || "Error updating product");
+        confirm(result.message || "Error updating product");
       }
-
-      } catch (error) {
+    } catch (error) {
       console.error(error);
       setUpdateStatus("An error occurred");
     }
@@ -130,26 +133,51 @@ const ProductDetail = () => {
           />
 
           <label>Thumbnail One:</label>
-          <input type="url" id="thumbnail_one" name="thumbnail_one" value={formData.thumbnail_one} onChange={handleChange} required disabled />
-          <button type="button" onClick={() => setIsModalOpen(true)}>Upload Image</button>
+          <input
+            type="url"
+            id="thumbnail_one"
+            name="thumbnail_one"
+            value={formData.thumbnail_one}
+            onChange={handleChange}
+            required
+            disabled
+          />
+          <button type="button" onClick={() => setIsModalOpen(true)}>
+            Upload Image
+          </button>
           {isModalOpen && (
             <ImageUploaderModal
               onUploadedEnd={(bloburl) => {
-                setFormData(() => ({ thumbnail_one: bloburl }));
+                setFormData((prev) => ({
+                  ...prev,
+                  thumbnail_one: bloburl,
+                }));
                 setIsModalOpen(false);
               }}
               onClose={() => setIsModalOpen(false)}
             />
           )}
 
-
           <label>Thumbnail Two:</label>
-          <input type="url" id="thumbnail_two" name="thumbnail_two" value={formData.thumbnail_two} onChange={handleChange} required disabled />
-          <button type="button" onClick={() => setIsModalOpen2(true)}>Upload Image</button>
+          <input
+            type="url"
+            id="thumbnail_two"
+            name="thumbnail_two"
+            value={formData.thumbnail_two}
+            onChange={handleChange}
+            required
+            disabled
+          />
+          <button type="button" onClick={() => setIsModalOpen2(true)}>
+            Upload Image
+          </button>
           {isModalOpen2 && (
             <ImageUploaderModal
               onUploadedEnd={(bloburl) => {
-                setFormData(() => ({ thumbnail_two: bloburl }));
+                setFormData((prev) => ({
+                  ...prev,
+                  thumbnail_two: bloburl,
+                }));
                 setIsModalOpen2(false);
               }}
               onClose={() => setIsModalOpen2(false)}
@@ -157,12 +185,24 @@ const ProductDetail = () => {
           )}
 
           <label>Thumbnail Three:</label>
-          <input type="url" id="thumbnail_three" name="thumbnail_three" value={formData.thumbnail_three} onChange={handleChange} disabled />
-          <button type="button" onClick={() => setIsModalOpen3(true)}>Upload Image</button>
+          <input
+            type="url"
+            id="thumbnail_three"
+            name="thumbnail_three"
+            value={formData.thumbnail_three}
+            onChange={handleChange}
+            disabled
+          />
+          <button type="button" onClick={() => setIsModalOpen3(true)}>
+            Upload Image
+          </button>
           {isModalOpen3 && (
             <ImageUploaderModal
               onUploadedEnd={(bloburl) => {
-                setFormData(() => ({ thumbnail_three: bloburl }));
+                setFormData((prev) => ({
+                  ...prev,
+                  thumbnail_three: bloburl,
+                }));
                 setIsModalOpen3(false);
               }}
               onClose={() => setIsModalOpen3(false)}
@@ -170,13 +210,24 @@ const ProductDetail = () => {
           )}
 
           <label>Other Images:</label>
-          <input type="text" id="other_images" name="other_images" value={formData.other_images} disabled />
-          <button type="button" onClick={() => setIsModalOpen4(true)}>Upload Images</button>
+          <input
+            type="text"
+            id="other_images"
+            name="other_images"
+            value={formData.other_images}
+            disabled
+          />
+          <button type="button" onClick={() => setIsModalOpen4(true)}>
+            Upload Images
+          </button>
           {isModalOpen4 && (
             <ImageUploaderModal
               multimage={true}
               onUploadedEnd={(bloburls) => {
-                setFormData((prev) => ({ ...prev, other_images: [...prev.other_images, ...bloburls] }));
+                setFormData((prev) => ({
+                  ...prev,
+                  other_images: [...prev.other_images, ...bloburls],
+                }));
                 setIsModalOpen4(false);
               }}
               onClose={() => setIsModalOpen4(false)}

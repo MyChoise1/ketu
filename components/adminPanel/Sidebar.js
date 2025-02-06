@@ -52,7 +52,7 @@ const Sidebar = () => {
           onClick={() =>
             signOut()
           }
-          className="admin-label-end"
+          className="logout"
         >
           Logout 
         </span>

@@ -11,13 +11,13 @@ export default function MobileMenu() {
                 <nav className="mean-nav mb-4 mt-2">
                     <ul>
                         <li>
-                            <Link href="/" className='mb-2'>Home</Link>
+                            <Link href="/" className='mb-2' target="_parent">Home</Link>
                         </li>
                         <li>
-                            <Link href="/shop" className='mb-2'>Shop</Link>
+                            <Link href="/shop" className='mb-2' target="_parent">Shop</Link>
                         </li>
                         <li className="mean-last mb-2">
-                            <Link href="/contact">Contact</Link>
+                            <Link href="/contact" target="_parent">Contact</Link>
                         </li>
                     </ul>
                 </nav>

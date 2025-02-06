@@ -21,7 +21,7 @@ export default function Sidebar({ isMobileMenu, handleMobileMenu }) {
                 </div>
                 <div className="tpsideinfo__account-link">
                     {user ?
-                        <Link href='' onClick={() => { signOut() }}><img src={exit.src} className="me-2" />Log Out</Link>
+                        <Link href='' onClick={() => { if (confirm("Are you sure you want to log out?")) { signOut()} }}><img src={exit.src} className="me-2" />Log Out</Link>
                         : <Link href="/sign-in"><i className="fal fa-user" />Login / Register</Link>
                     }
                 </div>

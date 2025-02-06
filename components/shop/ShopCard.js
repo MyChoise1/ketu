@@ -41,7 +41,7 @@ const ShopCard = ({ item, addToCart }) => {
                         </div>
                         <div>
                             {/* add a button byu now with width full  */}
-                            <button className="btn buy_btn">Buy Now</button>
+                            <Link href={`/checkout?produtid=${item.id}`}><button className="btn buy_btn">Buy Now</button></Link>
                         </div>
                     </div>
                 </div>

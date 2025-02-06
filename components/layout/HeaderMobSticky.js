@@ -3,7 +3,6 @@ import CartShow from "../elements/CartShow"
 import { signOut, useUserData } from "@/libs/helpers"
 import exit from '@/public/assets/img/svg/exit.svg'
 import Preloader from "@/components/elements/Preloader"
-import noUser from '@/public/assets/img/svg/no-user.svg'
 
 export default function HeaderMobSticky({ scroll, isMobileMenu, handleMobileMenu, isCartSidebar, handleCartSidebar }) {
         const { loading, user, error } = useUserData()
@@ -27,12 +26,11 @@ export default function HeaderMobSticky({ scroll, isMobileMenu, handleMobileMenu
                         <div className="col-3">
                             <div className="header-meta-info d-flex align-items-center justify-content-end ml-25">
                                 <div className="header-meta m-0 d-flex align-items-center">
-                                    <div className="header-meta__social d-flex align-items-center">
+                                    <div className="header-meta__social d-flex align-items-center me-1">
                                         <button className="header-cart p-relative tp-cart-toggle" onClick={handleCartSidebar}>
                                             <i className="fal fa-shopping-cart" />
                                             <CartShow />
                                             </button>
-                                    {!user && <Link href="/sign-up"><img src={noUser.src} /></Link> }
                                 </div>
                                 {user &&
                                     <button className="logout_btn" type="button" onClick={() => {

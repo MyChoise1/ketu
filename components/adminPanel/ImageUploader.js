@@ -57,7 +57,7 @@ const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose }) => {
     const data = await Promise.all(images.map((image) => uploadImage(image)));
 
     if (data.length > 0) {
-      onUploadedEnd(data);
+      onUploadedEnd(data.length === 1 ? data[0] : data);
     }
   };
 

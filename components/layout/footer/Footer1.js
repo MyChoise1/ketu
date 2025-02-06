@@ -41,13 +41,13 @@ export default function Footer1() {
                           <Link href="/FAQ">FAQ's</Link>
                         </li>
                         <li>
+                          <Link href="/policies/privacy-policy">Privacy Policy</Link>
+                        </li>
+                        <li>
                           <Link href="/policies/refund-policy">Refund & cancellation</Link>
                         </li>
                         <li>
                           <Link href="/policies/terms-of-service">Terms of Service</Link>
-                        </li>
-                        <li>
-                          <Link href="/policies/privacy-policy">Privacy Policy</Link>
                         </li>
                       </ul>
                     </div>

@@ -74,8 +74,8 @@ export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
                                 <span className="heilight-price">₹{total.toFixed(2)}</span>
                             </div>
                             <div className="tpcart__checkout-btn mb-3">
-                                <Link className="tpcart-btn mb-10" href="/cart">View Cart</Link>
-                                <Link className="tpcheck-btn" href="/checkout">Checkout</Link>
+                                <Link className="tpcart-btn mb-10" href="/cart" target="_parent">View Cart</Link>
+                                <Link className="tpcheck-btn" href="/checkout" target="_parent">Checkout</Link>
                             </div>
                         </div>
                     </div>
