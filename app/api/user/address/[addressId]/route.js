@@ -1,3 +1,9 @@
+import prismadb from "@/libs/prismadb";
+import { sessionOptions } from "@/libs/session";
+import { getIronSession } from "iron-session";
+import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
+
 export async function PUT(req, { params }) {
   const session = await getIronSession(cookies(), sessionOptions);
   if (!session.auth) {
@@ -5,14 +11,14 @@ export async function PUT(req, { params }) {
   }
 
   try {
-    const { address, city, state, country, zip, type } = await req.json();
+    const { address, city, state, country, zip, type, first_name, last_name, phone } = await req.json();
 
     if (!address || !city || !state || !country || !zip || !type) {
       return new NextResponse("Missing required fields", { status: 400 });
     }
 
     await prismadb.address.update({
-      where: { id: params.addressId },
+      where: { id: parseInt(params.addressId) },
       data: {
         userId: session.auth.userId,
         address,
@@ -21,6 +27,9 @@ export async function PUT(req, { params }) {
         country,
         zip,
         type,
+        first_name,
+        last_name,
+        phone
       },
     });
 

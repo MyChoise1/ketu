@@ -8842,6 +8842,14 @@ p.checkout-coupon input[type="text"]:focus {
   display: none;
 }
 
+.success_msg {
+  padding: 20px;
+  background-color: var(--tp-text-primary);
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+}
+
 .checkbox-form h3 {
   border-bottom: 1px solid #eaedff;
   font-size: 26px;

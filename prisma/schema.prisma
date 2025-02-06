@@ -112,6 +112,11 @@ model Address {
   id        Int         @id @default(autoincrement())
   userId    String
   user      User        @relation(fields: [userId], references: [id])
+
+  first_name String
+  last_name String
+  phone     String
+
   address   String
   city      String
   state     String

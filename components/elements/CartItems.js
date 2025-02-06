@@ -63,7 +63,7 @@ const CartItems = () => {
                             onClick={() => deleteCartHandler(item?.id)}
                             className="remove"
                         >
-                            <span className="flaticon-dustbin">Remove</span>
+                            <span className="flaticon-dustbin">Remove Item</span>
                         </button>
                     </td>
                 </tr>

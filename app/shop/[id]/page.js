@@ -428,8 +428,7 @@ const ShopSingleDynamicV1 = () => {
                                             </div>
                                         </div>
                                         <div>
-                                            {/* add a button byu now with width full  */}
-                                            <button className="btn buy_btn">Buy Now</button>
+                                            <Link href={`/checkout?produtid=${product.id}`}><button className="btn buy_btn">Buy Now</button></Link>
                                         </div>
                                     </div>
                                 </div>

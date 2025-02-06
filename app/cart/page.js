@@ -35,20 +35,6 @@ export default function Cart() {
                                             </tbody>
                                         </table>
                                     </div>
-                                    <div className="row">
-                                        <div className="col-12">
-                                            <div className="coupon-all">
-                                                <div className="coupon">
-                                                    <input id="coupon_code" className="input-text" name="coupon_code" placeholder="Coupon code" type="text" />
-                                                    <button className="tp-btn tp-color-btn banner-animation" name="apply_coupon" type="submit">Apply
-                                                        Coupon</button>
-                                                </div>
-                                                <div className="coupon2">
-                                                    <button className="tp-btn tp-color-btn banner-animation" name="update_cart" type="submit">Update cart</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div className="row justify-content-end">
                                         <div className="col-md-5 ">
                                             <div className="cart-page-total">

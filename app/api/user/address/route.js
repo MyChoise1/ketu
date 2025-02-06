@@ -11,10 +11,11 @@ export async function GET() {
     return new NextResponse("Session not found", { status: 401 });
   }
   try {
-    const addresses = await prismadb.address.findMany({
+    const addresses = await prismadb.address.findFirst({
       where: {
         userId: session.auth.userId,
       },
+      include: { user: true },
     });
 
     return NextResponse.json(addresses);
@@ -31,9 +32,9 @@ export async function POST(req) {
   }
 
   try {
-    const { address, city, state, country, zip, type } = await req.json();
+    const { address, city, state, country, zip, type, first_name, last_name, phone } = await req.json();
 
-    if (!address || !city || !state || !country || !zip || !type) {
+    if (!address || !city || !state || !country || !zip || !type ) {
       return new NextResponse("Missing required fields", { status: 400 });
     }
 
@@ -46,6 +47,9 @@ export async function POST(req) {
         country,
         zip,
         type,
+        first_name,
+        last_name,
+        phone
       },
     });
 

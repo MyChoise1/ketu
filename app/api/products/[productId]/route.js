@@ -33,6 +33,7 @@ export async function PUT(req, { params }) {
       sell_price,
       thumbnail_one,
       thumbnail_two,
+      thumbnail_three,
       other_images,
       sku,
       stock,
@@ -45,6 +46,7 @@ export async function PUT(req, { params }) {
       !sell_price ||
       !thumbnail_one ||
       !thumbnail_two ||
+      !thumbnail_three ||
       !other_images ||
       !sku ||
       !stock ||
@@ -62,6 +64,7 @@ export async function PUT(req, { params }) {
         images: {
           thumbnail_one,
           thumbnail_two,
+          thumbnail_three,
           other: other_images,
         },
         sku,

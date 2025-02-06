@@ -4,6 +4,7 @@ import { useState } from 'react';
  
 export default function AvatarUploadPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageurl , setImageurl] = useState([]);
  
   return (
     <div>
@@ -11,9 +12,17 @@ export default function AvatarUploadPage() {
     {isModalOpen && (
       <ImageUploaderModal
         multimage={true} // Allow multiple images
+        onUploadedEnd={(bloburl) => {
+          setImageurl(bloburl)
+          setIsModalOpen(false);
+        }}
         onClose={() => setIsModalOpen(false)}
       />
     )}
+    <p>{imageurl.map(imageurl => {
+      return <><a href={imageurl} >{imageurl}</a> <br /></>
+    })
+      }</p>
   </div>
  )
 }

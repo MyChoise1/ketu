@@ -21,6 +21,7 @@ export async function POST(req) {
       sell_price,
       thumbnail_one,
       thumbnail_two,
+      thumbnail_three,
       other_images,
       sku,
       stock,
@@ -49,6 +50,7 @@ export async function POST(req) {
         images: {
           thumbnail_one,
           thumbnail_two,
+          thumbnail_three,
           other: other_images,
         },
         sku,
