@@ -32,7 +32,7 @@ export default function Footer1() {
                       <ul className="row">
                         {/* <li><span>GST-No:</span>27MWUPS1500D1Z7</li> */}
                         <li>
-                          <Link href="/contact">Contact</Link>
+                          <Link href="/about">About</Link>
                         </li>
                         <li>
                           <Link href="/policies/shipping-policy">Shipping</Link>
