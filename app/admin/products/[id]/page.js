@@ -210,13 +210,18 @@ const ProductDetail = () => {
           )}
 
           <label>Other Images:</label>
-          <input
-            type="text"
-            id="other_images"
-            className="other_images"
-            src={formData.other_images}
-            disabled
-          />
+          {formData.other_images.map((image, index) => {
+            return (
+              <div key={index}>
+                <img
+                  src={image}
+                  alt={`Other image ${index + 1}`}
+                  className="other_images"
+                  style={{ width: "50px", height: "50px", objectFit: "cover" }} // Adjust size as needed
+                />
+              </div>
+            );
+          })}
           <button type="button" onClick={() => setIsModalOpen4(true)}>
             Upload Images
           </button>
