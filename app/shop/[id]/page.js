@@ -214,14 +214,14 @@ const ShopSingleDynamicV1 = () => {
                                     <div className="tab-content tp-content-tab" id="myTabContent-2">
                                         <div className={activeIndex == 1 ? "tab-para tab-pane fade show active" : "tab-para tab-pane fade"}>
                                             {product.description.length > 0 ?
-                                            <p className="mb-30">{product.description}</p>:
-                                            <p>No Description</p>}
-                                            </div>
+                                                <p className="mb-30">{product.description}</p> :
+                                                <p>No Description</p>}
+                                        </div>
                                         <div className={activeIndex == 2 ? "tab-pane fade show active" : "tab-pane fade"}>
                                             {product.images.other.length > 0 ? (
                                                 <div className="related_product">
-                                                {product.images.other.map((image, index) => (
-                                                    <img key={index} src={image} alt={`Product Image ${index + 1}`} className="img-fluid" />
+                                                    {product.images.other.map((image, index) => (
+                                                        <img key={index} src={image} alt={`Product Image ${index + 1}`} className="img-fluid" />
                                                     ))}
                                                 </div>
                                             ) : (
@@ -317,34 +317,36 @@ const ShopSingleDynamicV1 = () => {
                     <div className="row g-4 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-2">
                         {products?.filter(p => p.id !== id).slice(0, 4).map((product) => (
                             <div key={product.id} className="col-md-6 p-2">
-                                <div className="card product-card">
-                                    <div className="position-relative">
-                                        <img src={product.images.thumbnail_one} alt={product.name} className="card-img-top product-image" />
-                                    </div>
-                                    <div className="tpproduct__content-area ps-1 pe-1 mb-4 d-flex flex-column">
-                                        <h3 className="tpproduct__title mb-5"><Link href={`/shop/${product.id}`}>{product.name}</Link></h3>
-                                        <div className="tpproduct__priceinfo d-flex align-items-center justify-content-between">
-                                            <div className="tpproduct__ammount">
-                                                <span>₹ {product.sell_price}.00</span>
-                                            </div>
-                                            <div className="tpproduct__rating">
-                                                <ul>
-                                                    {[...Array(5)].map((_, i) => (
-                                                        <li key={i}>
-                                                            <Link href="#"><i className={i < 4 ? "fas fa-star" : "far fa-star"} /></Link>
+                                <Link href={`/shop/${product.id}`}>
+                                    <div className="card product-card">
+                                        <div className="position-relative">
+                                            <img src={product.images.thumbnail_one} alt={product.name} className="card-img-top product-image" />
+                                        </div>
+                                        <div className="tpproduct__content-area ps-1 pe-1 mb-4 d-flex flex-column">
+                                            <h3 className="tpproduct__title mb-5">{product.name}</h3>
+                                            <div className="tpproduct__priceinfo d-flex align-items-center justify-content-between">
+                                                <div className="tpproduct__ammount">
+                                                    <span>₹ {product.sell_price}.00</span>
+                                                </div>
+                                                <div className="tpproduct__rating">
+                                                    <ul>
+                                                        {[...Array(5)].map((_, i) => (
+                                                            <li key={i}>
+                                                                <Link href="#"><i className={i < 4 ? "fas fa-star" : "far fa-star"} /></Link>
+                                                            </li>
+                                                        ))}
+                                                        <li>
+                                                            <span>(81)</span>
                                                         </li>
-                                                    ))}
-                                                    <li>
-                                                        <span>(81)</span>
-                                                    </li>
-                                                </ul>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <Link href={`/checkout?produtid=${product.id}`}><button className="btn buy_btn">Buy Now</button></Link>
                                             </div>
                                         </div>
-                                        <div>
-                                            <Link href={`/checkout?produtid=${product.id}`}><button className="btn buy_btn">Buy Now</button></Link>
-                                        </div>
                                     </div>
-                                </div>
+                                </Link>
                             </div>
                         ))}
                     </div>
