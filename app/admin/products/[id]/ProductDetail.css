@@ -51,6 +51,23 @@
     flex-direction: column;
     gap: 15px;
   }
+
+  .thumbnail_one {
+    width: 30%;
+    height: auto;
+  }
+  .thumbnail_two {
+    width: 30%;
+    height: auto;
+  }
+  .thumbnail_three {
+    width: 30%;
+    height: auto;
+  }
+  .other_images {
+    width: 30%;
+    height: auto;
+  }
   
   label {
     font-weight: bold;

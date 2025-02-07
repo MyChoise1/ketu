@@ -92,7 +92,7 @@ const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose }) => {
             required
           />
         </div>
-        <button onClick={handleUpload} type="submit" className="upload-button">
+        <button onClick={handleUpload} type="button" className="upload-button">
           Upload
         </button>
 

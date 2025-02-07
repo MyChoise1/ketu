@@ -38,7 +38,7 @@ export default function Footer1() {
                           <Link href="/policies/shipping-policy">Shipping</Link>
                         </li>
                         <li>
-                          <Link href="/FAQ">FAQ's</Link>
+                          <Link href="/faq">FAQ's</Link>
                         </li>
                         <li>
                           <Link href="/policies/privacy-policy">Privacy Policy</Link>

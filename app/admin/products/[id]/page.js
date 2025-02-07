@@ -133,11 +133,11 @@ const ProductDetail = () => {
           />
 
           <label>Thumbnail One:</label>
-          <input
+          <img
             type="url"
             id="thumbnail_one"
-            name="thumbnail_one"
-            value={formData.thumbnail_one}
+            className="thumbnail_one"
+            src={formData.thumbnail_one}
             onChange={handleChange}
             required
             disabled
@@ -159,11 +159,11 @@ const ProductDetail = () => {
           )}
 
           <label>Thumbnail Two:</label>
-          <input
+          <img
             type="url"
             id="thumbnail_two"
-            name="thumbnail_two"
-            value={formData.thumbnail_two}
+            className="thumbnail_two"
+            src={formData.thumbnail_two}
             onChange={handleChange}
             required
             disabled
@@ -185,11 +185,11 @@ const ProductDetail = () => {
           )}
 
           <label>Thumbnail Three:</label>
-          <input
+          <img
             type="url"
             id="thumbnail_three"
-            name="thumbnail_three"
-            value={formData.thumbnail_three}
+            className="thumbnail_three"
+            src={formData.thumbnail_three}
             onChange={handleChange}
             disabled
           />
@@ -213,8 +213,8 @@ const ProductDetail = () => {
           <input
             type="text"
             id="other_images"
-            name="other_images"
-            value={formData.other_images}
+            className="other_images"
+            src={formData.other_images}
             disabled
           />
           <button type="button" onClick={() => setIsModalOpen4(true)}>

@@ -5,7 +5,7 @@ export default function Contact() {
 
     return (
         <>
-            <Layout headerStyle={3} footerStyle={1}>
+            <Layout headerStyle={1} footerStyle={1}>
                 <div>
                     <section className="contact-area pt-80 pb-80">
                         <div className="container">
@@ -16,23 +16,22 @@ export default function Contact() {
                                             <h4 className="tpshop__title mb-25">Get In Touch</h4>
                                             <div className="tpshop__info">
                                                 <ul>
-                                                    <li><i className="fal fa-map-marker-alt" /> <Link href="#">24/26 Strait Bargate, Boston, PE21,  United Kingdom</Link></li>
+                                                    <li><i className="fal fa-map-marker-alt" /> <Link href="https://www.google.com/maps?q=75+Eishwar+Nagar,Majrewadi,Solapur,Maharashtra+413005" target="_blank">75 eishwar nagar near basavruddh maharaj matth behinde alfurkan institute, airport road Majrewadi, Solapur, Maharashtra 413 005.</Link></li>
                                                     <li>
                                                         <i className="fal fa-phone" />
-                                                        <Link href="/tel:0123456789">+098 (905) 786 897 8</Link>
-                                                        <Link href="/tel:0123456789">6 - 146 - 389 - 5748</Link>
+                                                        <Link href="#">+91 9637 1313 35</Link>
                                                     </li>
                                                     <li>
                                                         <i className="fal fa-clock" />
                                                         <span>Store Hours:</span>
-                                                        <span>10 am - 10 pm EST, 7 days a week</span>
+                                                        <span>10 am - 10 pm, 6 days a week Sunday off</span>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </div>
                                         <div className="tpcontact__support">
-                                            <Link href="/tel:0123456">Get Support On Call <i className="fal fa-headphones" /></Link>
-                                            <Link target="_blank" href="https://www.google.com/maps/@36.963672,-119.2249843,7.17z">Get Direction <i className="fal fa-map-marker-alt" /></Link>
+                                            <Link href="#">Get Support On Call <i className="fal fa-headphones" /></Link>
+                                            <Link target="_blank" href="https://www.google.com/maps?q=75+Eishwar+Nagar,Majrewadi,Solapur,Maharashtra+413005">Get Direction <i className="fal fa-map-marker-alt" /></Link>
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +83,7 @@ export default function Contact() {
                     {/* map-area-start */}
                     <div className="map-area">
                         <div className="tpshop__location-map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193313.696093143!2d-74.25983952323838!3d40.794422695521675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sbd!4v1663062642075!5m2!1sen!2sbd" width={600} height={450} style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.053516038058!2d75.89566137591847!3d17.65923108394371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5dbf53cfb9d6d%3A0x4e7df8b5d2b6e50!2s75%20Eishwar%20Nagar%2C%20Majrewadi%2C%20Solapur%2C%20Maharashtra%20413005%2C%20India!5e0!3m2!1sen!2sin!4v1707312345678!5m2!1sen!2sin" width={600} height={450} style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
                         </div>
                     </div>
                 </div>

@@ -1,15 +1,12 @@
 'use client'
 import Layout from "@/components/layout/Layout"
 import useFetchProducts from "@/components/useFetchProducts"
-import { addWishlist } from "@/features/wishlistSlice"
-// import products from "@/data/products"
 import { addCart, addQty } from "@/features/shopSlice"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import { useEffect, useState } from "react"
+import {useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Autoplay, Navigation, Pagination } from "swiper/modules"
-import { Swiper, SwiperSlide } from "swiper/react"
 import Preloader from "@/components/elements/Preloader"
 
 
@@ -75,14 +72,10 @@ const ShopSingleDynamicV1 = () => {
         dispatch(addQty({ id, qty }));
     };
 
-    const { cart } = useSelector((state) => state.shop) || {}
-    // Loading state
     if (loading) return <Preloader />
 
-    // Error state
     if (error) return <p>Error: {error}</p>;
 
-    // If product doesn't exist or is still loading, show a fallback
     if (!product) return <p>Product not found or loading...</p>;
 
     return (
@@ -119,27 +112,6 @@ const ShopSingleDynamicV1 = () => {
                                     </div>
                                 </div>
                             </div>
-                            {/* <div id="carouselExampleFade" className="carousel slide carousel-fade">
-                                <div className="carousel-inner">
-                                    <div className="carousel-item active">
-                                        <img src={`${product.images.thumbnail_one}`} className="d-block w-100" alt="product" />
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img src={`${product.images.thumbnail_two}`} className="d-block w-100" alt="product" />
-                                    </div>
-                                    <div className="carousel-item">
-                                        <img src={`${product.images.thumbnail_one}`} className="d-block w-100" alt="product" />
-                                    </div>
-                                </div>
-                                <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-                                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span className="visually-hidden">Previous</span>
-                                </button>
-                                <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-                                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span className="visually-hidden">Next</span>
-                                </button>
-                            </div> */}
                             <div className="col-lg-5 col-md-7">
                                 <div className="tpproduct-details__content">
                                     <div className="tpproduct-details__tag-area d-flex align-items-center mb-5">
@@ -188,15 +160,6 @@ const ShopSingleDynamicV1 = () => {
                                             </button>
                                         </Link>
                                     </div>
-
-                                    {/* <div className="tpproduct-details__information tpproduct-details__social">
-                                            <p>Share:</p>
-                                            <Link href="#"><i className="fab fa-facebook-f" /></Link>
-                                            <Link href="#"><i className="fab fa-twitter" /></Link>
-                                            <Link href="#"><i className="fab fa-behance" /></Link>
-                                            <Link href="#"><i className="fab fa-youtube" /></Link>
-                                            <Link href="#"><i className="fab fa-linkedin" /></Link>
-                                        </div> */}
                                 </div>
                             </div>
                             <div className="col-lg-2 col-md-5">
