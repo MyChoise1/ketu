@@ -7,7 +7,7 @@ const AboutUs = () => {
     <Layout >    <div className="about-container">
       <h2>About Us</h2>
       <p className="welcome-text">
-        Welcome to <strong>Wild Tree</strong>
+        Welcome to <strong> kesari turtle engineers</strong>
       </p>
       <p>
         We aim to offer our customers a variety of the latest products for Home
@@ -17,7 +17,7 @@ const AboutUs = () => {
         customer service and friendly support.
       </p>
       <p>
-        We at katu@Engineers.in believe in high quality and exceptional customer service.
+        We at <a href="https://mail.google.com/mail/?view=cm&to=ketu.center@gmail.com">ketu.center@gmail.com</a> believe in high quality and exceptional customer service.
         But most importantly, we believe shopping is a right, not a luxury, so we strive
         to deliver the best products at the most affordable prices, and ship them to you
         regardless of where you are located.
@@ -27,7 +27,7 @@ const AboutUs = () => {
           <strong>EMAIL US -</strong> <a href="https://mail.google.com/mail/?view=cm&to=ketu.center@gmail.com">ketu.center@gmail.com</a>
         </p>
         <p>
-          <strong>WHATSAPP/CALL US -</strong> <a href="#">+91 9673909029</a>
+          <strong>WHATSAPP/CALL US -</strong> <a href="#">+91 9637 1313 35</a>
         </p>
         <p className="company-name">
           <strong>COMPANY NAME :</strong> kesari Turtle Engineers

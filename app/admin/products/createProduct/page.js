@@ -10,7 +10,10 @@ const CreateProductForm = () => {
     const [isModalOpen3, setIsModalOpen3] = useState(false);
     const [isModalOpen4, setIsModalOpen4] = useState(false);
 
-    const router = useRouter()
+    const router = useRouter();
+    const onChange = () => {
+        router.push('/admin/products');
+    };
 
     const [formData, setFormData] = useState({
         name: "",
@@ -56,7 +59,7 @@ const CreateProductForm = () => {
 
             const result = await response.json();
             confirm(`Product Created Successfully! Product ID: ${result.product_id}`);
-            router.push('/admin/products')
+            router.push('/admin/products');
         } catch (error) {
             console.error("Error:", error);
             alert("An error occurred while creating the product.");
@@ -83,17 +86,15 @@ const CreateProductForm = () => {
                         <input type="number" id="sell_price" name="sell_price" value={formData.sell_price} onChange={handleChange} step="0.01" required />
                     </div>
 
+                    {/* Thumbnail 1 */}
                     <div className="form-group">
-                        <label htmlFor="thumbnail_one">Thumbnail Image 1 URL:</label>
-                        <input type="url" id="thumbnail_one" name="thumbnail_one" value={formData.thumbnail_one} onChange={handleChange} required disabled />
-                        <button type="button" onClick={() => setIsModalOpen(true)}>Upload Image</button>
+                        <label>Thumbnail Image 1:</label>
+                        {formData.thumbnail_one ? <img src={formData.thumbnail_one} alt="Thumbnail 1" className="thumbnail-img" /> : <p style={{ textAlign: "center" }}>No Image</p>}
+                        <button className="upload-btn" type="button" onClick={() => setIsModalOpen(true)}>Upload Image</button>
                         {isModalOpen && (
                             <ImageUploaderModal
                                 onUploadedEnd={(bloburl) => {
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        thumbnail_one: bloburl,
-                                    }));
+                                    setFormData((prev) => ({ ...prev, thumbnail_one: bloburl }));
                                     setIsModalOpen(false);
                                 }}
                                 onClose={() => setIsModalOpen(false)}
@@ -101,17 +102,15 @@ const CreateProductForm = () => {
                         )}
                     </div>
 
+                    {/* Thumbnail 2 */}
                     <div className="form-group">
-                        <label htmlFor="thumbnail_two">Thumbnail Image 2 URL:</label>
-                        <input type="url" id="thumbnail_two" name="thumbnail_two" value={formData.thumbnail_two} onChange={handleChange} required disabled />
-                        <button type="button" onClick={() => setIsModalOpen2(true)}>Upload Image</button>
+                        <label>Thumbnail Image 2:</label>
+                        {formData.thumbnail_two ? <img src={formData.thumbnail_two} alt="Thumbnail 2" className="thumbnail-img" /> : <p style={{ textAlign: "center" }}>No Image</p>}
+                        <button className="upload-btn" type="button" onClick={() => setIsModalOpen2(true)}>Upload Image</button>
                         {isModalOpen2 && (
                             <ImageUploaderModal
                                 onUploadedEnd={(bloburl) => {
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        thumbnail_two: bloburl,
-                                    }));
+                                    setFormData((prev) => ({ ...prev, thumbnail_two: bloburl }));
                                     setIsModalOpen2(false);
                                 }}
                                 onClose={() => setIsModalOpen2(false)}
@@ -119,17 +118,15 @@ const CreateProductForm = () => {
                         )}
                     </div>
 
+                    {/* Thumbnail 3 */}
                     <div className="form-group">
-                        <label htmlFor="thumbnail_three">Thumbnail Image 3 URL:</label>
-                        <input type="url" id="thumbnail_three" name="thumbnail_three" value={formData.thumbnail_three} onChange={handleChange} required disabled />
-                        <button type="button" onClick={() => setIsModalOpen3(true)}>Upload Image</button>
+                        <label>Thumbnail Image 3:</label>
+                        {formData.thumbnail_three ? <img src={formData.thumbnail_three} alt="Thumbnail 3" className="thumbnail-img" /> : <p style={{ textAlign: "center" }}>No Image</p>}
+                        <button className="upload-btn" type="button" onClick={() => setIsModalOpen3(true)}>Upload Image</button>
                         {isModalOpen3 && (
                             <ImageUploaderModal
                                 onUploadedEnd={(bloburl) => {
-                                    setFormData((prev) => ({
-                                        ...prev,
-                                        thumbnail_three: bloburl,
-                                    }));
+                                    setFormData((prev) => ({ ...prev, thumbnail_three: bloburl }));
                                     setIsModalOpen3(false);
                                 }}
                                 onClose={() => setIsModalOpen3(false)}
@@ -137,10 +134,17 @@ const CreateProductForm = () => {
                         )}
                     </div>
 
+                    {/* Other Images */}
                     <div className="form-group">
-                        <label htmlFor="other_images">Other Images URLs:</label>
-                        <input type="text" id="other_images" name="other_images" value={formData.other_images} disabled />
-                        <button type="button" onClick={() => setIsModalOpen4(true)}>Upload Images</button>
+                        <label>Other Images:</label>
+                        {formData.other_images.length > 0 ?
+                            <div className="other-images-container">
+                             {formData.other_images.map((image, index) => (
+                                <img key={index} src={image} alt={`Other image ${index + 1}`} className="other-image" />
+                                ))}
+                            </div> :
+                            <p style={{ textAlign: "center" }}>No Image</p>}
+                        <button className="upload-btn" type="button" onClick={() => setIsModalOpen4(true)}>Upload Images</button>
                         {isModalOpen4 && (
                             <ImageUploaderModal
                                 multimage={true}
@@ -172,6 +176,7 @@ const CreateProductForm = () => {
                     </div>
 
                     <button type="submit" className="submit-button">Create Product</button>
+                    <p className="cancel" onClick={() => onChange()}>Cancel Create</p>
                 </form>
             </div>
         </>

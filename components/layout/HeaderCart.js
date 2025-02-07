@@ -25,8 +25,8 @@ export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
                 <div className="tpcart">
                     <h4 className="tpcart__title">Your Cart</h4>
                     <div className="tpcart__product">
-                        <div className="tpcart__product-list">
-                            <Scrollbars style={{ width: 400, height: 470 }} autoHide>
+                        <div className="tpcart__product-list" style={{ overflowX: 'hidden' }}>
+                            <Scrollbars style={{ width: 400, height: 470, }} autoHide>
                                 <ul className="list-unstyled">
                                     {cart && cart.length > 0 ? (
                                         cart.map((item, i) => (

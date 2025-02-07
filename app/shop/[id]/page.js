@@ -4,11 +4,10 @@ import useFetchProducts from "@/components/useFetchProducts"
 import { addCart, addQty } from "@/features/shopSlice"
 import Link from "next/link"
 import { useParams } from "next/navigation"
-import {useState } from "react"
+import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { Autoplay, Navigation, Pagination } from "swiper/modules"
 import Preloader from "@/components/elements/Preloader"
-
 
 const swiperOptions = {
     modules: [Autoplay, Pagination, Navigation],
@@ -47,7 +46,7 @@ const ShopSingleDynamicV1 = () => {
     const { id } = useParams();  // Get the 'id' from the URL params
     const { products, loading, error } = useFetchProducts();  // Fetch products using your custom hook
 
-    const [activeIndex2, setActiveIndex2] = useState(4);
+    const [activeIndex2, setActiveIndex2] = useState(0);
     const [activeIndex, setActiveIndex] = useState(1);
 
     const dispatch = useDispatch()
@@ -87,27 +86,30 @@ const ShopSingleDynamicV1 = () => {
                             <div className="col-lg-5 col-md-12">
                                 <div className="tpproduct-details__nab pr-50 mb-40">
                                     <div className="d-flex align-items-start">
-                                        <div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                            <button className={activeIndex2 === 4 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick2(4)}>
-                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" />
-                                            </button>
-                                            <button className={activeIndex2 === 5 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick2(5)}>
-                                                <img src={`${product.images.thumbnail_two}`} alt="Back View" />
-                                            </button>
-                                            <button className={activeIndex2 === 6 ? "nav-link active" : "nav-link"} onClick={() => handleOnClick2(4)}>
-                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" />
-                                            </button>
+                                        <div className="nav flex-column nav-pills me-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                            {product.images && Object.entries(product.images).map(([key, value], index) => {
+                                                if (key !== "other") {
+                                                    return (
+                                                        <button
+                                                            key={key}
+                                                            className={activeIndex2 === index ? "nav-link active" : "nav-link"}
+                                                            onClick={() => handleOnClick2(index)}
+                                                        >
+                                                            <img src={value} alt={`Thumbnail ${index + 1}`} className="product_display-preview" />
+                                                        </button>
+                                                    )
+                                                }
+                                            })}
                                         </div>
                                         <div className="tab-content" id="v-pills-tabContent">
-                                            <div className={activeIndex2 === 4 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" style={{ Height: '600px', width: 'auto' }} />
-                                            </div>
-                                            <div className={activeIndex2 === 5 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                                <img src={`${product.images.thumbnail_two}`} alt="Back View" style={{ Height: '600px', width: 'auto' }} />
-                                            </div>
-                                            <div className={activeIndex2 === 6 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                                <img src={`${product.images.thumbnail_one}`} alt="Front View" style={{ Height: '600px', width: 'auto' }} />
-                                            </div>
+                                            {product.images && Object.entries(product.images).map(([key, value], index) => (
+                                                <div
+                                                    key={key}
+                                                    className={activeIndex2 === index ? "tab-pane fade show active" : "tab-pane fade"}
+                                                >
+                                                    <img src={value} alt={`Product Image ${index + 1}`} className="product_display" />
+                                                </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
@@ -115,24 +117,24 @@ const ShopSingleDynamicV1 = () => {
                             <div className="col-lg-5 col-md-7">
                                 <div className="tpproduct-details__content">
                                     <div className="tpproduct-details__tag-area d-flex align-items-center mb-5">
-                                        <span className="tpproduct-details__tag">Dryer</span>
+                                        <span className="tpproduct-details__tag">{product.category}</span>
                                         <div className="tpproduct-details__rating">
-                                            <Link href="#"><i className="fas fa-star" /></Link>
-                                            <Link href="#"><i className="fas fa-star" /></Link>
-                                            <Link href="#"><i className="fas fa-star" /></Link>
+                                            {[...Array(5)].map((_, i) => (
+                                                <Link key={i} href="#"><i className="fas fa-star" /></Link>
+                                            ))}
                                         </div>
                                         <a className="tpproduct-details__reviewers">5 Reviews</a>
                                     </div>
                                     <div className="tpproduct-details__title-area d-flex align-items-center flex-wrap mb-5">
-                                        <h3 className="tpproduct-details__title">{product?.name}</h3>
+                                        <h3 className="tpproduct-details__title">{product.name}</h3>
                                         <span className="tpproduct-details__stock">In Stock</span>
                                     </div>
                                     <div className="tpproduct-details__price mb-30">
-                                        <del>₹{product?.mrp}</del>
-                                        <span>₹{product?.sell_price}</span>
+                                        <del>₹{product.mrp}</del>
+                                        <span>₹{product.sell_price}</span>
                                     </div>
                                     <div className="tpproduct-details__pera">
-                                        <p>Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a <br />completely modern design and you feel comfortable to put on this hijab. <br />Buy it at the best price.</p>
+                                        <p>{product.description}</p>
                                     </div>
                                     <div className="tpproduct-details__actions">
                                         <div className="tpproduct-details__quantity">
@@ -145,7 +147,7 @@ const ShopSingleDynamicV1 = () => {
                                                         defaultValue={1}
                                                         min={1}
                                                         max={10}
-                                                        onChange={(e) => qtyHandler(product?.id, e.target.value)}
+                                                        onChange={(e) => qtyHandler(product.id, e.target.value)}
                                                         style={{ width: "100%" }}
                                                     />
                                                 </div>
@@ -211,101 +213,53 @@ const ShopSingleDynamicV1 = () => {
                                     </div>
                                     <div className="tab-content tp-content-tab" id="myTabContent-2">
                                         <div className={activeIndex == 1 ? "tab-para tab-pane fade show active" : "tab-para tab-pane fade"}>
-                                            <p className="mb-30">In marketing a product is an object or system made available for consumer use it is anything that can be offered to a market to satisfy the desire or need of a customer. In retailing, products are often referred to as
-                                                merchandise, and in manufacturing, products are bought as raw materials and then sold as finished goods. A service is also regarded to as a type of product. Commodities are usually raw materials such as metals
-                                                and agricultural products, but a commodity can also be anything widely available in the open market. In project management, products are the formal definition of the project deliverables that make up contribute
-                                                to delivering the objectives of the project.</p>
-                                        </div>
+                                            {product.description.length > 0 ?
+                                            <p className="mb-30">{product.description}</p>:
+                                            <p>No Description</p>}
+                                            </div>
                                         <div className={activeIndex == 2 ? "tab-pane fade show active" : "tab-pane fade"}>
-                                            {/* Images div */}
-                                            <div className="d-flex justify-content-center height-200px h-50"> NO IMAGE </div>
+                                            {product.images.other.length > 0 ? (
+                                                <div className="related_product">
+                                                {product.images.other.map((image, index) => (
+                                                    <img key={index} src={image} alt={`Product Image ${index + 1}`} className="img-fluid" />
+                                                    ))}
+                                                </div>
+                                            ) : (
+                                                <div className="d-flex justify-content-center height-200px h-50"> NO IMAGE </div>
+                                            )}
                                         </div>
                                         <div className={activeIndex == 3 ? "tab-pane fade show active" : "tab-pane fade"}>
                                             <div className="product-details-review">
-                                                <h3 className="tp-comments-title mb-35">3 reviews for “Wide Cotton Tunic extreme hammer”</h3>
+                                                <h3 className="tp-comments-title mb-35">3 reviews for “{product.name}”</h3>
                                                 <div className="latest-comments mb-55">
                                                     <ul>
-                                                        <li>
-                                                            <div className="comments-box d-flex">
-                                                                <div className="comments-avatar mr-10">
-                                                                    <img src="/assets/img/icon/user.png" alt="" height={30} />
-                                                                </div>
-                                                                <div className="comments-text">
-                                                                    <div className="comments-top d-sm-flex align-items-start justify-content-between mb-5">
-                                                                        <div className="avatar-name">
-                                                                            <b>Siarhei Dzenisenka</b>
-                                                                            <div className="comments-date mb-20">
-                                                                                <span>March 27, 2018 9:51 am</span>
+                                                        {[1, 2, 3].map((_, index) => (
+                                                            <li key={index}>
+                                                                <div className="comments-box d-flex">
+                                                                    <div className="comments-avatar mr-10">
+                                                                        <img src="/assets/img/icon/user.png" alt="" height={30} />
+                                                                    </div>
+                                                                    <div className="comments-text">
+                                                                        <div className="comments-top d-sm-flex align-items-start justify-content-between mb-5">
+                                                                            <div className="avatar-name">
+                                                                                <b>User {index + 1}</b>
+                                                                                <div className="comments-date mb-20">
+                                                                                    <span>March 27, 2018 9:51 am</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div className="user-rating">
+                                                                                <ul>
+                                                                                    {[...Array(5)].map((_, i) => (
+                                                                                        <li key={i}><Link href="#"><i className={i < 4 ? "fas fa-star" : "fal fa-star"} /></Link></li>
+                                                                                    ))}
+                                                                                </ul>
                                                                             </div>
                                                                         </div>
-                                                                        <div className="user-rating">
-                                                                            <ul>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fal fa-star" /></Link></li>
-                                                                            </ul>
-                                                                        </div>
+                                                                        <p className="m-0">This is a great product. I highly recommend it!</p>
                                                                     </div>
-                                                                    <p className="m-0">This is cardigan is a comfortable warm classic piece. Great to layer with a light top and you can dress up or down given the jewel buttons. I'm 5'8” 128lbs a 34A and the Small fit fine.</p>
                                                                 </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div className="comments-box d-flex">
-                                                                <div className="comments-avatar mr-10">
-                                                                    <img src="/assets/img/icon/user.png" alt="" height={30} />
-                                                                </div>
-                                                                <div className="comments-text">
-                                                                    <div className="comments-top d-sm-flex align-items-start justify-content-between mb-5">
-                                                                        <div className="avatar-name">
-                                                                            <b>Tommy Jarvis </b>
-                                                                            <div className="comments-date mb-20">
-                                                                                <span>March 27, 2018 9:51 am</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="user-rating">
-                                                                            <ul>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fal fa-star" /></Link></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p className="m-0">This is cardigan is a comfortable warm classic piece. Great to layer with a light top and you can dress up or down given the jewel buttons. I'm 5'8” 128lbs a 34A and the Small fit fine.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li>
-                                                            <div className="comments-box d-flex">
-                                                                <div className="comments-avatar mr-10">
-                                                                    <img src="/assets/img/icon/user.png" alt="" height={30} />
-                                                                </div>
-                                                                <div className="comments-text">
-                                                                    <div className="comments-top d-sm-flex align-items-start justify-content-between mb-5">
-                                                                        <div className="avatar-name">
-                                                                            <b>Johnny Cash</b>
-                                                                            <div className="comments-date mb-20">
-                                                                                <span>March 27, 2018 9:51 am</span>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div className="user-rating">
-                                                                            <ul>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                                                <li><Link href="#"><i className="fal fa-star" /></Link></li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                    <p className="m-0">This is cardigan is a comfortable warm classic piece. Great to layer with a light top and you can dress up or down given the jewel buttons. I'm 5'8” 128lbs a 34A and the Small fit fine.</p>
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                            </li>
+                                                        ))}
                                                     </ul>
                                                 </div>
                                                 <div className="product-details-comment">
@@ -316,11 +270,9 @@ const ShopSingleDynamicV1 = () => {
                                                     <div className="comment-rating mb-20 d-flex">
                                                         <span>Overall ratings</span>
                                                         <ul>
-                                                            <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                            <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                            <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                            <li><Link href="#"><i className="fas fa-star" /></Link></li>
-                                                            <li><Link href="#"><i className="fal fa-star" /></Link></li>
+                                                            {[...Array(5)].map((_, i) => (
+                                                                <li key={i}><Link href="#"><i className={i < 4 ? "fas fa-star" : "fal fa-star"} /></Link></li>
+                                                            ))}
                                                         </ul>
                                                     </div>
                                                     <div className="comment-input-box">
@@ -363,12 +315,11 @@ const ShopSingleDynamicV1 = () => {
                         <h4 className="tpsection__title">Related Products</h4>
                     </div>
                     <div className="row g-4 row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-2 row-cols-sm-2 row-cols-2">
-                        {products?.map((product) => (
+                        {products?.filter(p => p.id !== id).slice(0, 4).map((product) => (
                             <div key={product.id} className="col-md-6 p-2">
                                 <div className="card product-card">
                                     <div className="position-relative">
                                         <img src={product.images.thumbnail_one} alt={product.name} className="card-img-top product-image" />
-                                        {/* <span className="sale-badge">Sale</span> */}
                                     </div>
                                     <div className="tpproduct__content-area ps-1 pe-1 mb-4 d-flex flex-column">
                                         <h3 className="tpproduct__title mb-5"><Link href={`/shop/${product.id}`}>{product.name}</Link></h3>
@@ -378,13 +329,11 @@ const ShopSingleDynamicV1 = () => {
                                             </div>
                                             <div className="tpproduct__rating">
                                                 <ul>
-                                                    <li>
-                                                        <Link href="#"><i className="fas fa-star" /></Link>
-                                                        <Link href="#"><i className="fas fa-star" /></Link>
-                                                        <Link href="#"><i className="fas fa-star" /></Link>
-                                                        <Link href="#"><i className="fas fa-star" /></Link>
-                                                        <Link href="#"><i className="far fa-star" /></Link>
-                                                    </li>
+                                                    {[...Array(5)].map((_, i) => (
+                                                        <li key={i}>
+                                                            <Link href="#"><i className={i < 4 ? "fas fa-star" : "far fa-star"} /></Link>
+                                                        </li>
+                                                    ))}
                                                     <li>
                                                         <span>(81)</span>
                                                     </li>
@@ -405,4 +354,4 @@ const ShopSingleDynamicV1 = () => {
     )
 }
 
-export default ShopSingleDynamicV1
+export default ShopSingleDynamicV1;

@@ -13,7 +13,7 @@ const ProductDetail = () => {
   const { id } = useParams();
   const { products, loading, error } = useFetchProducts();
   const [product, setProduct] = useState(null);
-  const router = useRouter()
+  const router = useRouter();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModalOpen2, setIsModalOpen2] = useState(false);
@@ -78,10 +78,10 @@ const ProductDetail = () => {
 
       const result = await response.json();
       if (response.ok) {
-        confirm('Changes saved successfully');
+        alert('Changes saved successfully');
         router.push('/admin/products');
       } else {
-        confirm(result.message || "Error updating product");
+        alert(result.message || "Error updating product");
       }
     } catch (error) {
       console.error(error);
@@ -121,6 +121,7 @@ const ProductDetail = () => {
             value={formData.mrp}
             onChange={handleChange}
             required
+            min="0"
           />
 
           <label>Sell Price:</label>
@@ -130,17 +131,15 @@ const ProductDetail = () => {
             value={formData.sell_price}
             onChange={handleChange}
             required
+            min="0"
           />
 
           <label>Thumbnail One:</label>
           <img
-            type="url"
             id="thumbnail_one"
             className="thumbnail_one"
             src={formData.thumbnail_one}
-            onChange={handleChange}
-            required
-            disabled
+            alt="Thumbnail One"
           />
           <button type="button" onClick={() => setIsModalOpen(true)}>
             Upload Image
@@ -160,13 +159,10 @@ const ProductDetail = () => {
 
           <label>Thumbnail Two:</label>
           <img
-            type="url"
             id="thumbnail_two"
             className="thumbnail_two"
             src={formData.thumbnail_two}
-            onChange={handleChange}
-            required
-            disabled
+            alt="Thumbnail Two"
           />
           <button type="button" onClick={() => setIsModalOpen2(true)}>
             Upload Image
@@ -186,12 +182,10 @@ const ProductDetail = () => {
 
           <label>Thumbnail Three:</label>
           <img
-            type="url"
             id="thumbnail_three"
             className="thumbnail_three"
             src={formData.thumbnail_three}
-            onChange={handleChange}
-            disabled
+            alt="Thumbnail Three"
           />
           <button type="button" onClick={() => setIsModalOpen3(true)}>
             Upload Image
@@ -210,18 +204,20 @@ const ProductDetail = () => {
           )}
 
           <label>Other Images:</label>
-          {formData.other_images.map((image, index) => {
-            return (
-              <div key={index}>
-                <img
-                  src={image}
-                  alt={`Other image ${index + 1}`}
-                  className="other_images"
-                  style={{ width: "50px", height: "50px", objectFit: "cover" }} // Adjust size as needed
-                />
-              </div>
-            );
-          })}
+          {formData.other_images.length > 0 ? (
+            <div className="other-images-container">
+            {formData.other_images.map((image, index) => (
+              <img
+                key={index}
+                src={image}
+                alt={`Other image ${index + 1}`}
+                className="other_images"
+              />
+              ))}
+            </div>
+          ) : (
+            "No images"
+          )}
           <button type="button" onClick={() => setIsModalOpen4(true)}>
             Upload Images
           </button>
@@ -255,6 +251,7 @@ const ProductDetail = () => {
             value={formData.stock}
             onChange={handleChange}
             required
+            min="0"
           />
 
           <label>Description:</label>

@@ -19,12 +19,6 @@ const FilterShopBox = () => {
         dispatch(addCart({ product: item }))
     }
 
-
-    // const [activeIndex, setActiveIndex] = useState(2)
-    // const handleOnClick = (index) => {
-    //     setActiveIndex(index)
-    // }
-
     if (loading) return <Preloader />;
     if (error) return <p>Error: {error}</p>;
 
@@ -42,7 +36,7 @@ const FilterShopBox = () => {
                 <div className="col-lg-12">
                     <div className="tab-content" id="nav-tabContent">
                         {/* <div className={activeIndex == 2 ? "tab-pane fade show active" : "tab-pane fade"}> */}
-                        <div className="row row-cols-xxl-2 row-cols-xl-2 row-cols-lg-2 row-cols-md-2 row-cols-sm-2 row-cols-2 tpproduct">
+                        <div className="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2 tpproduct">
                             {
                                 products?.map((item, i) => (
                                     <Fragment key={i}>

@@ -11,6 +11,11 @@ const FAQ = () => {
 
   const faqData = [
     {
+      question: "Do you have a physical store?",
+      answer:
+        "Yes, you can visit our physical store at 75 eishwar nagar near basavruddh maharaj matth behinde alfurkan institute, airport road Majrewadi, Solapur, Maharashtra 413 005.",
+    },
+    {
       question: "Why should I buy from Ketu engineers?",
       answer:
         "We are a small-scale company from Maharashtra offering the best product services with good quality material. We don’t use any imported Chinese material to reduce costs, hamper product life, or cheat customers. We are under the Make in India initiative, and customer trust is our prime focus with the best services.",

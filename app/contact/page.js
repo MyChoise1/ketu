@@ -24,7 +24,7 @@ export default function Contact() {
                                                     <li>
                                                         <i className="fal fa-clock" />
                                                         <span>Store Hours:</span>
-                                                        <span>10 am - 10 pm, 6 days a week Sunday off</span>
+                                                        <span>10 am - 6 pm, 6 days a week Sunday off</span>
                                                     </li>
                                                 </ul>
                                             </div>

@@ -2475,9 +2475,17 @@ a.add-to-cart {
 .tpcart__del {
   position: absolute;
   color: var(--tp-text-primary);
-  left: 0;
+  left: 300px;
   top: 0;
 }
+ @media (max-width: 767px) {
+  .tpcart__del {
+    position: absolute;
+    color: var(--tp-text-primary);
+    left: 220px;
+    top: 0;
+  }
+ }
 
 .tpcart__content-title {
   font-size: 14px;
@@ -2487,7 +2495,7 @@ a.add-to-cart {
 
 @media (max-width: 767px) {
   .tpcart__content-title {
-    max-width: 150px;
+    max-width: 130px;
   }
 }
 
@@ -7825,6 +7833,12 @@ a.add-to-cart {
 /*----------------------------------------*/
 /*  19. PRODUCT-DETAILS CSS START
 /*----------------------------------------*/
+
+.product_display {
+  height: 600px;
+  width: auto;
+}
+
 @media (max-width: 767px) {
   .tpproduct-details__nab {
     padding-right: 0;
@@ -7837,7 +7851,19 @@ a.add-to-cart {
   .tpproduct-details__buy-btn {
     width: 100%;
   }
+
+  .product_display {
+    height: 400px;
+    width: auto;
+  } 
+
+  .product_display-preview {
+    height: 20px;
+  }
+  
 }
+
+
 
 .tpproduct-details__nab .nav-link {
   padding: 0;
@@ -7851,6 +7877,16 @@ a.add-to-cart {
   object-fit: cover;
   border-radius: 6px;
   border-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .tpproduct-details__nab .nav-link img {
+    height: 70px;
+    width: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border-color: transparent;
+  }
 }
 
 .tpproduct-details__nab .nav-link.nav-link.active,
@@ -8402,6 +8438,26 @@ only screen and (min-width: 768px) and (max-width: 991px) {
 @media (max-width: 767px) {
   .tp-comments-title {
     font-size: 18px;
+  }
+}
+
+.related_product {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.img-fluid {
+  height: 300px;
+  width: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .img-fluid {
+    height: 150px;
+    width: auto;
+    object-fit: contain;
   }
 }
 
