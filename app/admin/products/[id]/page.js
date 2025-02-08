@@ -19,6 +19,7 @@ const ProductDetail = () => {
   const [isModalOpen2, setIsModalOpen2] = useState(false);
   const [isModalOpen3, setIsModalOpen3] = useState(false);
   const [isModalOpen4, setIsModalOpen4] = useState(false);
+  const [isModalOpen5, setIsModalOpen5] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -27,6 +28,7 @@ const ProductDetail = () => {
     thumbnail_one: "",
     thumbnail_two: "",
     thumbnail_three: "",
+    video: "",
     other_images: [],
     sku: "",
     stock: "",
@@ -47,6 +49,7 @@ const ProductDetail = () => {
           thumbnail_one: foundProduct.images.thumbnail_one,
           thumbnail_two: foundProduct.images.thumbnail_two,
           thumbnail_three: foundProduct.images.thumbnail_three,
+          video: foundProduct.images.video,
           other_images: foundProduct.images.other || [],
           sku: foundProduct.sku,
           stock: foundProduct.stock,
@@ -187,6 +190,7 @@ const ProductDetail = () => {
             src={formData.thumbnail_three}
             alt="Thumbnail Three"
           />
+          <input type="text" className="thumbnail_three" value={formData.thumbnail_three} />
           <button type="button" onClick={() => setIsModalOpen3(true)}>
             Upload Image
           </button>
@@ -203,25 +207,45 @@ const ProductDetail = () => {
             />
           )}
 
+          {/* video */}
+          <label>Thumbnail Video:</label>
+          <input id="video" type="text" className="thumbnail_three" value={formData.video} style={{width: '100%'}} />
+          <button type="button" onClick={() => setIsModalOpen4(true)}>
+            Upload Image
+          </button>
+          {isModalOpen4 && (
+            <ImageUploaderModal
+              onUploadedEnd={(bloburl) => {
+                setFormData((prev) => ({
+                  ...prev,
+                  video: bloburl,
+                }));
+                setIsModalOpen4(false);
+              }}
+              onClose={() => setIsModalOpen4(false)}
+            />
+          )}
+
+          {/* other images */}
           <label>Other Images:</label>
           {formData.other_images.length > 0 ? (
             <div className="other-images-container">
-            {formData.other_images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`Other image ${index + 1}`}
-                className="other_images"
-              />
+              {formData.other_images.map((image, index) => (
+                <img
+                  key={index}
+                  src={image}
+                  alt={`Other image ${index + 1}`}
+                  className="other_images"
+                />
               ))}
             </div>
           ) : (
             "No images"
           )}
-          <button type="button" onClick={() => setIsModalOpen4(true)}>
+          <button type="button" onClick={() => setIsModalOpen5(true)}>
             Upload Images
           </button>
-          {isModalOpen4 && (
+          {isModalOpen5 && (
             <ImageUploaderModal
               multimage={true}
               onUploadedEnd={(bloburls) => {
@@ -229,9 +253,9 @@ const ProductDetail = () => {
                   ...prev,
                   other_images: [...prev.other_images, ...bloburls],
                 }));
-                setIsModalOpen4(false);
+                setIsModalOpen5(false);
               }}
-              onClose={() => setIsModalOpen4(false)}
+              onClose={() => setIsModalOpen5(false)}
             />
           )}
 

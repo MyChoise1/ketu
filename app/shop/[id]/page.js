@@ -95,9 +95,14 @@ const ShopSingleDynamicV1 = () => {
                                                             className={activeIndex2 === index ? "nav-link active" : "nav-link"}
                                                             onClick={() => handleOnClick2(index)}
                                                         >
-                                                            <img src={value} alt={`Thumbnail ${index + 1}`} className="product_display-preview" />
+                                                            {key === "video" ? (
+                                                                // <video src={value} className="product_display-preview" muted />
+                                                                <p className="video-titile">Video</p>
+                                                            ) : (
+                                                                <img src={value} alt={`Thumbnail ${index + 1}`} className="product_display-preview" />
+                                                            )}
                                                         </button>
-                                                    )
+                                                    );
                                                 }
                                             })}
                                         </div>
@@ -107,7 +112,11 @@ const ShopSingleDynamicV1 = () => {
                                                     key={key}
                                                     className={activeIndex2 === index ? "tab-pane fade show active" : "tab-pane fade"}
                                                 >
-                                                    <img src={value} alt={`Product Image ${index + 1}`} className="product_display" />
+                                                    {key === "video" ? (
+                                                        <video src={value} className="product_display-video" controls />
+                                                    ) : (
+                                                        <img src={value} alt={`Product Image ${index + 1}`} className="product_display" />
+                                                    )}
                                                 </div>
                                             ))}
                                         </div>

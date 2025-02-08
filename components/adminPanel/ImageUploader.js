@@ -85,7 +85,7 @@ const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose }) => {
             name="file"
             ref={inputFileRef}
             type="file"
-            accept="image/*"
+            
             onChange={handleImageChange}
             className="file-input"
             multiple={multimage}

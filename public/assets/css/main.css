@@ -8461,6 +8461,32 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   }
 }
 
+.product_display-video {
+  width: 520px;
+  height: auto;
+
+}
+
+.video-titile {
+  color: rgb(0, 16, 234);
+  font-weight: 500;
+}
+
+@media (max-width: 1320px) and (min-width: 990px) {
+  .product_display-video {
+    width: 380px;
+    height: auto;
+  } 
+}
+
+@media (max-width: 786px) {
+  .product_display-video {
+    width: 275px;
+    height: auto;
+    max-height: 300px;
+  }
+}
+
 .tp-content-tab p {
   font-size: 16px;
   color: var(--tp-text-secondary);
