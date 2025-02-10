@@ -54,7 +54,7 @@ const ShopSingleDynamicV1 = () => {
                                 <div className="tpproduct-details__nab pr-50 mb-40">
                                     <div className="d-flex align-items-start">
                                         <div className="nav flex-column nav-pills me-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                            {product.images.thumbnail && product.images.thumbnail.map((value, index) => (
+                                            {product.images.thumbnail  && product.images.thumbnail.map((value, index) => (
                                                 <button
                                                     key={index}
                                                     className={activeIndex2 === index ? "nav-link active" : "nav-link"}
@@ -76,7 +76,7 @@ const ShopSingleDynamicV1 = () => {
                                                     key={index}
                                                     className={activeIndex2 === index ? "tab-pane fade show active" : "tab-pane fade"}
                                                 >
-                                                    {value.match(/\.(mp4|mov|avi|mkv|webm|flv|wmv|mpeg|mpg|3gp|m4v)$/i) ? (
+                                                    {value && value.match(/\.(mp4|mov|avi|mkv|webm|flv|wmv|mpeg|mpg|3gp|m4v)$/i) ? (
                                                         <video src={value} className="product_display-video" controls />
                                                     ) : (
                                                         <img src={value} alt={`Product Image ${index + 1}`} className="product_display" />
