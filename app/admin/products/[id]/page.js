@@ -155,7 +155,8 @@ const ProductDetail = () => {
               onUploadedEnd={(bloburl) => {
                 setFormData((prev) => ({
                   ...prev,
-                  thumbnail: [...(prev.thumbnail || []), ...bloburl], // Ensures new_images exists
+                  
+                  new_images: [...bloburl], // Ensures new_images exists
                 }));
                 setIsModalOpen(false);
               }}

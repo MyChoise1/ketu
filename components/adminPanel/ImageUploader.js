@@ -68,7 +68,7 @@ const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose, video, limit = 
     setLoading(false); // Set loading to false after upload
 
     if (data.length > 0) {
-      onUploadedEnd(data.length === 1 ? data[0] : data);
+      onUploadedEnd(data);
     }
   };
 
