@@ -31,9 +31,7 @@ export async function PUT(req, { params }) {
       name,
       mrp,
       sell_price,
-      thumbnail_one,
-      thumbnail_two,
-      thumbnail_three,
+      new_images,
       video,
       other_images,
       sku,
@@ -45,9 +43,7 @@ export async function PUT(req, { params }) {
       !name ||
       !mrp ||
       !sell_price ||
-      !thumbnail_one ||
-      !thumbnail_two ||
-      !thumbnail_three ||
+      !new_images ||
       !other_images ||
       !sku ||
       !stock ||
@@ -63,9 +59,7 @@ export async function PUT(req, { params }) {
         mrp: parseFloat(mrp),
         sell_price: parseFloat(sell_price),
         images: {
-          thumbnail_one,
-          thumbnail_two,
-          thumbnail_three,
+          thumbnail: new_images,
           video,
           other: other_images,
         },

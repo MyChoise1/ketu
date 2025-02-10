@@ -1,6 +1,8 @@
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const DeleteButton = ({ productId }) => {
+  const router = useRouter();
   const handleDelete = async () => {
     try {
       const response = await fetch(`/api/products/${productId}`, {
@@ -13,6 +15,7 @@ const DeleteButton = ({ productId }) => {
 
       const data = await response.json();
       alert(data.message); // Show success message
+      router.push('/admin/products');
 
     } catch (error) {
       alert(error.message || 'An error occurred while deleting the product');

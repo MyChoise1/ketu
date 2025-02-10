@@ -19,9 +19,7 @@ export async function POST(req) {
       name,
       mrp,
       sell_price,
-      thumbnail_one,
-      thumbnail_two,
-      thumbnail_three,
+      new_images,
       video,
       other_images,
       sku,
@@ -33,9 +31,7 @@ export async function POST(req) {
       !name ||
       !mrp ||
       !sell_price ||
-      !thumbnail_one ||
-      !thumbnail_two ||
-      !other_images ||
+      !new_images ||
       !sku ||
       !stock ||
       !description
@@ -49,9 +45,7 @@ export async function POST(req) {
         mrp: parseFloat(mrp),
         sell_price: parseFloat(sell_price),
         images: {
-          thumbnail_one,
-          thumbnail_two,
-          thumbnail_three,
+          thumbnail: new_images,
           video,
           other: other_images,
         },

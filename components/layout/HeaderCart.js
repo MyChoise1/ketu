@@ -34,7 +34,7 @@ export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
                                                 <div className="d-flex align-items-center">
                                                     <div className="tpcart__img me-3">
                                                         <img
-                                                            src={item.images.thumbnail_one}
+                                                            src={item.images.thumbnail[0]}
                                                             alt={item.name}
                                                             className="rounded"
                                                             style={{ width: 70, height: 70 }}
@@ -61,7 +61,7 @@ export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
                                             </li>
                                         ))
                                     ) : (
-                                        <li className="text-center py-4">
+                                        <li className="py-4">
                                             <p className="text-muted">Your cart is currently empty.</p>
                                         </li>
                                     )}

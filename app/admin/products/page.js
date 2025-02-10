@@ -34,7 +34,7 @@ const ProductList = () => {
                 <div className="product-card">
                   <img
                     className="product-image"
-                    src={product.images.thumbnail_one}
+                    src={product.images.thumbnail[0]}
                     alt={product.name}
                   />
                   <div className="product-info">

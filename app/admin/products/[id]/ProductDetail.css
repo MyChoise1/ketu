@@ -52,7 +52,7 @@
     gap: 15px;
   }
 
-  .thumbnail_one {
+  .thumbnail {
     width: 30%;
     height: auto;
     object-fit: cover;

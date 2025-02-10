@@ -6,41 +6,7 @@ import Link from "next/link"
 import { useParams } from "next/navigation"
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { Autoplay, Navigation, Pagination } from "swiper/modules"
 import Preloader from "@/components/elements/Preloader"
-
-const swiperOptions = {
-    modules: [Autoplay, Pagination, Navigation],
-    slidesPerView: 5,
-    spaceBetween: 25,
-    autoplay: {
-        delay: 3500,
-    },
-    breakpoints: {
-        1400: {
-            slidesPerView: 5,
-        },
-        1200: {
-            slidesPerView: 5,
-        },
-        992: {
-            slidesPerView: 4,
-        },
-        768: {
-            slidesPerView: 2,
-        },
-        576: {
-            slidesPerView: 2,
-        },
-        0: {
-            slidesPerView: 1,
-        },
-    },
-    navigation: {
-        nextEl: '.tprelated__nxt',
-        prevEl: '.tprelated__prv',
-    },
-}
 
 const ShopSingleDynamicV1 = () => {
     const { id } = useParams();  // Get the 'id' from the URL params
@@ -71,12 +37,13 @@ const ShopSingleDynamicV1 = () => {
         dispatch(addQty({ id, qty }));
     };
 
+    
     if (loading) return <Preloader />
-
+    
     if (error) return <p>Error: {error}</p>;
-
+    
     if (!product) return <p>Product not found or loading...</p>;
-
+    
     return (
         <>
             <Layout headerStyle={1} footerStyle={1} breadcrumbTitle="Shop Details">
@@ -87,32 +54,29 @@ const ShopSingleDynamicV1 = () => {
                                 <div className="tpproduct-details__nab pr-50 mb-40">
                                     <div className="d-flex align-items-start">
                                         <div className="nav flex-column nav-pills me-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                                            {product.images && Object.entries(product.images).map(([key, value], index) => {
-                                                if (key !== "other") {
-                                                    return (
-                                                        <button
-                                                            key={key}
-                                                            className={activeIndex2 === index ? "nav-link active" : "nav-link"}
-                                                            onClick={() => handleOnClick2(index)}
-                                                        >
-                                                            {key === "video" ? (
-                                                                // <video src={value} className="product_display-preview" muted />
-                                                                <p className="video-titile">Video</p>
-                                                            ) : (
-                                                                <img src={value} alt={`Thumbnail ${index + 1}`} className="product_display-preview" />
-                                                            )}
-                                                        </button>
-                                                    );
-                                                }
-                                            })}
+                                            {product.images.thumbnail && product.images.thumbnail.map((value, index) => (
+                                                <button
+                                                    key={index}
+                                                    className={activeIndex2 === index ? "nav-link active" : "nav-link"}
+                                                    onClick={() => handleOnClick2(index)}
+                                                >
+                                                    <img src={value} alt={`Thumbnail ${index + 1}`} className="product_display-preview" />
+                                                </button>
+                                            ))}
+                                            <button
+                                            onClick={() => handleOnClick2(product.images.thumbnail.length )}
+                                            >
+                                                <video src={product.images.video} className="product_display-preview" alt="video" muted />
+                                                {/* <p className="video-titile">Video</p> */}
+                                            </button>
                                         </div>
                                         <div className="tab-content" id="v-pills-tabContent">
-                                            {product.images && Object.entries(product.images).map(([key, value], index) => (
+                                            {[...product.images.thumbnail, product.images.video].map((value, index) => (
                                                 <div
-                                                    key={key}
+                                                    key={index}
                                                     className={activeIndex2 === index ? "tab-pane fade show active" : "tab-pane fade"}
                                                 >
-                                                    {key === "video" ? (
+                                                    {value.match(/\.(mp4|mov|avi|mkv|webm|flv|wmv|mpeg|mpg|3gp|m4v)$/i) ? (
                                                         <video src={value} className="product_display-video" controls />
                                                     ) : (
                                                         <img src={value} alt={`Product Image ${index + 1}`} className="product_display" />
@@ -329,7 +293,7 @@ const ShopSingleDynamicV1 = () => {
                                 <Link href={`/shop/${product.id}`}>
                                     <div className="card product-card">
                                         <div className="position-relative">
-                                            <img src={product.images.thumbnail_one} alt={product.name} className="card-img-top product-image" />
+                                            <img src={product.images.thumbnail} alt={product.name} className="card-img-top product-image" />
                                         </div>
                                         <div className="tpproduct__content-area ps-1 pe-1 mb-4 d-flex flex-column">
                                             <h3 className="tpproduct__title mb-5">{product.name}</h3>
