@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import "./ImageUploader.css";
 import { put } from "@/libs/storage";
 
-const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose, video, limit = 5 }) => {
+const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose, video, limit = 4 }) => {
   const inputFileRef = useRef(null);
   const [images, setImages] = useState([]); // Stores file objects
   const [previews, setPreviews] = useState([]); // Stores preview URLs
