@@ -3,7 +3,7 @@ import React, { useState, useRef } from "react";
 import "./ImageUploader.css";
 import { put } from "@/libs/storage";
 
-const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose, video }) => {
+const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose, video, limit = 5 }) => {
   const inputFileRef = useRef(null);
   const [images, setImages] = useState([]); // Stores file objects
   const [previews, setPreviews] = useState([]); // Stores preview URLs
@@ -15,6 +15,11 @@ const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose, video }) => {
       const imagesArray = Array.from(files);
       const previewURLs = imagesArray.map((file) => URL.createObjectURL(file));
 
+      if (images.length + imagesArray.length > limit) {
+        alert(`You can only upload up to ${limit} images!`);
+        return;
+      }
+
       if (multimage) {
         setImages((prevImages) => [...prevImages, ...imagesArray]);
         setPreviews((prevPreviews) => [...prevPreviews, ...previewURLs]);
@@ -24,6 +29,7 @@ const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose, video }) => {
       }
     }
   };
+
 
   const uploadImage = async (file) => {
     try {
