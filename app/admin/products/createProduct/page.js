@@ -115,7 +115,7 @@ const CreateProductForm = () => {
                     {/* Video */}
                     <label>Thumbnail Video:</label>
                     <input id="video" type="text" className="video" value={formData.video} style={{ width: '100%' }} />
-                    <button type="button" onClick={() => setOpenModal("video")}>
+                    <button type="button" className="upload-btn" onClick={() => setOpenModal("video")}>
                         Upload Image
                     </button>
                     {openModal === "video" && (

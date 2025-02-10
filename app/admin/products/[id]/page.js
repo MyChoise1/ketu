@@ -155,7 +155,6 @@ const ProductDetail = () => {
               onUploadedEnd={(bloburl) => {
                 setFormData((prev) => ({
                   ...prev,
-                  
                   new_images: [...bloburl], // Ensures new_images exists
                 }));
                 setIsModalOpen(false);
