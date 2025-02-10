@@ -9,7 +9,7 @@ export async function GET() {
     return NextResponse.json({ products });
   } catch (error) {
     console.error(error);
-    return new NextResponse(error.message || "An error occurred");
+    return new NextResponse.json(error.message || "An error occurred");
   }
 }
 
@@ -36,7 +36,7 @@ export async function POST(req) {
       !stock ||
       !description
     ) {
-      return new NextResponse("Missing required fields", { status: 400 });
+      return new NextResponse.json("Missing required fields", { status: 400 });
     }
     const product = await prismadb.products.create({
       data: {
@@ -61,6 +61,6 @@ export async function POST(req) {
     });
   } catch (error) {
     console.error(error);
-    return new NextResponse(error.message || "An error occurred");
+    return new NextResponse.json(error.message || "An error occurred");
   }
 }

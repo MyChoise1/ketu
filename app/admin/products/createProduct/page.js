@@ -84,7 +84,7 @@ const CreateProductForm = () => {
 
                     {/* Thumbnail One */}
                     <div className="form-group">
-                        <label>Thumbnail Image 1:</label>
+                        <label>Product Image Top:</label>
                         {formData.new_images.length > 0 ? (
                             <div className="other-images-container">
                                 {formData.new_images.map((image, index) => (
@@ -113,10 +113,10 @@ const CreateProductForm = () => {
                     </div>
 
                     {/* Video */}
-                    <label>Thumbnail Video:</label>
+                    <label>Product Video:</label>
                     <input id="video" type="text" className="video" value={formData.video} style={{ width: '100%' }} />
                     <button type="button" className="upload-btn" onClick={() => setOpenModal("video")}>
-                        Upload Image
+                        Upload Video
                     </button>
                     {openModal === "video" && (
                         <ImageUploaderModal
@@ -133,7 +133,7 @@ const CreateProductForm = () => {
 
                     {/* Other Images */}
                     <div className="form-group">
-                        <label>Other Images:</label>
+                        <label>Product Images All:</label>
                         {formData.other_images.length > 0 ? (
                             <div className="other-images-container">
                                 {formData.other_images.map((image, index) => (

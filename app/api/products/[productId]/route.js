@@ -13,13 +13,13 @@ export async function GET(req, { params }) {
     });
 
     if (!product) {
-      return new NextResponse("Product not found", { status: 404 });
+      return new NextResponse.json("Product not found", { status: 404 });
     }
 
     return NextResponse.json({ product });
   } catch (error) {
     console.error(error);
-    return new NextResponse(error.message || "An error occurred");
+    return new NextResponse.json(error.message || "An error occurred");
   }
 }
 
@@ -49,7 +49,7 @@ export async function PUT(req, { params }) {
       !stock ||
       !description
     ) {
-      return new NextResponse("Missing required fields", { status: 400 });
+      return new NextResponse.json("Missing required fields", { status: 400 });
     }
     const product = await prismadb.products.update({
       where: { id: productId },
@@ -75,7 +75,7 @@ export async function PUT(req, { params }) {
     });
   } catch (error) {
     console.error(error);
-    return new NextResponse(error.message || "An error occurred");
+    return new NextResponse.json(error.message || "An error occurred");
   }
 }
 
@@ -95,6 +95,6 @@ export async function DELETE(req, { params }) {
     });
   } catch (error) {
     console.error(error);
-    return new NextResponse(error.message || "An error occurred");
+    return new NextResponse.json(error.message || "An error occurred");
   }
 }
