@@ -293,7 +293,7 @@ const ShopSingleDynamicV1 = () => {
                                 <Link href={`/shop/${product.id}`}>
                                     <div className="card product-card">
                                         <div className="position-relative">
-                                            <img src={product.images.thumbnail} alt={product.name} className="card-img-top product-image" />
+                                            <img src={product.images.thumbnail[0]} alt="No Image" className="card-img-top product-image" />
                                         </div>
                                         <div className="tpproduct__content-area ps-1 pe-1 mb-4 d-flex flex-column">
                                             <h3 className="tpproduct__title mb-5">{product.name}</h3>
