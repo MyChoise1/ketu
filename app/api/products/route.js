@@ -61,6 +61,12 @@ export async function POST(req) {
     });
   } catch (error) {
     console.error(error);
-    return new NextResponse.json(error.message || "An error occurred");
+    if (error instanceof PrismaClientKnownRequestError) {
+      return NextResponse.json(
+        { message: "Product already exists, please create a new one" },
+        { status: 400 }
+      );
+    }
+    return NextResponse.json(error.message || "An error occurred");
   }
 }

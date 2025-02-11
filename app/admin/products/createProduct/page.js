@@ -47,7 +47,11 @@ const CreateProductForm = () => {
             });
 
             if (!response.ok) {
-                throw new Error("Failed to create product");
+                if (!response.ok) {
+                    const error = await response.json();
+
+                    alert(error.message || "Failed to add database...");
+                }
             }
 
             const result = await response.json();

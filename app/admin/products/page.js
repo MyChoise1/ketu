@@ -35,7 +35,7 @@ const ProductList = () => {
                   <img
                     className="product-image"
                     src={product.images.thumbnail[0]}
-                    alt={product.name}
+                    alt="No Image"
                   />
                   <div className="product-info">
                     <h3 className="product-title">{product.name}</h3>
