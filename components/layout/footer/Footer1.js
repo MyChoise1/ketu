@@ -70,7 +70,8 @@ export default function Footer1() {
                           </Link>
                         </li>
                         <li>
-                          <Link href="#" target="_blank">
+                          <Link href="https://www.facebook.com/share/15oTUF1mdd/?mibextid=qi2Omg"
+                            target="_blank">
                             <i className="fab fa-facebook" />
                             Facebook
                           </Link>
