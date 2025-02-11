@@ -5,7 +5,7 @@ import { addCart, addQty } from "@/features/shopSlice"
 import Link from "next/link"
 import { useParams } from "next/navigation"
 import { useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
+import { useDispatch } from "react-redux"
 import Preloader from "@/components/elements/Preloader"
 
 const ShopSingleDynamicV1 = () => {
@@ -67,7 +67,6 @@ const ShopSingleDynamicV1 = () => {
                                             onClick={() => handleOnClick2(product.images.thumbnail.length )}
                                             >
                                                 <video src={product.images.video} className="product_display-preview" alt="video" muted />
-                                                {/* <p className="video-titile">Video</p> */}
                                             </button>
                                         </div>
                                         <div className="tab-content" id="v-pills-tabContent">
@@ -132,32 +131,6 @@ const ShopSingleDynamicV1 = () => {
                                             </button>
                                         </Link>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-2 col-md-5">
-                                <div className="tpproduct-details__condation">
-                                    <ul>
-                                        <li>
-                                            <div className="tpproduct-details__condation-item d-flex align-items-center">
-                                                <div className="tpproduct-details__condation-thumb">
-                                                    <img src="/assets/img/icon/product-det-2.png" alt="" className="tpproduct-details__img-hover" />
-                                                </div>
-                                                <div className="tpproduct-details__condation-text">
-                                                    <p>100% Stainless steel<br />Products</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div className="tpproduct-details__condation-item d-flex align-items-center">
-                                                <div className="tpproduct-details__condation-thumb">
-                                                    <img src="/assets/img/icon/product-det-3.png" alt="" className="tpproduct-details__img-hover" />
-                                                </div>
-                                                <div className="tpproduct-details__condation-text">
-                                                    <p>1 Year free<br />Maintenance</p>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
                                 </div>
                             </div>
                         </div>
