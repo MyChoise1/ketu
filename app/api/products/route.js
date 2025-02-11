@@ -1,5 +1,6 @@
 import prismadb from "@/libs/prismadb";
 import { generateSlug } from "@/libs/utils";
+import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { NextResponse } from "next/server";
 
 export async function GET() {
