@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { redirect, useParams } from "next/navigation";
 import useFetchProducts from "@/components/useFetchProducts";
-import "./ProductDetail.css"; // External CSS file
+import "./ProductDetail.css"; 
 import Preloader from "@/components/elements/Preloader";
 import Link from "next/link";
 import ImageUploaderModal from "@/components/adminPanel/ImageUploader";
@@ -16,8 +16,6 @@ const ProductDetail = () => {
   const router = useRouter();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [isModalOpen2, setIsModalOpen2] = useState(false);
-  // const [isModalOpen3, setIsModalOpen3] = useState(false);
   const [isModalOpen4, setIsModalOpen4] = useState(false);
   const [isModalOpen5, setIsModalOpen5] = useState(false);
 
@@ -26,8 +24,6 @@ const ProductDetail = () => {
     mrp: "",
     sell_price: "",
     new_images: [],
-    // thumbnail_two: "",
-    // thumbnail_three: "",
     video: "",
     other_images: [],
     sku: "",
@@ -47,8 +43,6 @@ const ProductDetail = () => {
           mrp: foundProduct.mrp,
           sell_price: foundProduct.sell_price,
           new_images: foundProduct.images.thumbnail || [],
-          // thumbnail_two: foundProduct.images.thumbnail_two,
-          // thumbnail_three: foundProduct.images.thumbnail_three,
           video: foundProduct.images.video,
           other_images: foundProduct.images.other || [],
           sku: foundProduct.sku,
@@ -130,7 +124,7 @@ const ProductDetail = () => {
             min="0"
           />
 
-          <label>Thumbnail One:</label>
+          <label>Product Image Top:</label>
           {formData.new_images && formData.new_images.length > 0 ? (
             <div className="other-images-container">
               {formData.new_images.map((image, index) => (
@@ -155,7 +149,7 @@ const ProductDetail = () => {
               onUploadedEnd={(bloburl) => {
                 setFormData((prev) => ({
                   ...prev,
-                  new_images: [...bloburl], // Ensures new_images exists
+                  new_images: [...bloburl], 
                 }));
                 setIsModalOpen(false);
               }}
@@ -164,10 +158,10 @@ const ProductDetail = () => {
           )}
 
           {/* video */}
-          <label>Thumbnail Video:</label>
+          <label>Product Video:</label>
           <input id="video" type="text" className="thumbnail_three" value={formData.video} style={{ width: '100%' }} />
           <button type="button" onClick={() => setIsModalOpen4(true)}>
-            Upload Image
+            Upload Video
           </button>
           {isModalOpen4 && (
             <ImageUploaderModal
@@ -184,7 +178,7 @@ const ProductDetail = () => {
           )}
 
           {/* other images */}
-          <label>Other Images:</label>
+          <label>Product Images All:</label>
           {formData.other_images.length > 0 ? (
             <div className="other-images-container">
               {formData.other_images.map((image, index) => (

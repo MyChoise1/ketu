@@ -51,6 +51,7 @@ const CreateProductForm = () => {
                     const error = await response.json();
 
                     alert(error.message || "Failed to add database...");
+                    return;
                 }
             }
 
