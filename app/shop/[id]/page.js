@@ -106,9 +106,6 @@ const ShopSingleDynamicV1 = () => {
                                         <del>₹{product.mrp}</del>
                                         <span>₹{product.sell_price}</span>
                                     </div>
-                                    <div className="tpproduct-details__pera">
-                                        <p>{product.description}</p>
-                                    </div>
                                     <div className="tpproduct-details__actions">
                                         <div className="tpproduct-details__quantity">
                                             <div className="product-quantity">

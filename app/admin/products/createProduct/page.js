@@ -128,7 +128,7 @@ const CreateProductForm = () => {
                             onUploadedEnd={(bloburl) => {
                                 setFormData((prev) => ({
                                     ...prev,
-                                    video: bloburl,
+                                    video: bloburl[0],
                                 }));
                                 setOpenModal(false);
                             }}
