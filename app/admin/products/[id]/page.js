@@ -172,8 +172,8 @@ const ProductDetail = () => {
                 }));
                 setIsModalOpen4(false);
               }}
-              onClose={() => setIsModalOpen4(false)}
               video={true}
+              onClose={() => setIsModalOpen4(false)}
             />
           )}
 

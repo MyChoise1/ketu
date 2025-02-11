@@ -133,6 +133,7 @@ const CreateProductForm = () => {
                                 setOpenModal(false);
                             }}
                             onClose={() => setOpenModal(false)}
+                            video={true}
                         />
                     )}
 

@@ -184,7 +184,7 @@ const ShopSingleDynamicV1 = () => {
                                     <div className="tab-content tp-content-tab" id="myTabContent-2">
                                         <div className={activeIndex == 1 ? "tab-para tab-pane fade show active" : "tab-para tab-pane fade"}>
                                             {product.description.length > 0 ?
-                                                <p className="mb-30">{product.description}</p> :
+                                                <p className="description_sec">{product.description}</p> :
                                                 <p>No Description</p>}
                                         </div>
                                         <div className={activeIndex == 2 ? "tab-pane fade show active" : "tab-pane fade"}>

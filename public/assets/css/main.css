@@ -8260,6 +8260,10 @@ only screen and (min-width: 768px) and (max-width: 991px) {
   }
 }
 
+.description_sec {
+
+}
+
 .tpproduct-details__nav .nav-tabs {
   border-bottom: 1px solid var(--tp-border-1);
   display: flex;
