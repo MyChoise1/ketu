@@ -168,7 +168,7 @@ const ProductDetail = () => {
               onUploadedEnd={(bloburl) => {
                 setFormData((prev) => ({
                   ...prev,
-                  video: bloburl,
+                  video: bloburl[0],
                 }));
                 setIsModalOpen4(false);
               }}
