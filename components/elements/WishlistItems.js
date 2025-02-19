@@ -3,7 +3,7 @@ import { addCart } from "@/features/shopSlice"
 import { addQty, deleteWishlist } from "@/features/wishlistSlice"
 import Link from "next/link"
 import { useDispatch, useSelector } from "react-redux"
-import useFetchProducts from "../useFetchProducts"
+import useFetchProducts from "../fetch/useFetchProducts"
 import Preloader from "./Preloader"
 
 const WishlistItems = () => {

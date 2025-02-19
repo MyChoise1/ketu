@@ -1,12 +1,21 @@
+'use client'
 import React from "react";
 import "./dashboard.css";
-import Sidebar from "@/components/adminPanel/Sidebar";
+import useFetchUsers from "@/components/fetch/useFetchUsers";
 
 const Dashboard = () => {
+  const { users, error, loading } = useFetchUsers();
+
+  if (loading) {
+    return <p className="state">loading...</p>
+  }
+
+  if (error) {
+    return <div className="state">Error: {error.message}</div>;
+  }
+
   return (
     <div className="tp-container">
-      {/* <Sidebar /> */}
-      {/* Sidebar Component */}
 
       {/* Main Content */}
       <main className="main-content">
@@ -18,7 +27,7 @@ const Dashboard = () => {
         <div className="cards-grid">
           <div className="card">
             <h3>Total Users</h3>
-            <p>1,234</p>
+            <p className="dynamic">{users.length}</p>
           </div>
           <div className="card">
             <h3>Revenue</h3>

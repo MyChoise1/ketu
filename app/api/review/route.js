@@ -1,6 +1,30 @@
 import { sessionOptions } from "@/libs/session";
 import { getIronSession } from "iron-session";
+
 import { NextResponse } from "next/server";
+import prismadb from "@/libs/prismadb";
+
+export async function GET(req) {
+  try {
+    const url = new URL(req.url);
+    const product_id = url.searchParams.get("product_id");
+
+    if (!product_id) {
+      return new NextResponse("Missing product ID", { status: 400 });
+    }
+
+    const reviews = await prismadb.review.findMany({
+      where: {
+        productId: product_id, // Ensure correct type if it's a number
+      },
+    });
+
+    return NextResponse.json(reviews);
+  } catch (err) {
+    console.error(err);
+    return new NextResponse(err.message || "An error occurred", { status: 500 });
+  }
+}
 
 export async function POST(req, res) {
   try {
@@ -10,18 +34,21 @@ export async function POST(req, res) {
       return new NextResponse("Session not found", { status: 401 });
     }
 
-    const { product_id, rating, review } = await req.json();
+    console.log(session);
 
-    if (!product_id || !rating || !review) {
+    const { reviewerName, product_id, rating, review } = await req.json();
+
+    if (!product_id || !review) {
       return new NextResponse("Missing required fields", { status: 400 });
     }
 
     const { id } = await prismadb.review.create({
       data: {
-        user_id: session.userId,
-        product_id,
+        userId: session.auth.userId,
+        productId: product_id,
         rating,
         review,
+        reviewerName
       },
     });
 
@@ -35,6 +62,8 @@ export async function POST(req, res) {
   }
 }
 
+
+
 export async function DELETE(req, res) {
   try {
     const session = await getIronSession(req, res, sessionOptions);
@@ -43,15 +72,16 @@ export async function DELETE(req, res) {
       return new NextResponse("Session not found", { status: 401 });
     }
 
-    const { review_id } = await req.json();
+    const url = new URL(req.url);
+    const review_id = url.searchParams.get("review_id");
 
     if (!review_id) {
-      return new NextResponse("Missing required fields", { status: 400 });
+      return new NextResponse("Missing Reviewer ID", { status: 400 });
     }
 
     await prismadb.review.delete({
       where: {
-        id: review_id,
+        id: parseInt(review_id),
       },
     });
 

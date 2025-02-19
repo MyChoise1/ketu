@@ -3,7 +3,7 @@ import { addCart } from "@/features/shopSlice"
 import { addWishlist } from "@/features/wishlistSlice"
 import { Fragment, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import useFetchProducts from "@/components/useFetchProducts"
+import useFetchProducts from "@/components/fetch/useFetchProducts"
 // import products from "../../data/products"
 import {
     addPerPage,

@@ -28,13 +28,33 @@ enum UserType {
   @@map("user_type")
 }
 
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+
+  @@map("order_status")
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+
+  @@map("payment_status")
+}
+
 model User {
+  username String
   id       String @id @default(cuid())
   email    String @unique
   password String
 
   Address Address[]
   Review  Review[]
+  Order  Order[]
+
 
   @@map("users")
 
@@ -60,6 +80,7 @@ model Products {
   updatedAt   DateTime @updatedAt @map("updated_at")
 
   Review Review[]
+  OrderItem OrderItem[]
 
   @@index([slug])
   @@map("products")
@@ -133,6 +154,7 @@ model Review {
   id        Int      @id @default(autoincrement())
   productId String   @map("product_id")
   product   Products @relation(fields: [productId], references: [id])
+  reviewerName String
 
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id])
@@ -143,4 +165,36 @@ model Review {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   @@map("reviews")
+}
+
+model OrderItem {
+  id String @id @default(cuid())
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id])
+
+  productId String
+  product   Products @relation(fields: [productId], references: [id])
+
+  quantity Int
+
+  total Float
+
+  @@map("order_items")
+}
+
+model Order {
+  id String @id @default(cuid())
+
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
+  orderStatus   OrderStatus   @default(PENDING) @map("order_status")
+  paymentStatus PaymentStatus @default(PENDING) @map("payment_status")
+
+  total Float
+
+  orderItems OrderItem[]
+
+  @@map("orders")
 }

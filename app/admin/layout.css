@@ -1,18 +1,22 @@
 .admin-container {
-    display: flex;
-    min-height: 100vh;
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-main {
+  flex-grow: 1;
+  padding: 20px;
+  background: #f4f4f4;
+  margin-left: 100px;
+}
+
+/* Responsive: Move Sidebar to Top in Mobile */
+@media (max-width: 768px) {
+  .admin-container {
+    flex-direction: column;
   }
-  
+
   .admin-main {
-    flex-grow: 1;
-    padding: 20px;
-    background: #f4f4f4;
+    margin-left: 0;
   }
-  
-  /* Responsive: Move Sidebar to Top in Mobile */
-  @media (max-width: 768px) {
-    .admin-container {
-      flex-direction: column;
-    }
-  }
-  
+}

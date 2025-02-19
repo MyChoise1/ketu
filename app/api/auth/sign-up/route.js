@@ -4,9 +4,9 @@ import { hashPassword } from "@/libs/crypto";
 
 export async function POST(req) {
   try {
-    const { email, password, type = "USER" } = await req.json();
+    const {username, email, password, type = "USER" } = await req.json();
 
-    if (!email || !password || !type) {
+    if (!username || !email || !password || !type) {
       return new NextResponse("Missing required fields", { status: 400 });
     }
 
@@ -18,6 +18,7 @@ export async function POST(req) {
 
     await prismadb.user.create({
       data: {
+        username,
         email,
         password: hashedPassword,
         type,

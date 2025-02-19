@@ -1,0 +1,40 @@
+.user-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.user-title {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.user-card {
+    padding: 15px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.user-card p {
+    font-size: 16px;
+    margin: 10px 0;
+    color: #555;
+}
+
+.user-card strong {
+    color: #222;
+}
+
+.loading,
+.error {
+    text-align: center;
+    font-size: 18px;
+    color: #d9534f;
+}

@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
-      <div>
+      <div className="sidebar_top">
         <div className="logo">
           <span>Dashboard</span>
           <span
@@ -39,7 +39,12 @@ const Sidebar = () => {
                 Users
               </li>
             </Link>
-            <Link href="/admin/dashboard">
+            <Link href="/admin/reviews">
+              <li className="nav-item">
+                Reviews
+              </li>
+            </Link>
+            <Link href="/admin/orders">
               <li className="nav-item">
                 Orders
               </li>

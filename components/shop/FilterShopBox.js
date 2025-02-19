@@ -5,7 +5,7 @@ import { Fragment } from "react"
 import { useDispatch } from "react-redux"
 import ShopCard from "./ShopCard"
 // import ShopCardList from "./ShopCardList"
-import useFetchProducts from "@/components/useFetchProducts"
+import useFetchProducts from "@/components/fetch/useFetchProducts"
 import Preloader from "../elements/Preloader"
 
 const FilterShopBox = () => {

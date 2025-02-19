@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 
-import useFetchProducts from "@/components/useFetchProducts"; 
+import useFetchProducts from "@/components/fetch/useFetchProducts"; 
 import BillingDetailsForm from "@/components/layout/BillingDetailsForm";
 
 export default function Checkout() {

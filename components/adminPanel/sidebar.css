@@ -43,6 +43,13 @@
   background: #34495e;
 }
 
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    height: 100%;
+  }
+}
+
 @media (max-width: 768px) {
   .nav-menu {
     display: flex;

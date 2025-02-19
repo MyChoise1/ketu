@@ -26,7 +26,7 @@ export default function SignIn() {
     if (res.ok) {
       router.refresh();
     } else {
-      console.log("ERROR IN SIGN_IN PAGE", res);
+      confirm("User not found", res);
     }
   };
 
@@ -63,6 +63,7 @@ export default function SignIn() {
                         <i className="fal fa-user" />
                       </span>
                       <input
+                        autoComplete="email"
                         name="email"
                         type="email"
                         required

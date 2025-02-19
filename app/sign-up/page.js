@@ -62,10 +62,21 @@ export default function SignIn() {
                         <i className="fal fa-user" />
                       </span>
                       <input
+                        name="username"
+                        type="name"
+                        required
+                        placeholder="Full Name"
+                      />
+                    </div>
+                    <div className="tptrack__id mb-10">
+                      <span>
+                        <i className="fal fa-user" />
+                      </span>
+                      <input
                         name="email"
                         type="email"
                         required
-                        placeholder="Username / email address"
+                        placeholder="email address"
                       />
                     </div>
                     <div className="tptrack__email mb-10">

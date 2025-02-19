@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import "./ProductList.css"; // External CSS file
-import useFetchProducts from "@/components/useFetchProducts"; // Assuming this hook fetches products
+import useFetchProducts from "@/components/fetch/useFetchProducts"; // Assuming this hook fetches products
 import Preloader from "@/components/elements/Preloader";
 import Link from "next/link";
 import ImageUploader from "@/components/adminPanel/ImageUploader";
@@ -40,7 +40,7 @@ const ProductList = () => {
                   <div className="product-info">
                     <h3 className="product-title">{product.name}</h3>
                     <p className="product-price">
-                      ${product.sell_price.toFixed(2)}
+                      ₹{product.sell_price.toFixed(2)}
                     </p>
                   </div>
                 </div>

@@ -1,8 +1,8 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { redirect, useParams } from "next/navigation";
-import useFetchProducts from "@/components/useFetchProducts";
-import "./ProductDetail.css"; 
+import useFetchProducts from "@/components/fetch/useFetchProducts";
+import "./ProductDetail.css";
 import Preloader from "@/components/elements/Preloader";
 import Link from "next/link";
 import ImageUploaderModal from "@/components/adminPanel/ImageUploader";
@@ -84,7 +84,7 @@ const ProductDetail = () => {
   if (!product) return <div className="error-message">Product not found.</div>;
 
   return (
-    <>
+    <div className="tp-container">
       <div className="product-top">
         <h2 className="title">Edit Product : </h2>
         <Link href="/admin/products/createProduct">
@@ -149,7 +149,7 @@ const ProductDetail = () => {
               onUploadedEnd={(bloburl) => {
                 setFormData((prev) => ({
                   ...prev,
-                  new_images: [...bloburl], 
+                  new_images: [...bloburl],
                 }));
                 setIsModalOpen(false);
               }}
@@ -241,7 +241,7 @@ const ProductDetail = () => {
         </form>
         <DeleteButton productId={product.id} />
       </div>
-    </>
+    </div>
   );
 };
 

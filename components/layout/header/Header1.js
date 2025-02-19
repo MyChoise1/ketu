@@ -57,7 +57,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isCart
                                                 if (confirm("Are you sure you want to log out?")) {
                                                     signOut();
                                                 }
-                                            }}><img src={exit.src} /></button>}
+                                            }}>Logout<img src={exit.src}/></button>}
                                     </div>
                                 </div>
                             </div>

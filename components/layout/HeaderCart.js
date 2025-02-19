@@ -34,8 +34,8 @@ export default function HeaderCart({ isCartSidebar, handleCartSidebar }) {
                                                 <div className="d-flex align-items-center">
                                                     <div className="tpcart__img me-3">
                                                         <img
-                                                            src={item.images.thumbnail[0]}
-                                                            alt={item.name}
+                                                            src={item.images.thumbnail[0] || ""}
+                                                            alt="img"
                                                             className="rounded"
                                                             style={{ width: 70, height: 70 }}
                                                         />
