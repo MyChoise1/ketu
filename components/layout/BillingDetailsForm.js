@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const BillingDetailsForm = () => {
+const BillingDetailsForm = ({isEditing, setIsEditing}) => {
     const [formData, setFormData] = useState({
         id: '',
         address: '',
@@ -15,7 +15,6 @@ const BillingDetailsForm = () => {
     });
 
     const [message, setMessage] = useState('');
-    const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
         const fetchUserData = async () => {

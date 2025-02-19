@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "next/navigation";
 import "./UserDetail.css"; // Import external CSS
+import useFetchUsers from "@/components/fetch/useFetchUsers";
 
 export default function UserDetail() {
     const { userId } = useParams(); // Get user ID from URL params
     const [addresses, setAddresses] = useState([]);
     const [loading, setLoading] = useState(true);
+    const {users} = useFetchUsers();
 
     useEffect(() => {
         const fetchUserDetails = async () => {
@@ -35,6 +37,8 @@ export default function UserDetail() {
         return <p className="error">No address found for this user.</p>;
     }
 
+    const userEmail = users.find(user => user.id === userId);
+
     return (
         <div className="user-container">
             <h2 className="user-title">User Addresses</h2>
@@ -48,6 +52,7 @@ export default function UserDetail() {
                     <p><strong>Country:</strong> {address.country}</p>
                     <p><strong>ZIP Code:</strong> {address.zip}</p>
                     <p><strong>Type:</strong> {address.type}</p>
+                    <p><strong>email:</strong> {userEmail.email || "no email"}</p>
                 </div>
             ))}
         </div>

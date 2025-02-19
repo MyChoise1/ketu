@@ -1,10 +1,9 @@
-'use client'
+'use client';
 import Layout from "@/components/layout/Layout";
 import { useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-
-import useFetchProducts from "@/components/fetch/useFetchProducts"; 
+import useFetchProducts from "@/components/fetch/useFetchProducts";
 import BillingDetailsForm from "@/components/layout/BillingDetailsForm";
 
 export default function Checkout() {
@@ -13,15 +12,61 @@ export default function Checkout() {
     const pdtId = searchParams.get("produtid");
     const Selector = useSelector((state) => state.shop.cart) || [];
 
-    const cart = pdtId 
-        ? products.filter((item) => item.id === pdtId) 
-        : Selector
+    const cart = pdtId
+        ? products.filter((item) => item.id === pdtId)
+        : Selector;
 
-    const [shipping, setShipping] = useState(50.00);
+    // const [shipping, setShipping] = useState(0);    
+    const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+    const [orderError, setOrderError] = useState(null);
+    const [orderSuccess, setOrderSuccess] = useState(false);
+    const [details, setDetails] = useState(false);
 
     // Calculate Subtotal
     const subtotal = cart.reduce((acc, item) => acc + (item.qty || 1) * item.sell_price, 0);
-    const total = subtotal + shipping;
+    const total = subtotal;
+
+    // Prepare products data for the API
+    const prepareProductsData = () => {
+        return cart.map((item) => ({
+            id: item.id,
+            quantity: item.qty || 1,
+            total: (item.qty || 1) * item.sell_price,
+        }));
+    };
+
+    // Handle Place Order Button Click
+    const handlePlaceOrder = async () => {
+        setIsPlacingOrder(true);
+        setOrderError(null);
+        setOrderSuccess(false);
+
+        try {
+            const productsData = prepareProductsData();
+
+            const response = await fetch("/api/order", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ products: productsData }),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to place order");
+            }
+
+            const data = await response.json();
+            setOrderSuccess(true);
+            confirm("Order created successfully:", data);
+        } catch (error) {
+            setOrderError(error.message);
+            return confirm("Error placing order:", error);
+        } finally {
+            setIsPlacingOrder(false);
+        }
+    };
+    console.log(details)
 
     if (error) return <div>Error: {error.message}</div>;
 
@@ -31,7 +76,7 @@ export default function Checkout() {
                 <section className="checkout-area mt-4 pb-50 wow fadeInUp" data-wow-duration=".8s" data-wow-delay=".2s">
                     <div className="container">
                         <div className="row">
-                        <BillingDetailsForm />
+                            <BillingDetailsForm isEditing={details} setIsEditing={setDetails} />
                             <div className="col-lg-6 col-md-12">
                                 <div className="your-order mb-30">
                                     <h3>Your Order</h3>
@@ -71,11 +116,7 @@ export default function Checkout() {
                                                     <td>
                                                         <ul>
                                                             <li>
-                                                                <input type="radio" name="shipping" checked={shipping === 50} onChange={() => setShipping(50)} />
-                                                                <label className="ms-1">Express: <span className="amount">₹50.00</span></label>
-                                                            </li>
-                                                            <li>
-                                                                <input type="radio" name="shipping" checked={shipping === 0} onChange={() => setShipping(0)} />
+                                                                <input type="radio" name="shipping" />
                                                                 <label className="ms-1">Free Shipping</label>
                                                             </li>
                                                         </ul>
@@ -90,8 +131,23 @@ export default function Checkout() {
                                     </div>
                                     <div className="payment-method">
                                         <div className="order-button-payment mt-20">
-                                            <button type="submit" className="tp-btn tp-color-btn w-100 banner-animation">Place order</button>
+                                            {details ? cart.length > 0 ? (
+                                                <button
+                                                    type="submit"
+                                                    className="tp-btn tp-color-btn w-100 banner-animation"
+                                                    onClick={handlePlaceOrder}
+                                                    disabled={isPlacingOrder}
+                                                >
+                                                    {isPlacingOrder ? "Placing Order..." : "Place Order"}
+                                                </button>
+                                            ) : (
+                                                <button disabled className="btn-secondary w-100" style={{ height: "50px" }}>No Order</button>
+                                            ):
+                                            <button disabled className="btn-secondary w-100" style={{ height: "50px" }}>Fill the Billing Details to place order</button>
+                                            }
                                         </div>
+                                        {orderError && <p className="text-danger mt-2">{orderError}</p>}
+                                        {orderSuccess && <p className="text-success mt-2">Order placed successfully!</p>}
                                     </div>
                                 </div>
                             </div>

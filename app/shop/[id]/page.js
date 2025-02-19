@@ -177,77 +177,10 @@ const ShopSingleDynamicV1 = () => {
                                         </div>
                                         <div className={activeIndex == 3 ? "tab-pane fade show active" : "tab-pane fade"}>
                                             <div className="product-details-review">
-                                                {/* <h3 className="tp-comments-title mb-35">3 reviews for “{product.name}”</h3> */}
-                                                {/* <div className="latest-comments mb-55">
-                                                    <ul>
-                                                        {[1, 2, 3].map((_, index) => (
-                                                            <li key={index}>
-                                                                <div className="comments-box d-flex">
-                                                                    <div className="comments-avatar mr-10">
-                                                                        <img src="/assets/img/icon/user.png" alt="" height={30} />
-                                                                    </div>
-                                                                    <div className="comments-text">
-                                                                        <div className="comments-top d-sm-flex align-items-start justify-content-between mb-5">
-                                                                            <div className="avatar-name">
-                                                                                <b>User {index + 1}</b>
-                                                                                <div className="comments-date mb-20">
-                                                                                    <span>March 27, 2018 9:51 am</span>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div className="user-rating">
-                                                                                <ul>
-                                                                                    {[...Array(5)].map((_, i) => (
-                                                                                        <li key={i}><Link href="#"><i className={i < 4 ? "fas fa-star" : "fal fa-star"} /></Link></li>
-                                                                                    ))}
-                                                                                </ul>
-                                                                            </div>
-                                                                        </div>
-                                                                        <p className="m-0">This is a great product. I highly recommend it!</p>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div> */}
                                                 <ReviewsList productId={product.id} />
-                                                {/* {user === true &&
-                                                    <div className="product-details-comment">
-                                                        <div className="comment-title mb-20">
-                                                            <h3>Add a review</h3>
-                                                            <p>Your email address will not be published. Required fields are marked*</p>
-                                                        </div>
-                                                        <div className="comment-rating mb-20 d-flex">
-                                                            <span>Overall ratings</span>
-                                                            <ul>
-                                                                {[...Array(5)].map((_, i) => (
-                                                                    <li key={i}><Link href="#"><i className={i < 4 ? "fas fa-star" : "fal fa-star"} /></Link></li>
-                                                                ))}
-                                                            </ul>
-                                                        </div>
-                                                        <div className="comment-input-box">
-                                                            <form action="#">
-                                                                <div className="row">
-                                                                    <div className="col-xxl-12">
-                                                                        <div className="comment-input">
-                                                                            <textarea placeholder="Your review..." />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-xxl-6">
-                                                                        <div className="comment-input">
-                                                                            <input type="text" placeholder="Your Name*" />
-                                                                        </div>
-                                                                    </div>
-                                                                    <div className="col-xxl-12">
-                                                                        <div className="comment-submit">
-                                                                            <button type="submit" className="tp-btn pro-submit">Submit</button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                } */}
+                                                {user.id &&
                                                 <ReviewForm product_id={product.id} />
+                                                }
                                             </div>
                                         </div>
                                     </div>

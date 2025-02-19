@@ -9,7 +9,7 @@ const Users = () => {
   if (error) return <p className="error">Error: {error}</p>;
 
   return (
-    <div className="user-container">
+    <div className="container-users">
       <div className='header'>
         <h2 className='user_header'>Users</h2>
       </div>

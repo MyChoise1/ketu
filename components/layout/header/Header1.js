@@ -57,7 +57,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isCart
                                                 if (confirm("Are you sure you want to log out?")) {
                                                     signOut();
                                                 }
-                                            }}>Logout<img src={exit.src}/></button>}
+                                            }} style={{backgroundColor: "#e85100", color: "white", borderRadius: "5px", fontWeight: "700px", paddingRight: "10px"}}>Logout</button>}
                                     </div>
                                 </div>
                             </div>
