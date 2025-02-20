@@ -12,7 +12,8 @@ const OrdersTable = () => {
     const [error, setError] = useState(null);
     const { products } = useFetchProducts();
     const { users } = useFetchUsers();
-    const router = useRouter()
+    const router = useRouter();
+    const [refresh, setRefrest] = useState(0);
 
     useEffect(() => {
         const fetchOrders = async () => {
@@ -31,7 +32,7 @@ const OrdersTable = () => {
         };
 
         fetchOrders();
-    }, []);
+    }, [refresh]);
 
     // Handle status update
     const handleStatusUpdate = async (orderId, field, value) => {
@@ -51,7 +52,7 @@ const OrdersTable = () => {
                 throw new Error('Failed to update status');
             }
 
-            router.refresh();
+            setRefrest((pre) => pre + 1)
 
             const updatedOrder = await response.json();
             setOrders((prevOrders) =>
@@ -75,6 +76,7 @@ const OrdersTable = () => {
                     <tr>
                         <th>Product Name</th>
                         <th>Quantity</th>
+                        <th>Total</th>
                         <th>Order Status</th>
                         <th>Payment Status</th>
                         <th>User Details</th>
@@ -83,50 +85,63 @@ const OrdersTable = () => {
                 </thead>
                 <tbody>
                     {orders.toReversed().map((order) => {
-                        const productName = products.find(
-                            (product) => product.id === order.orderItems[0]?.productId
-                        )?.name || 'N/A';
-                        
-                        const pdtDate = (new Date(products[0].createdAt).toLocaleDateString()) || 'N/A'
-                        
                         const userName = users.find(
                             (user) => user.id === order.userId
                         )?.username || 'N/A';
 
                         return (
-                            <tr key={order.id}>
-                                <td>{productName || 'N/A'}</td>
-                                <td>{order.orderItems.reduce((total, item) => total + item.quantity, 0) || 'N/A'}</td>
-                                <td>
-                                    <select
-                                        value={order.orderStatus}
-                                        onChange={(e) =>
-                                            handleStatusUpdate(order.id, 'orderStatus', e.target.value)
-                                        }
-                                    >
-                                        <option value="PENDING">PENDING</option>
-                                        <option value="CONFIRMED">CONFIRMED</option>
-                                        <option value="SHIPPED">SHIPPED</option>
-                                        <option value="DELIVERED">DELIVERED</option>
-                                        <option value="CANCELLED">CANCELLED</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <select
-                                        value={order.paymentStatus}
-                                        onChange={(e) =>
-                                            handleStatusUpdate(order.id, 'paymentStatus', e.target.value)
-                                        }
-                                    >
-                                        <option value="PENDING">PENDING</option>
-                                        <option value="PAID">PAID</option>
-                                    </select>
-                                </td>
-                                <Link href={`/admin/users/${order.userId}`} className='icon-link'>
-                                    <td style={{ backgroundColor: "#E85100", color: "white" }} className="rounded-3">{userName || 'N/A'}</td>
-                                </Link>
-                                <td>{pdtDate}</td>
-                            </tr>
+                            <React.Fragment key={order.id}>
+                                {order.orderItems.map((item, index) => {
+                                    const productName = products.find(
+                                        (product) => product.id === item.productId
+                                    )?.name || 'N/A';
+
+                                    return (
+                                        <tr key={item.id}>
+                                            <td>{productName}</td>
+                                            <td>{item.quantity}</td>
+                                            <td>{item.total}</td>
+                                            {index === 0 && ( // Only show these columns once per order
+                                                <>
+                                                    <td rowSpan={order.orderItems.length}>
+                                                        <select
+                                                            value={order.orderStatus}
+                                                            onChange={(e) =>
+                                                                handleStatusUpdate(order.id, 'orderStatus', e.target.value)
+                                                            }
+                                                        >
+                                                            <option value="PENDING">PENDING</option>
+                                                            <option value="CONFIRMED">CONFIRMED</option>
+                                                            <option value="SHIPPED">SHIPPED</option>
+                                                            <option value="DELIVERED">DELIVERED</option>
+                                                            <option value="CANCELLED">CANCELLED</option>
+                                                        </select>
+                                                    </td>
+                                                    <td rowSpan={order.orderItems.length}>
+                                                        <select
+                                                            value={order.paymentStatus}
+                                                            onChange={(e) =>
+                                                                handleStatusUpdate(order.id, 'paymentStatus', e.target.value)
+                                                            }
+                                                        >
+                                                            <option value="PENDING">PENDING</option>
+                                                            <option value="PAID">PAID</option>
+                                                        </select>
+                                                    </td>
+                                                    <td rowSpan={order.orderItems.length}>
+                                                        <Link href={`/admin/users/${order.userId}`} className='icon-link'>
+                                                            <td style={{ backgroundColor: "rgb(54 78 101)", color: "white" }} className="rounded-3">{userName}</td>
+                                                        </Link>
+                                                    </td>
+                                                    <td rowSpan={order.orderItems.length}>
+                                                        {new Date(order.createdAt).toLocaleDateString()}
+                                                    </td>
+                                                </>
+                                            )}
+                                        </tr>
+                                    );
+                                })}
+                            </React.Fragment>
                         );
                     })}
                 </tbody>

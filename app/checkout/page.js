@@ -1,6 +1,6 @@
 'use client';
 import Layout from "@/components/layout/Layout";
-import { useSearchParams } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import useFetchProducts from "@/components/fetch/useFetchProducts";
@@ -11,6 +11,7 @@ export default function Checkout() {
     const searchParams = useSearchParams();
     const pdtId = searchParams.get("produtid");
     const Selector = useSelector((state) => state.shop.cart) || [];
+    const route = useRouter()
 
     const cart = pdtId
         ? products.filter((item) => item.id === pdtId)
@@ -59,6 +60,7 @@ export default function Checkout() {
             const data = await response.json();
             setOrderSuccess(true);
             confirm("Order created successfully:", data);
+            route.replace('/user')
         } catch (error) {
             setOrderError(error.message);
             return confirm("Error placing order:", error);

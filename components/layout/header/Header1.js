@@ -48,7 +48,7 @@ export default function Header1({ scroll, isMobileMenu, handleMobileMenu, isCart
                                                 <CartShow />
                                             </button>
                                             {user ?
-                                                <Link href=""><i className="fal fa-user" /></Link>
+                                                <Link href="/user"><i className="fal fa-user me-1" /></Link>
                                                 : <Link href="/sign-in" ><p className="login_btn">Login</p></Link>
                                             }
                                         </div>
