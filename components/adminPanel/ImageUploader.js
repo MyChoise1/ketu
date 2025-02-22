@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
-import "./ImageUploader.css";
+import "@/public/assets/css/new/ImageUploader.css";
 import { put } from "@/libs/storage";
 
 const ImageUploaderModal = ({ multimage, onUploadedEnd, onClose, video, limit = 4 }) => {

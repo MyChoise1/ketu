@@ -1,8 +1,7 @@
 'use client'
 import React, { useState } from 'react'
-import './SearchBar.css'
+import '@/public/assets/css/new/SearchBar.css'
 import useFetchProducts from '../fetch/useFetchProducts'
-// import Search from '@/public/assets/img/svg/search'
 
 const SearchBar = ({setResults}) => {
     const [input, setInput] = useState('')

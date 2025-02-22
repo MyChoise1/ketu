@@ -1,6 +1,6 @@
 'use client';
 import Layout from "@/components/layout/Layout";
-import { redirect, useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import useFetchProducts from "@/components/fetch/useFetchProducts";

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import "./sidebar.css"; // Separate CSS for sidebar styling
+import "@/public/assets/css/new/sidebar.css"; // Separate CSS for sidebar styling
 import Link from "next/link";
 import { signOut } from "@/libs/helpers";
 import { useRouter } from "next/navigation";

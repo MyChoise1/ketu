@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import './OrdersTable.css'; // Import external CSS file
+import '@/public/assets/css/new/OrdersTable.css'; // Import external CSS file
 import useFetchProducts from '@/components/fetch/useFetchProducts';
 import useFetchUsers from '@/components/fetch/useFetchUsers';
 import { useRouter } from 'next/navigation';

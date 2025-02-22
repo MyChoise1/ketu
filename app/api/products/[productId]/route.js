@@ -95,6 +95,6 @@ export async function DELETE(req, { params }) {
     });
   } catch (error) {
     console.error(error);
-    return new NextResponse.json(error.message || "An error occurred");
+    return new NextResponse(error.message || "An error occurred");
   }
 }

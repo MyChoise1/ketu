@@ -36,20 +36,6 @@ function Banner4() {
                     </span>
                   </div>
                 </div>
-                {/* <div className="col-lg-6 col-md-6 col-sm-6">
-                  <div className="tpbanneritem__thumb banner-animation p-relative">
-                    <img
-                      src="/assets/img/banner/banner-03-03.jpg"
-                      alt="banner-img"
-                    />
-                    <div className="tpbanneritem__text">
-                      <h5 className="tpbanneritem__text-title">
-                        <Link href="/shop">Minimal Chair</Link>
-                      </h5>
-                      <h3 className="tpbanneritem__text-price">-60% Offer</h3>
-                    </div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
@@ -59,4 +45,4 @@ function Banner4() {
   );
 }
 
-export default Banner4;
+export default Banner4;

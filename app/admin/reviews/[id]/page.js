@@ -1,6 +1,6 @@
 'use client'
 import React, { useState, useEffect } from "react";
-import "./ReviewsList.css";
+import "@/public/assets/css/new/ReviewsList.css";
 import { useParams } from "next/navigation";
 
 export default function ReviewsList() {

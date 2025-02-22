@@ -1,7 +1,6 @@
 'use client'
 import React, { useState } from "react";
-import "./FAQ.css"; // External CSS file
-
+import "@/public/assets/css/new/FAQ.css";
 const FAQ = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 

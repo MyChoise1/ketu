@@ -1,6 +1,6 @@
 'use client'
 import React from "react";
-import "./dashboard.css";
+import "@/public/assets/css/new/dashboard.css";
 import useFetchUsers from "@/components/fetch/useFetchUsers";
 
 const Dashboard = () => {

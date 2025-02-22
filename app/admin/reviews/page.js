@@ -3,7 +3,7 @@ import React from 'react'
 import useFetchProducts from "@/components/fetch/useFetchProducts"; // Assuming this hook fetches products
 import Preloader from "@/components/elements/Preloader";
 import Link from "next/link";
-import '../products/ProductList.css'
+import "@/public/assets/css/new/ProductList.css";
 
 const reviews = () => {
   const { products, loading, error } = useFetchProducts();

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import "./CreateProductForm.css"; // External CSS file
+import "@/public/assets/css/new/CreateProductForm.css"; // External CSS file
 import ImageUploaderModal from "@/components/adminPanel/ImageUploader";
 import { useRouter } from "next/navigation";
 

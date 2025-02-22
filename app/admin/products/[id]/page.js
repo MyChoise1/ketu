@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { redirect, useParams } from "next/navigation";
 import useFetchProducts from "@/components/fetch/useFetchProducts";
-import "./ProductDetail.css";
+import "@/public/assets/css/new/ProductDetail.css";
 import Preloader from "@/components/elements/Preloader";
 import Link from "next/link";
 import ImageUploaderModal from "@/components/adminPanel/ImageUploader";

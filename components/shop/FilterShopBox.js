@@ -1,10 +1,8 @@
 'use client'
 import { addCart } from "@/features/shopSlice"
-// import { addWishlist } from "@/features/wishlistSlice"
 import { Fragment } from "react"
 import { useDispatch } from "react-redux"
 import ShopCard from "./ShopCard"
-// import ShopCardList from "./ShopCardList"
 import useFetchProducts from "@/components/fetch/useFetchProducts"
 import Preloader from "../elements/Preloader"
 
@@ -35,7 +33,6 @@ const FilterShopBox = () => {
             <div className="row mb-50">
                 <div className="col-lg-12">
                     <div className="tab-content" id="nav-tabContent">
-                        {/* <div className={activeIndex == 2 ? "tab-pane fade show active" : "tab-pane fade"}> */}
                         <div className="row row-cols-xxl-4 row-cols-xl-4 row-cols-lg-3 row-cols-md-3 row-cols-sm-2 row-cols-2 tpproduct">
                             {
                                 products?.map((item, i) => (
@@ -45,7 +42,6 @@ const FilterShopBox = () => {
                                 ))
                             }
                         </div>
-                        {/* </div> */}
                     </div>
                 </div>
             </div>

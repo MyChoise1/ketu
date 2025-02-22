@@ -1,10 +1,9 @@
 "use client";
 import React from "react";
-import "./ProductList.css"; // External CSS file
+import "@/public/assets/css/new/ProductList.css";
 import useFetchProducts from "@/components/fetch/useFetchProducts"; // Assuming this hook fetches products
 import Preloader from "@/components/elements/Preloader";
 import Link from "next/link";
-import ImageUploader from "@/components/adminPanel/ImageUploader";
 
 const ProductList = () => {
   const { products, loading, error } = useFetchProducts();

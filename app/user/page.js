@@ -1,8 +1,9 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import "./UserProfile.css"; // External CSS file
+import "@/public/assets/css/new/UserProfile.css"; // External CSS file
 import useFetchProducts from "@/components/fetch/useFetchProducts";
 import Layout from "@/components/layout/Layout";
+import Preloader from "@/components/elements/Preloader";
 
 const UserProfile = () => {
     const [orders, setOrders] = useState([]);
@@ -41,7 +42,7 @@ const UserProfile = () => {
         fetchData();
     }, []);
 
-    if (loading) return <div className="loading">Loading...</div>;
+    if (loading) return<Preloader />;
     if (error) return <div className="error">Error: {error}</div>;
     if (!user) return <div className="error">User not found</div>;
 

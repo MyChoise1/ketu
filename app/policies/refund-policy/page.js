@@ -1,5 +1,5 @@
 import React from 'react';
-import './RefundCancellationPolicy.css'; // External CSS for styling
+import '@/public/assets/css/new/RefundCancellationPolicy.css'; // External CSS for styling
 import Layout from '@/components/layout/Layout';
 
 const RefundCancellationPolicy = () => {

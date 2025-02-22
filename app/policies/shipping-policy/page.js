@@ -1,5 +1,5 @@
 import React from 'react';
-import './ShippingPolicy.css'; // External CSS for styling
+import '@/public/assets/css/new/ShippingPolicy.css'; // External CSS for styling
 import Layout from '@/components/layout/Layout';
 
 const ShippingPolicy = () => {

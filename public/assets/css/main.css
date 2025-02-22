@@ -5826,7 +5826,6 @@ a.add-to-cart {
 .mp-marque-slider p span {
   background-clip: text;
   color: transparent;
-  background-image: url("../img/blog/blog-thumb-07.jpg");
   background-size: cover;
   -webkit-background-clip: text;
 }
