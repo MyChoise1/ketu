@@ -44,15 +44,15 @@ export default function UserDetail() {
             <h2 className="user-title">User Addresses</h2>
             {addresses.map((address) => (
                 <div key={address.id} className="user-card">
-                    <p><strong>Name:</strong> {address.first_name} {address.last_name}</p>
-                    <p><strong>Phone:</strong> {address.phone}</p>
-                    <p><strong>Address:</strong> {address.address}</p>
-                    <p><strong>City:</strong> {address.city}</p>
-                    <p><strong>State:</strong> {address.state}</p>
-                    <p><strong>Country:</strong> {address.country}</p>
-                    <p><strong>ZIP Code:</strong> {address.zip}</p>
-                    <p><strong>Type:</strong> {address.type}</p>
-                    <p><strong>email:</strong> {userEmail.email || "no email"}</p>
+                    <p><strong>Name:</strong> {address.first_name || "N/A"} {address.last_name || "N/A"}</p>
+                    <p><strong>Phone:</strong> {address.phone || "N/A"}</p>
+                    <p><strong>Address:</strong> {address.address || "N/A"}</p>
+                    <p><strong>City:</strong> {address.city || "N/A"}</p>
+                    <p><strong>State:</strong> {address.state || "N/A"}</p>
+                    <p><strong>Country:</strong> {address.country || "N/A"}</p>
+                    <p><strong>ZIP Code:</strong> {address.zip || "N/A"}</p>
+                    <p><strong>Type:</strong> {address.type || "N/A"}</p>
+                    <p><strong>email:</strong> {userEmail ? userEmail.email : "no email"}</p>
                 </div>
             ))}
         </div>
