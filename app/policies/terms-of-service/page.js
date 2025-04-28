@@ -33,7 +33,7 @@ const TermsOfService = () => {
                         By agreeing to these Terms of Service, you represent that you are at least the age of majority in your state or province of residence, or that you are the age of majority in your state or province of residence and you have given us your consent to allow any of your minor dependents to use this site.
                     </p>
                     <p>
-                        You may not use our products for any illegal or unauthorized purpose nor may you, in the use of the Service, violate any laws in your jurisdiction (including but not limited to copyright laws).
+                        You may not use our products for any illegal or unauthorized purpose nor may you, in the use of the Service, violate any laws in INDIA (including but not limited to copyright laws).
                     </p>
                     <p>
                         You must not transmit any worms or viruses or any code of a destructive nature.

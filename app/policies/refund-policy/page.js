@@ -13,6 +13,9 @@ const RefundCancellationPolicy = () => {
           <p>
             Orders cannot be cancelled once placed. For more information contact ketu.center@gmail.com.
           </p>
+          <p>
+            we do not offer return/echange/replacement , for custome made  product which we are selling that as per customer requirement.
+          </p>
         </section>
 
         <section className="policy-section">
@@ -46,17 +49,7 @@ const RefundCancellationPolicy = () => {
         <section className="policy-section">
           <h2>Damages and issues :</h2>
           <p>
-            Please inspect your order upon reception and contact us immediately if the item is defective, damaged or if you receive the wrong item, so that we can evaluate the issue and make it right.
-          </p>
-        </section>
-
-        <section className="policy-section">
-          <h2>Exceptions / non-returnable items :</h2>
-          <p>
-            Certain types of items cannot be returned, like custom products (such as special orders or personalized items). Please get in touch if you have questions or concerns about your specific item.
-          </p>
-          <p>
-            Unfortunately, we cannot accept returns on sale items or gift cards.
+            Please inspect your order upon reception and contact us immediately if the item is defective, damaged or if you receive the wrong item, so that we can evaluate the issue and Re-deliver the Replacement product within 7 days.
           </p>
         </section>
 
