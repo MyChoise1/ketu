@@ -22,6 +22,10 @@ export default function Contact() {
                                                         <Link href="#">+91 9637 1313 35</Link>
                                                     </li>
                                                     <li>
+                                                        <i className="fal fa-email" />
+                                                        <Link href="#">Ketu.centre@gmail.com</Link>
+                                                    </li>
+                                                    <li>
                                                         <i className="fal fa-clock" />
                                                         <span>Store Hours:</span>
                                                         <span>10 am - 6 pm, 6 days a week Sunday off</span>

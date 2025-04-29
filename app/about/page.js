@@ -24,7 +24,7 @@ const AboutUs = () => {
       </p>
       <div className="contact-info">
         <p>
-          <strong>EMAIL US -</strong> <a href="https://mail.google.com/mail/?view=cm&to=ketu.center@gmail.com">ketu.center@gmail.com</a>
+          <strong>EMAIL US -</strong> <a href="#">Ketu.centre@gmail.com</a>
         </p>
         <p>
           <strong>WHATSAPP/CALL US -</strong> <a href="#">+91 9637 1313 35</a>
